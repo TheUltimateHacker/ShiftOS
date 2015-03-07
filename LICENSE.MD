@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) 2015 ShiftOS/Philip Addams
+Copyright (c) 2015 ShiftOS/Philip Adams
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
