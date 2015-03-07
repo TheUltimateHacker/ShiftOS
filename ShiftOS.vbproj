@@ -1,0 +1,759 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7DCD55AB-F67D-4C43-9BFB-74ED8AD0FDCF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>ShiftOS.My.MyApplication</StartupObject>
+    <RootNamespace>ShiftOS</RootNamespace>
+    <AssemblyName>ShiftOS 0.0.8 Beta 1.1</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>97</ApplicationRevision>
+    <ApplicationVersion>0.0.7.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ShiftOS 0.0.8 Beta 1.1.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ShiftOS 0.0.8 Beta 1.1.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>F8533EC3C8902318F4A89ADCCBBD4FFABA648375</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ShiftOS_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Internet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ShiftOSLogo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API.vb" />
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="ArtPad.Designer.vb">
+      <DependentUpon>ArtPad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ArtPad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Audio Player.Designer.vb">
+      <DependentUpon>Audio Player.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Audio Player.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bitnote Digger.Designer.vb">
+      <DependentUpon>Bitnote Digger.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Bitnote Digger.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bitnote Wallet.Designer.vb">
+      <DependentUpon>Bitnote Wallet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Bitnote Wallet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calculator.Designer.vb">
+      <DependentUpon>Calculator.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Calculator.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clock.Designer.vb">
+      <DependentUpon>Clock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Clock.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="coherencemode.vb" />
+    <Compile Include="Colour Picker.Designer.vb">
+      <DependentUpon>Colour Picker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Colour Picker.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Downloader.Designer.vb">
+      <DependentUpon>Downloader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Downloader.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Icon Manager.Designer.vb">
+      <DependentUpon>Icon Manager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Icon Manager.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Name Changer.Designer.vb">
+      <DependentUpon>Name Changer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Name Changer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Shiftnet.Designer.vb">
+      <DependentUpon>Shiftnet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Shiftnet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Skinshifter.Designer.vb">
+      <DependentUpon>Skinshifter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Skinshifter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Video Player.Designer.vb">
+      <DependentUpon>Video Player.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Video Player.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomColorTable.vb" />
+    <Compile Include="File Opener.Designer.vb">
+      <DependentUpon>File Opener.vb</DependentUpon>
+    </Compile>
+    <Compile Include="File Opener.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File Saver.Designer.vb">
+      <DependentUpon>File Saver.vb</DependentUpon>
+    </Compile>
+    <Compile Include="File Saver.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File Skimmer.Designer.vb">
+      <DependentUpon>File Skimmer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="File Skimmer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File_Crypt.vb" />
+    <Compile Include="Graphic Picker.Designer.vb">
+      <DependentUpon>Graphic Picker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Graphic Picker.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HijackScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HijackScreen.Designer.vb">
+      <DependentUpon>HijackScreen.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="infobox.Designer.vb">
+      <DependentUpon>infobox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="infobox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="integer.vb" />
+    <Compile Include="Knowledge Input.Designer.vb">
+      <DependentUpon>Knowledge Input.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Knowledge Input.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MyPreviewToolStripRenderer.vb" />
+    <Compile Include="MyToolStripRenderer.vb" />
+    <Compile Include="Pong.Designer.vb">
+      <DependentUpon>Pong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pong.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreviewCustomColorTable.vb" />
+    <Compile Include="Shifter.Designer.vb">
+      <DependentUpon>Shifter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Shifter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Shiftorium.Designer.vb">
+      <DependentUpon>Shiftorium.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Shiftorium.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShiftOS Save File Converter.Designer.vb">
+      <DependentUpon>ShiftOS Save File Converter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ShiftOS Save File Converter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShiftOSDesktop.Designer.vb">
+      <DependentUpon>ShiftOSDesktop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ShiftOSDesktop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Skin Loader.Designer.vb">
+      <DependentUpon>Skin Loader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Skin Loader.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="template.Designer.vb">
+      <DependentUpon>template.vb</DependentUpon>
+    </Compile>
+    <Compile Include="template.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Terminal.Designer.vb">
+      <DependentUpon>Terminal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Terminal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextPad.Designer.vb">
+      <DependentUpon>TextPad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TextPad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="undo.vb" />
+    <Compile Include="Viruses.vb" />
+    <Compile Include="Web Browser.Designer.vb">
+      <DependentUpon>Web Browser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Web Browser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ArtPad.resx">
+      <DependentUpon>ArtPad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Audio Player.resx">
+      <DependentUpon>Audio Player.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bitnote Digger.resx">
+      <DependentUpon>Bitnote Digger.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bitnote Wallet.resx">
+      <DependentUpon>Bitnote Wallet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calculator.resx">
+      <DependentUpon>Calculator.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clock.resx">
+      <DependentUpon>Clock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Colour Picker.resx">
+      <DependentUpon>Colour Picker.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Downloader.resx">
+      <DependentUpon>Downloader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icon Manager.resx">
+      <DependentUpon>Icon Manager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Name Changer.resx">
+      <DependentUpon>Name Changer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shiftnet.resx">
+      <DependentUpon>Shiftnet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Skinshifter.resx">
+      <DependentUpon>Skinshifter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Video Player.resx">
+      <DependentUpon>Video Player.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File Opener.resx">
+      <DependentUpon>File Opener.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File Saver.resx">
+      <DependentUpon>File Saver.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File Skimmer.resx">
+      <DependentUpon>File Skimmer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphic Picker.resx">
+      <DependentUpon>Graphic Picker.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HijackScreen.resx">
+      <DependentUpon>HijackScreen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="infobox.resx">
+      <DependentUpon>infobox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Knowledge Input.resx">
+      <DependentUpon>Knowledge Input.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pong.resx">
+      <DependentUpon>Pong.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shifter.resx">
+      <DependentUpon>Shifter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shiftorium.resx">
+      <DependentUpon>Shiftorium.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShiftOS Save File Converter.resx">
+      <DependentUpon>ShiftOS Save File Converter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShiftOSDesktop.resx">
+      <DependentUpon>ShiftOSDesktop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Skin Loader.resx">
+      <DependentUpon>Skin Loader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="template.resx">
+      <DependentUpon>template.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Terminal.resx">
+      <DependentUpon>Terminal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextPad.resx">
+      <DependentUpon>TextPad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web Browser.resx">
+      <DependentUpon>Web Browser.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="ShiftOS_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\typesound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\writesound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dial-up-modem-02.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upgradegray.png" />
+    <None Include="Resources\upgradetitlebar.png" />
+    <None Include="Resources\upgradecustomusername.png" />
+    <None Include="Resources\upgradeamandpm.png" />
+    <None Include="Resources\upgradehoursssincemidnight.png" />
+    <None Include="Resources\upgrademinuteaccuracytime.png" />
+    <None Include="Resources\upgrademinutesssincemidnight.png" />
+    <None Include="Resources\upgradesecondssincemidnight.png" />
+    <None Include="Resources\upgradesplitsecondaccuracy.png" />
+    <None Include="Resources\upgrademoveablewindows.gif" />
+    <None Include="Resources\upgradewindowsanywhere.png" />
+    <None Include="Resources\upgradedraggablewindows.gif" />
+    <None Include="Resources\upgradeclosebutton.gif" />
+    <None Include="Resources\upgradetitletext.png" />
+    <None Include="Resources\upgradeclock.png" />
+    <None Include="Resources\upgradekiaddons.png" />
+    <None Include="Resources\upgrademultitasking.png" />
+    <None Include="Resources\upgradesgameconsoles.png" />
+    <None Include="Resources\upgradeskicarbrands.png" />
+    <None Include="Resources\upgradewindowborders.png" />
+    <None Include="Resources\upgradealshiftorium.png" />
+    <None Include="Resources\upgradeapplaunchermenu.png" />
+    <None Include="Resources\upgradeapplaunchershutdown.png" />
+    <None Include="Resources\upgradedesktoppanelclock.png" />
+    <None Include="Resources\upgradeknowledgeinput.png" />
+    <None Include="Resources\upgradewindowedterminal.png" />
+    <None Include="Resources\upgradealclock.png" />
+    <None Include="Resources\upgradeautoscrollterminal.png" />
+    <None Include="Resources\upgradedesktoppanel.png" />
+    <None Include="Resources\upgradeterminalscrollbar.png" />
+    <None Include="Resources\Gray Shades.png" />
+    <None Include="Resources\upgradegrayshades.png" />
+    <None Include="Resources\upgradeblue.png" />
+    <None Include="Resources\upgradebrown.png" />
+    <None Include="Resources\upgradegreen.png" />
+    <None Include="Resources\upgradeorange.png" />
+    <None Include="Resources\upgradepink.png" />
+    <None Include="Resources\upgradepurple.png" />
+    <None Include="Resources\upgradered.png" />
+    <None Include="Resources\upgradeyellow.png" />
+    <None Include="Resources\upgradeblueshades.png" />
+    <None Include="Resources\upgradebrownshades.png" />
+    <None Include="Resources\upgradegreenshades.png" />
+    <None Include="Resources\upgradeorangeshades.png" />
+    <None Include="Resources\upgradepinkshades.png" />
+    <None Include="Resources\upgradepurpleshades.png" />
+    <None Include="Resources\upgraderedshades.png" />
+    <None Include="Resources\upgradeyellowshades.png" />
+    <None Include="Resources\test.png" />
+    <None Include="Resources\upgradebluecustom.png" />
+    <None Include="Resources\upgradeblueshadeset.png" />
+    <None Include="Resources\upgradebrowncustom.png" />
+    <None Include="Resources\upgradegraycustom.png" />
+    <None Include="Resources\upgradegrayshadeset.png" />
+    <None Include="Resources\upgradegreencustom.png" />
+    <None Include="Resources\upgradegreenshadeset.png" />
+    <None Include="Resources\upgradeorangecustom.png" />
+    <None Include="Resources\upgradeorangeshadeset.png" />
+    <None Include="Resources\upgradepinkcustom.png" />
+    <None Include="Resources\upgradepinkshadeset.png" />
+    <None Include="Resources\upgradepurpleshadeset.png" />
+    <None Include="Resources\upgraderedcustom.png" />
+    <None Include="Resources\upgraderedshadeset.png" />
+    <None Include="Resources\upgradeyellowcustom.png" />
+    <None Include="Resources\upgradeyellowshadeset.png" />
+    <None Include="Resources\upgradebrownshadeset.png" />
+    <None Include="Resources\upgradepurplecustom.png" />
+    <None Include="Resources\anycolourshade.png" />
+    <None Include="Resources\anycolourshade2.png" />
+    <None Include="Resources\anycolourshade3.png" />
+    <None Include="Resources\anycolourshade4.png" />
+    <None Include="Resources\Symbolinfo.png" />
+    <None Include="Resources\infobox.wav" />
+    <None Include="Resources\rolldown.wav" />
+    <None Include="Resources\rollup.wav" />
+    <None Include="Resources\upgradealshifter.png" />
+    <None Include="Resources\upgraderollupbutton.gif" />
+    <None Include="Resources\upgraderollupcommand.png" />
+    <None Include="Resources\upgradeshiftapplauncher.png" />
+    <None Include="Resources\upgradeshiftborders.png" />
+    <None Include="Resources\upgradeshiftbuttons.png" />
+    <None Include="Resources\upgradeshiftdesktop.png" />
+    <None Include="Resources\upgradeshiftdesktoppanel.png" />
+    <None Include="Resources\upgradeshifter.png" />
+    <None Include="Resources\upgradeshiftpanelclock.png" />
+    <None Include="Resources\upgradeshifttitlebar.png" />
+    <None Include="Resources\upgradeshifttitletext.png" />
+    <None Include="Resources\iconClock.png" />
+    <None Include="Resources\iconKnowledgeInput.png" />
+    <None Include="Resources\iconPong.png" />
+    <None Include="Resources\iconShifter.png" />
+    <None Include="Resources\iconShiftorium.png" />
+    <None Include="Resources\iconTerminal.png" />
+    <None Include="Resources\newicon.png" />
+    <None Include="Resources\openicon.png" />
+    <None Include="Resources\saveicon.png" />
+    <None Include="Resources\uparrow.png" />
+    <None Include="Resources\downarrow.png" />
+    <None Include="Resources\newfolder.png" />
+    <None Include="Resources\deletefile.png" />
+    <None Include="Resources\deletefolder.png" />
+    <None Include="Resources\fileskimmericon.fw.png" />
+    <None Include="Resources\textpad.fw.png" />
+    <None Include="Resources\iconFileSkimmer.png" />
+    <None Include="Resources\iconTextPad.png" />
+    <None Include="Resources\iconshutdown.png" />
+    <None Include="Resources\DSC01042.JPG" />
+    <None Include="Resources\iconColourPicker.fw.png" />
+    <None Include="Resources\iconFileOpener.fw.png" />
+    <None Include="Resources\iconFileSaver.fw.png" />
+    <None Include="Resources\iconInfoBox.fw.png" />
+    <None Include="Resources\upgradealfileskimmer.png" />
+    <None Include="Resources\upgradealpong.png" />
+    <None Include="Resources\upgradealtextpad.png" />
+    <None Include="Resources\upgradeclockicon.png" />
+    <None Include="Resources\upgradecolourpickericon.png" />
+    <None Include="Resources\upgradefileskimmer.png" />
+    <None Include="Resources\upgradefileskimmerdelete.png" />
+    <None Include="Resources\upgradefileskimmericon.png" />
+    <None Include="Resources\upgradefileskimmernew.png" />
+    <None Include="Resources\upgradeinfoboxicon.png" />
+    <None Include="Resources\upgradekielements.png" />
+    <None Include="Resources\upgradeknowledgeinputicon.png" />
+    <None Include="Resources\upgradepong.png" />
+    <None Include="Resources\upgradepongicon.png" />
+    <None Include="Resources\upgradeshiftericon.png" />
+    <None Include="Resources\upgradeshiftoriumicon.png" />
+    <None Include="Resources\upgradeterminalicon.png" />
+    <None Include="Resources\upgradetextpad.png" />
+    <None Include="Resources\upgradetextpadicon.png" />
+    <None Include="Resources\upgradetextpadnew.png" />
+    <None Include="Resources\upgradetextpadopen.png" />
+    <None Include="Resources\upgradetextpadsave.png" />
+    <None Include="Resources\upgradeshutdownicon.png" />
+    <None Include="Resources\icongraphicpicker.png" />
+    <None Include="Resources\tilebutton.png" />
+    <None Include="Resources\centrebutton.png" />
+    <None Include="Resources\stretchbutton.png" />
+    <None Include="Resources\zoombutton.png" />
+    <None Include="Resources\centrebuttonpressed.png" />
+    <None Include="Resources\stretchbuttonpressed.png" />
+    <None Include="Resources\tilebuttonpressed.png" />
+    <None Include="Resources\zoombuttonpressed.png" />
+    <None Include="Resources\pixelsetter.png" />
+    <None Include="Resources\iconArtpad.png" />
+    <None Include="Resources\ArtPadmagnify.png" />
+    <None Include="Resources\ArtPadnew.png" />
+    <None Include="Resources\ArtPadopen.png" />
+    <None Include="Resources\ArtPadpencil.png" />
+    <None Include="Resources\ArtPadredo.png" />
+    <None Include="Resources\ArtPadsave.png" />
+    <None Include="Resources\ArtPadundo.png" />
+    <None Include="Resources\ArtPadpixelplacer.png" />
+    <None Include="Resources\ArtPadfloodfill.png" />
+    <None Include="Resources\ArtPadOval.png" />
+    <None Include="Resources\ArtPadRectangle.png" />
+    <None Include="Resources\ArtPadcirclerubber.png" />
+    <None Include="Resources\ArtPadsquarerubber.png" />
+    <None Include="Resources\ArtPadcirclerubberselected.png" />
+    <None Include="Resources\ArtPaderacer.png" />
+    <None Include="Resources\ArtPadsquarerubberselected.png" />
+    <None Include="Resources\ArtPadlinetool.png" />
+    <None Include="Resources\ArtPadpaintbrush.png" />
+    <None Include="Resources\ArtPadtexttool.png" />
+    <None Include="Resources\updatecustomcolourpallets.png" />
+    <None Include="Resources\upgradealartpad.png" />
+    <None Include="Resources\upgradeartpad.png" />
+    <None Include="Resources\upgradeartpad4colorpallets.png" />
+    <None Include="Resources\upgradeartpad8colorpallets.png" />
+    <None Include="Resources\upgradeartpad16colorpallets.png" />
+    <None Include="Resources\upgradeartpad32colorpallets.png" />
+    <None Include="Resources\upgradeartpad64colorpallets.png" />
+    <None Include="Resources\upgradeartpad128colorpallets.png" />
+    <None Include="Resources\upgradeartpaderaser.png" />
+    <None Include="Resources\upgradeartpadfilltool.png" />
+    <None Include="Resources\upgradeartpadicon.png" />
+    <None Include="Resources\upgradeartpadlimitlesspixels.png" />
+    <None Include="Resources\upgradeartpadlinetool.png" />
+    <None Include="Resources\upgradeartpadload.png" />
+    <None Include="Resources\upgradeartpadnew.png" />
+    <None Include="Resources\upgradeartpadovaltool.png" />
+    <None Include="Resources\upgradeartpadpaintbrushtool.png" />
+    <None Include="Resources\upgradeartpadpenciltool.png" />
+    <None Include="Resources\upgradeartpadpixellimit4.png" />
+    <None Include="Resources\upgradeartpadpixellimit8.png" />
+    <None Include="Resources\upgradeartpadpixellimit16.png" />
+    <None Include="Resources\upgradeartpadpixellimit64.png" />
+    <None Include="Resources\upgradeartpadpixellimit256.png" />
+    <None Include="Resources\upgradeartpadpixellimit1024.png" />
+    <None Include="Resources\upgradeartpadpixellimit4096.png" />
+    <None Include="Resources\upgradeartpadpixellimit16384.png" />
+    <None Include="Resources\upgradeartpadpixellimit65536.png" />
+    <None Include="Resources\upgradeartpadpixelplacer.png" />
+    <None Include="Resources\upgradeartpadpixelplacermovementmode.png" />
+    <None Include="Resources\upgradeartpadrectangletool.png" />
+    <None Include="Resources\upgradeartpadredo.png" />
+    <None Include="Resources\upgradeartpadsave.png" />
+    <None Include="Resources\upgradeartpadtexttool.png" />
+    <None Include="Resources\upgradeartpadundo.png" />
+    <None Include="Resources\upgrademinimizebutton.png" />
+    <None Include="Resources\upgradepanelbuttons.png" />
+    <None Include="Resources\upgradeshiftpanelbuttons.png" />
+    <None Include="Resources\upgradeskinning.png" />
+    <None Include="Resources\upgradeunitymode.png" />
+    <None Include="Resources\upgradeusefulpanelbuttons.png" />
+    <None Include="Resources\upgrademinimizecommand.png" />
+    <None Include="Resources\iconSkinLoader.png" />
+    <None Include="Resources\skinfile.png" />
+    <None Include="Resources\playbutton.png" />
+    <None Include="Resources\stopbutton.png" />
+    <None Include="Resources\loadbutton.png" />
+    <None Include="Resources\nextbutton.png" />
+    <None Include="Resources\previousbutton.png" />
+    <None Include="Resources\webback.png" />
+    <None Include="Resources\webforward.png" />
+    <None Include="Resources\webhome.png" />
+    <None Include="Resources\pausebutton.png" />
+    <None Include="Resources\iconCalculator.png" />
+    <None Include="Resources\iconAudioPlayer.png" />
+    <None Include="Resources\iconNameChanger.png" />
+    <None Include="Resources\iconVideoPlayer.png" />
+    <None Include="Resources\iconWebBrowser.png" />
+    <None Include="Resources\iconIconManager.png" />
+    <None Include="Resources\3beepvirus.wav" />
+    <None Include="Resources\iconBitnoteDigger.png" />
+    <None Include="Resources\iconBitnoteWallet.png" />
+    <None Include="Resources\Receive.png" />
+    <None Include="Resources\Send.png" />
+    <None Include="Resources\TotalBalanceUnclicked.png" />
+    <None Include="Resources\transactionsUnclicked.png" />
+    <None Include="Resources\ReceiveClicked.png" />
+    <None Include="Resources\SendClicked.png" />
+    <None Include="Resources\TotalBalanceClicked.png" />
+    <None Include="Resources\transactionsClicked.png" />
+    <None Include="Resources\iconSkinShifter.png" />
+    <None Include="Resources\skindownarrow.png" />
+    <None Include="Resources\skinuparrow.png" />
+    <None Include="Resources\iconDownloader.png" />
+    <None Include="Resources\iconShiftnet.png" />
+    <None Include="Resources\appscapeaudioplayerbox.png" />
+    <None Include="Resources\appscapeaudioplayerprice.png" />
+    <None Include="Resources\appscapecalculator.png" />
+    <None Include="Resources\appscapecalculatorprice.png" />
+    <None Include="Resources\appscapedepositnowbutton.png" />
+    <None Include="Resources\appscapedownloadbutton.png" />
+    <None Include="Resources\appscapeinfobutton.png" />
+    <None Include="Resources\appscapemoresoftware.png" />
+    <None Include="Resources\appscapetitlebanner.png" />
+    <None Include="Resources\appscapeundefinedprice.png" />
+    <None Include="Resources\appscapevideoplayer.png" />
+    <None Include="Resources\appscapevideoplayerprice.png" />
+    <None Include="Resources\appscapewebbrowser.png" />
+    <None Include="Resources\appscapewebbrowserprice.png" />
+    <None Include="Resources\appscapewelcometoappscape.png" />
+    <None Include="Resources\appscapeinfobuttonpressed.png" />
+    <None Include="Resources\appscapeaudioplayerpricepressed.png" />
+    <None Include="Resources\appscapecalculatorpricepressed.png" />
+    <None Include="Resources\appscapeundefinedpricepressed.png" />
+    <None Include="Resources\appscapevideoplayerpricepressed.png" />
+    <None Include="Resources\appscapewebbrowserpricepressed.png" />
+    <None Include="Resources\appscapeinfoaudioplayertext.png" />
+    <None Include="Resources\appscapeinfoaudioplayervisualpreview.png" />
+    <None Include="Resources\appscapeinfobackbutton.png" />
+    <None Include="Resources\appscapeinfobuybutton.png" />
+    <None Include="Resources\appscapeinfocalculatorvisualpreview.png" />
+    <None Include="Resources\appscapeinfovideoplayervisualpreview.png" />
+    <None Include="Resources\appscapeinfowebbrowservisualpreview.png" />
+    <None Include="Resources\appscapeinfocalculatortext.png" />
+    <None Include="Resources\appscapeinfovideoplayertext.png" />
+    <None Include="Resources\appscapeinfowebbrowsertext.png" />
+    <Content Include="ShiftOSLogo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
