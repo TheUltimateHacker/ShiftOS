@@ -1,0 +1,657 @@
+﻿Public Class Web_Browser
+    Public rolldownsize As Integer
+    Public oldbordersize As Integer
+    Public oldtitlebarheight As Integer
+    Public justopened As Boolean = False
+    Public needtorollback As Boolean = False
+    Public minimumsizewidth As Integer = 696
+    Public minimumsizeheight As Integer = 300
+
+#Region "Template Code"
+
+    Private Sub Template_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        justopened = True
+        Me.Left = (Screen.PrimaryScreen.Bounds.Width - Me.Width) / 2
+        Me.Top = (Screen.PrimaryScreen.Bounds.Height - Me.Height) / 2
+        setupall()
+        If ShiftOSDesktop.WebBrowserCorrupted Then Me.Close() : infobox.showinfo("The Plague.", Me.Name & "has been corrupted by The Plague.")
+
+        ShiftOSDesktop.pnlpanelbuttonwebbrowser.SendToBack() 'CHANGE NAME
+        ShiftOSDesktop.setuppanelbuttons()
+        ShiftOSDesktop.setpanelbuttonappearnce(ShiftOSDesktop.pnlpanelbuttonwebbrowser, ShiftOSDesktop.tbwebbrowsericon, ShiftOSDesktop.tbwebbrowsertext, True) 'modify to proper name
+        ShiftOSDesktop.programsopen = ShiftOSDesktop.programsopen + 1
+
+        gohome()
+        webwindowt1.BringToFront()
+        webwindowt1.Dock = DockStyle.Fill
+        updatetabsizes()
+    End Sub
+
+    Public Sub setupall()
+        setuptitlebar()
+        setupborders()
+        setskin()
+    End Sub
+
+    Private Sub ShiftOSDesktop_keydown(sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+        'Make terminal appear
+        If e.KeyCode = Keys.T AndAlso e.Control Then
+            Terminal.Show()
+            Terminal.Visible = True
+            Terminal.BringToFront()
+        End If
+
+        'Movable Windows
+        If ShiftOSDesktop.boughtmovablewindows = True Then
+            If e.KeyCode = Keys.A AndAlso e.Control Then
+                e.Handled = True
+                Me.Location = New Point(Me.Location.X - ShiftOSDesktop.movablewindownumber, Me.Location.Y)
+            End If
+            If e.KeyCode = Keys.D AndAlso e.Control Then
+                e.Handled = True
+                Me.Location = New Point(Me.Location.X + ShiftOSDesktop.movablewindownumber, Me.Location.Y)
+            End If
+            If e.KeyCode = Keys.W AndAlso e.Control Then
+                e.Handled = True
+                Me.Location = New Point(Me.Location.X, Me.Location.Y - ShiftOSDesktop.movablewindownumber)
+            End If
+            If e.KeyCode = Keys.S AndAlso e.Control Then
+                e.Handled = True
+                Me.Location = New Point(Me.Location.X, Me.Location.Y + ShiftOSDesktop.movablewindownumber)
+            End If
+            ShiftOSDesktop.log = ShiftOSDesktop.log & My.Computer.Clock.LocalTime & " User moved " & Me.Name & " to " & Me.Location.ToString & " with " & e.KeyCode.ToString & Environment.NewLine
+        End If
+    End Sub
+
+    Private Sub titlebar_MouseDown(sender As Object, e As MouseEventArgs) Handles titlebar.MouseDown, lbtitletext.MouseDown, pnlicon.MouseDown, pgtoplcorner.MouseDown, pgtoprcorner.MouseDown
+        ' Handle Draggable Windows
+        If ShiftOSDesktop.boughtdraggablewindows = True Then
+            If e.Button = MouseButtons.Left Then
+                titlebar.Capture = False
+                lbtitletext.Capture = False
+                pnlicon.Capture = False
+                pgtoplcorner.Capture = False
+                pgtoprcorner.Capture = False
+                Const WM_NCLBUTTONDOWN As Integer = &HA1S
+                Const HTCAPTION As Integer = 2
+                Dim msg As Message = _
+                    Message.Create(Me.Handle, WM_NCLBUTTONDOWN, _
+                        New IntPtr(HTCAPTION), IntPtr.Zero)
+                Me.DefWndProc(msg)
+            End If
+            ShiftOSDesktop.log = ShiftOSDesktop.log & My.Computer.Clock.LocalTime & " User dragged " & Me.Name & " to " & Me.Location.ToString & Environment.NewLine
+        End If
+    End Sub
+
+    Public Sub setupborders()
+        If ShiftOSDesktop.boughtwindowborders = False Then
+            pgleft.Hide()
+            pgbottom.Hide()
+            pgright.Hide()
+            Me.Size = New Size(Me.Width - pgleft.Width - pgright.Width, Me.Height - pgbottom.Height)
+        End If
+    End Sub
+
+    Private Sub closebutton_Click(sender As Object, e As EventArgs) Handles closebutton.Click
+        Me.Close()
+    End Sub
+
+    Private Sub closebutton_MouseEnter(sender As Object, e As EventArgs) Handles closebutton.MouseEnter, closebutton.MouseUp
+        closebutton.BackgroundImage = Skins.closebtnhover
+    End Sub
+
+    Private Sub closebutton_MouseLeave(sender As Object, e As EventArgs) Handles closebutton.MouseLeave
+        closebutton.BackgroundImage = Skins.closebtn
+    End Sub
+
+    Private Sub closebutton_MouseDown(sender As Object, e As EventArgs) Handles closebutton.MouseDown
+        closebutton.BackgroundImage = Skins.closebtnclick
+    End Sub
+
+    Private Sub minimizebutton_Click(sender As Object, e As EventArgs) Handles minimizebutton.Click
+        ShiftOSDesktop.minimizeprogram(Me, False)
+    End Sub
+
+    'Old skinning system - No idea what this does
+    ''Private Sub titlebar_MouseEnter(sender As Object, e As EventArgs) Handles titlebar.MouseEnter, titlebar.MouseUp, lbtitletext.MouseEnter, pnlicon.MouseEnter, closebutton.MouseEnter, rollupbutton.MouseEnter
+    ''    If ShiftOSDesktop.skinimages(3) = ShiftOSDesktop.skinimages(4) Then  Else titlebar.BackgroundImage = ShiftOSDesktop.skintitlebar(1)
+    ''End Sub
+
+    'Private Sub titlebar_MouseLeave(sender As Object, e As EventArgs) Handles titlebar.MouseLeave, lbtitletext.MouseLeave, pnlicon.MouseLeave, closebutton.MouseLeave, rollupbutton.MouseLeave
+    '    If ShiftOSDesktop.skinimages(3) = ShiftOSDesktop.skinimages(4) Then  Else titlebar.BackgroundImage = ShiftOSDesktop.skintitlebar(0)
+    'End Sub
+
+    Private Sub rollupbutton_Click(sender As Object, e As EventArgs) Handles rollupbutton.Click
+        rollupanddown()
+    End Sub
+
+    Private Sub rollupbutton_MouseEnter(sender As Object, e As EventArgs) Handles rollupbutton.MouseEnter, rollupbutton.MouseUp
+        rollupbutton.BackgroundImage = Skins.rollbtnhover
+    End Sub
+
+    Private Sub rollupbutton_MouseLeave(sender As Object, e As EventArgs) Handles rollupbutton.MouseLeave
+        rollupbutton.BackgroundImage = Skins.rollbtn
+    End Sub
+
+    Private Sub rollupbutton_MouseDown(sender As Object, e As EventArgs) Handles rollupbutton.MouseDown
+        rollupbutton.BackgroundImage = Skins.rollbtnclick
+    End Sub
+
+    Public Sub setuptitlebar()
+
+        setupborders()
+
+        If Me.Height = Me.titlebar.Height Then pgleft.Show() : pgbottom.Show() : pgright.Show() : Me.Height = rolldownsize : needtorollback = True
+        pgleft.Width = Skins.borderwidth
+        pgright.Width = Skins.borderwidth
+        pgbottom.Height = Skins.borderwidth
+        titlebar.Height = Skins.titlebarheight
+
+        If justopened = True Then
+            Me.Size = New Size(800, 600) 'put the default size of your window here
+            Me.Size = New Size(Me.Width, Me.Height + Skins.titlebarheight - 30)
+            Me.Size = New Size(Me.Width + Skins.borderwidth + Skins.borderwidth, Me.Height + Skins.borderwidth)
+            oldbordersize = Skins.borderwidth
+            oldtitlebarheight = Skins.titlebarheight
+            justopened = False
+        Else
+            If Me.Visible = True Then
+                'Me.Hide()
+                Me.Size = New Size(Me.Width - (2 * oldbordersize) + (2 * Skins.borderwidth), (Me.Height - oldtitlebarheight - oldbordersize) + Skins.titlebarheight + Skins.borderwidth)
+                'Me.Size = New Size(Me.Width - oldbordersize - oldbordersize, Me.Height - oldbordersize) 'Just put a little algebra in the first size setting and comment out the mess
+                oldbordersize = Skins.borderwidth
+                oldtitlebarheight = Skins.titlebarheight
+                'Me.Size = New Size(Me.Width, Me.Height + Skins.titlebarheight - 30)
+                'Me.Size = New Size(Me.Width + Skins. borderwidth + Skins. borderwidth, Me.Height + Skins. borderwidth)
+                'rolldownsize = Me.Height
+                If needtorollback = True Then Me.Height = titlebar.Height : pgleft.Hide() : pgbottom.Hide() : pgright.Hide()
+                'Me.Show()
+            End If
+        End If
+
+        If Skins.enablecorners = True Then
+            pgtoplcorner.Show()
+            pgtoprcorner.Show()
+            pgtoprcorner.Width = Skins.titlebarcornerwidth
+            pgtoplcorner.Width = Skins.titlebarcornerwidth
+        Else
+            pgtoplcorner.Hide()
+            pgtoprcorner.Hide()
+        End If
+
+        If ShiftOSDesktop.boughttitlebar = False Then
+            titlebar.Hide()
+            Me.Size = New Size(Me.Width, Me.Size.Height - titlebar.Height)
+        End If
+
+        If ShiftOSDesktop.boughttitletext = False Then
+            lbtitletext.Hide()
+        Else
+            lbtitletext.Font = New Font(Skins.titletextfontfamily, Skins.titletextfontsize, Skins.titletextfontstyle, GraphicsUnit.Point)
+            lbtitletext.Text = ShiftOSDesktop.webbrowsername 'Remember to change to name of program!!!!
+            lbtitletext.Show()
+        End If
+
+        If ShiftOSDesktop.boughtclosebutton = False Then
+            closebutton.Hide()
+        Else
+            closebutton.BackColor = Skins.closebtncolour
+            closebutton.Size = Skins.closebtnsize
+            closebutton.Show()
+        End If
+
+        If ShiftOSDesktop.boughtrollupbutton = False Then
+            rollupbutton.Hide()
+        Else
+            rollupbutton.BackColor = Skins.rollbtncolour
+            rollupbutton.Size = Skins.rollbtnsize
+            rollupbutton.Show()
+        End If
+
+        If ShiftOSDesktop.boughtminimizebutton = False Then
+            minimizebutton.Hide()
+        Else
+            minimizebutton.BackColor = Skins.minbtncolour
+            minimizebutton.Size = Skins.minbtnsize
+            minimizebutton.Show()
+        End If
+
+        If ShiftOSDesktop.boughtwindowborders = True Then
+            closebutton.Location = New Point(titlebar.Size.Width - Skins.closebtnfromside - closebutton.Size.Width, Skins.closebtnfromtop)
+            rollupbutton.Location = New Point(titlebar.Size.Width - Skins.rollbtnfromside - rollupbutton.Size.Width, Skins.rollbtnfromtop)
+            minimizebutton.Location = New Point(titlebar.Size.Width - Skins.minbtnfromside - minimizebutton.Size.Width, Skins.minbtnfromtop)
+            Select Case Skins.titletextpos
+                Case "Left"
+                    lbtitletext.Location = New Point(Skins.titletextfromside, Skins.titletextfromtop)
+                Case "Centre"
+                    lbtitletext.Location = New Point((titlebar.Width / 2) - lbtitletext.Width / 2, Skins.titletextfromtop)
+            End Select
+            lbtitletext.ForeColor = Skins.titletextcolour
+        Else
+            closebutton.Location = New Point(titlebar.Size.Width - Skins.closebtnfromside - pgtoplcorner.Width - pgtoprcorner.Width - closebutton.Size.Width, Skins.closebtnfromtop)
+            rollupbutton.Location = New Point(titlebar.Size.Width - Skins.rollbtnfromside - pgtoplcorner.Width - pgtoprcorner.Width - rollupbutton.Size.Width, Skins.rollbtnfromtop)
+            minimizebutton.Location = New Point(titlebar.Size.Width - Skins.minbtnfromside - pgtoplcorner.Width - pgtoprcorner.Width - minimizebutton.Size.Width, Skins.minbtnfromtop)
+            Select Case Skins.titletextpos
+                Case "Left"
+                    lbtitletext.Location = New Point(Skins.titletextfromside + pgtoplcorner.Width, Skins.titletextfromtop)
+                Case "Centre"
+                    lbtitletext.Location = New Point((titlebar.Width / 2) - lbtitletext.Width / 2, Skins.titletextfromtop)
+            End Select
+            lbtitletext.ForeColor = Skins.titletextcolour
+        End If
+
+        'Change when Icon skinning complete
+        If ShiftOSDesktop.boughtshiftneticon = True Then ' Change to program's icon
+            pnlicon.Visible = True
+            pnlicon.Location = New Point(Skins.titleiconfromside, Skins.titleiconfromtop)
+            pnlicon.Size = New Size(ShiftOSDesktop.titlebariconsize, ShiftOSDesktop.titlebariconsize)
+            pnlicon.Image = ShiftOSDesktop.webbrowsericontitlebar  'Replace with the correct icon for the program.
+        End If
+
+    End Sub
+
+    Public Sub rollupanddown()
+        If Me.Height = Me.titlebar.Height Then
+            pgleft.Show()
+            pgbottom.Show()
+            pgright.Show()
+            Me.Height = rolldownsize
+            Me.MinimumSize = New Size(minimumsizewidth, minimumsizeheight)
+        Else
+            Me.MinimumSize = New Size(0, 0)
+            pgleft.Hide()
+            pgbottom.Hide()
+            pgright.Hide()
+            rolldownsize = Me.Height
+            Me.Height = Me.titlebar.Height
+        End If
+    End Sub
+
+    Public Sub resettitlebar()
+        If ShiftOSDesktop.boughtwindowborders = True Then
+            closebutton.Location = New Point(titlebar.Size.Width - Skins.closebtnfromside - closebutton.Size.Width, Skins.closebtnfromtop)
+            rollupbutton.Location = New Point(titlebar.Size.Width - Skins.rollbtnfromside - rollupbutton.Size.Width, Skins.rollbtnfromtop)
+            minimizebutton.Location = New Point(titlebar.Size.Width - Skins.minbtnfromside - minimizebutton.Size.Width, Skins.minbtnfromtop)
+            Select Case Skins.titletextpos
+                Case "Left"
+                    lbtitletext.Location = New Point(Skins.titletextfromside, Skins.titletextfromtop)
+                Case "Centre"
+                    lbtitletext.Location = New Point((titlebar.Width / 2) - lbtitletext.Width / 2, Skins.titletextfromtop)
+            End Select
+            lbtitletext.ForeColor = Skins.titletextcolour
+        Else
+            closebutton.Location = New Point(titlebar.Size.Width - Skins.closebtnfromside - pgtoplcorner.Width - pgtoprcorner.Width - closebutton.Size.Width, Skins.closebtnfromtop)
+            rollupbutton.Location = New Point(titlebar.Size.Width - Skins.rollbtnfromside - pgtoplcorner.Width - pgtoprcorner.Width - rollupbutton.Size.Width, Skins.rollbtnfromtop)
+            minimizebutton.Location = New Point(titlebar.Size.Width - Skins.minbtnfromside - pgtoplcorner.Width - pgtoprcorner.Width - minimizebutton.Size.Width, Skins.minbtnfromtop)
+            Select Case Skins.titletextpos
+                Case "Left"
+                    lbtitletext.Location = New Point(Skins.titletextfromside + pgtoplcorner.Width, Skins.titletextfromtop)
+                Case "Centre"
+                    lbtitletext.Location = New Point((titlebar.Width / 2) - lbtitletext.Width / 2, Skins.titletextfromtop)
+            End Select
+            lbtitletext.ForeColor = Skins.titletextcolour
+        End If
+    End Sub
+
+    Private Sub pullside_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pullside.Tick
+        Me.Width = Cursor.Position.X - Me.Location.X
+        resettitlebar()
+        updatetabsizes()
+    End Sub
+
+    Private Sub pullbottom_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pullbottom.Tick
+        Me.Height = Cursor.Position.Y - Me.Location.Y
+        resettitlebar()
+        updatetabsizes()
+    End Sub
+
+    Private Sub pullbs_Tick(ByVal sender As Object, ByVal e As System.EventArgs) Handles pullbs.Tick
+        Me.Width = Cursor.Position.X - Me.Location.X
+        Me.Height = Cursor.Position.Y - Me.Location.Y
+        resettitlebar()
+        updatetabsizes()
+    End Sub
+
+    'delete this for non-resizable windows
+    Private Sub Rightpull_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles pgright.MouseDown
+        If ShiftOSDesktop.boughtresizablewindows = True Then
+            pullside.Start()
+        End If
+    End Sub
+
+    Private Sub RightCursorOn_MouseDown(ByVal sender As Object, ByVal e As System.EventArgs) Handles pgright.MouseEnter
+        If ShiftOSDesktop.boughtresizablewindows = True Then
+            Cursor = Cursors.SizeWE
+        End If
+    End Sub
+
+    Private Sub bottomCursorOn_MouseDown(ByVal sender As Object, ByVal e As System.EventArgs) Handles pgbottom.MouseEnter
+        If ShiftOSDesktop.boughtresizablewindows = True Then
+            Cursor = Cursors.SizeNS
+        End If
+    End Sub
+
+    Private Sub CornerCursorOn_MouseDown(ByVal sender As Object, ByVal e As System.EventArgs) Handles pgbottomrcorner.MouseEnter
+        If ShiftOSDesktop.boughtresizablewindows = True Then
+            Cursor = Cursors.SizeNWSE
+        End If
+    End Sub
+
+    Private Sub SizeCursoroff_MouseDown(ByVal sender As Object, ByVal e As System.EventArgs) Handles pgright.MouseLeave, pgbottom.MouseLeave, pgbottomrcorner.MouseLeave
+        If ShiftOSDesktop.boughtresizablewindows = True Then
+            Cursor = Cursors.Default
+        End If
+    End Sub
+
+    Private Sub rightpull_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles pgright.MouseUp
+        If ShiftOSDesktop.boughtresizablewindows = True Then
+            pullside.Stop()
+        End If
+    End Sub
+
+    Private Sub bottompull_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles pgbottom.MouseDown
+        If ShiftOSDesktop.boughtresizablewindows = True Then
+            pullbottom.Start()
+        End If
+    End Sub
+
+    Private Sub buttompull_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles pgbottom.MouseUp
+        If ShiftOSDesktop.boughtresizablewindows = True Then
+            pullbottom.Stop()
+        End If
+    End Sub
+
+    Private Sub bspull_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles pgbottomrcorner.MouseDown
+        If ShiftOSDesktop.boughtresizablewindows = True Then
+            pullbs.Start()
+        End If
+    End Sub
+
+    Private Sub bspull_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles pgbottomrcorner.MouseUp
+        If ShiftOSDesktop.boughtresizablewindows = True Then
+            pullbs.Stop()
+        End If
+    End Sub
+
+    Public Sub setskin()
+        'disposals
+        closebutton.BackgroundImage = Nothing
+        titlebar.BackgroundImage = Nothing
+        rollupbutton.BackgroundImage = Nothing
+        pgtoplcorner.BackgroundImage = Nothing
+        pgtoprcorner.BackgroundImage = Nothing
+        minimizebutton.BackgroundImage = Nothing
+        'apply new skin
+        If Skins.closebtn Is Nothing Then closebutton.BackColor = Skins.closebtncolour Else closebutton.BackgroundImage = Skins.closebtn
+        closebutton.BackgroundImageLayout = Skins.closebtnlayout
+        If Skins.titlebar Is Nothing Then titlebar.BackColor = Skins.titlebarcolour Else titlebar.BackgroundImage = Skins.titlebar
+        titlebar.BackgroundImageLayout = Skins.titlebarlayout
+        If Skins.rollbtn Is Nothing Then rollupbutton.BackColor = Skins.rollbtncolour Else rollupbutton.BackgroundImage = Skins.rollbtn
+        rollupbutton.BackgroundImageLayout = Skins.rollbtnlayout
+        If Skins.leftcorner Is Nothing Then pgtoplcorner.BackColor = Skins.leftcornercolour Else pgtoplcorner.BackgroundImage = Skins.leftcorner
+        pgtoplcorner.BackgroundImageLayout = Skins.leftcornerlayout
+        If Skins.rightcorner Is Nothing Then pgtoprcorner.BackColor = Skins.rightcornercolour Else pgtoprcorner.BackgroundImage = Skins.rightcorner
+        pgtoprcorner.BackgroundImageLayout = Skins.rightcornerlayout
+        If Skins.minbtn Is Nothing Then minimizebutton.BackColor = Skins.minbtncolour Else minimizebutton.BackgroundImage = Skins.minbtn
+        minimizebutton.BackgroundImageLayout = Skins.minbtnlayout
+        If Skins.borderleft Is Nothing Then pgleft.BackColor = Skins.borderleftcolour Else pgleft.BackgroundImage = Skins.borderleft
+        pgleft.BackgroundImageLayout = Skins.borderleftlayout
+        If Skins.borderright Is Nothing Then pgright.BackColor = Skins.borderrightcolour Else pgright.BackgroundImage = Skins.borderright
+        pgleft.BackgroundImageLayout = Skins.borderrightlayout
+        If Skins.borderbottom Is Nothing Then pgbottom.BackColor = Skins.borderbottomcolour Else pgbottom.BackgroundImage = Skins.borderbottom
+        pgbottom.BackgroundImageLayout = Skins.borderbottomlayout
+        If enablebordercorners = True Then
+            If Skins.bottomleftcorner Is Nothing Then pgbottomlcorner.BackColor = Skins.bottomleftcornercolour Else pgbottomlcorner.BackgroundImage = Skins.bottomleftcorner
+            pgbottomlcorner.BackgroundImageLayout = Skins.bottomleftcornerlayout
+            If Skins.bottomrightcorner Is Nothing Then pgbottomrcorner.BackColor = Skins.bottomrightcornercolour Else pgbottomrcorner.BackgroundImage = Skins.bottomrightcorner
+            pgbottomrcorner.BackgroundImageLayout = Skins.bottomrightcornerlayout
+        Else
+            pgbottomlcorner.BackColor = Skins.borderrightcolour
+            pgbottomrcorner.BackColor = Skins.borderrightcolour
+            pgbottomlcorner.BackgroundImage = Nothing
+            pgbottomrcorner.BackgroundImage = Nothing
+        End If
+
+        'set bottom border corner size
+        pgbottomlcorner.Size = New Size(Skins.borderwidth, Skins.borderwidth)
+        pgbottomrcorner.Size = New Size(Skins.borderwidth, Skins.borderwidth)
+        pgbottomlcorner.Location = New Point(0, Me.Height - Skins.borderwidth)
+        pgbottomrcorner.Location = New Point(Me.Width, Me.Height - Skins.borderwidth)
+
+        Me.TransparencyKey = ShiftOSDesktop.globaltransparencycolour
+    End Sub
+
+    Private Sub Clock_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        ShiftOSDesktop.programsopen = ShiftOSDesktop.programsopen - 1
+        Me.Hide()
+        ShiftOSDesktop.setuppanelbuttons()
+    End Sub
+
+    'end of general setup
+#End Region
+
+    Dim currenttab As Integer = 1
+    Dim oldlocationtxt As String
+
+    Private Sub txtlocation_KeyDown(sender As Object, e As KeyEventArgs) Handles txtlocation.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Select Case currenttab
+                Case 1
+                    If txtlocation.Text.Contains(".") Then webwindowt1.Navigate(txtlocation.Text) Else webwindowt1.Navigate("http://www.google.com/search?q=" & txtlocation.Text)
+                Case 2
+                    If txtlocation.Text.Contains(".") Then webwindowt2.Navigate(txtlocation.Text) Else webwindowt2.Navigate("http://www.google.com/search?q=" & txtlocation.Text)
+                Case 3
+                    If txtlocation.Text.Contains(".") Then webwindowt3.Navigate(txtlocation.Text) Else webwindowt3.Navigate("http://www.google.com/search?q=" & txtlocation.Text)
+                Case 4
+                    If txtlocation.Text.Contains(".") Then webwindowt4.Navigate(txtlocation.Text) Else webwindowt4.Navigate("http://www.google.com/search?q=" & txtlocation.Text)
+            End Select
+        End If
+    End Sub
+
+    Private Sub webwindowt1_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs) Handles webwindowt1.Navigated
+        updatetitles()
+        txtlocation.Text = webwindowt1.Url.ToString
+    End Sub
+    Private Sub webwindowt2_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs) Handles webwindowt2.Navigated
+        updatetitles()
+        txtlocation.Text = webwindowt1.Url.ToString
+    End Sub
+    Private Sub webwindowt3_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs) Handles webwindowt3.Navigated
+        updatetitles()
+        txtlocation.Text = webwindowt1.Url.ToString
+    End Sub
+    Private Sub webwindowt4_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs) Handles webwindowt4.Navigated
+        updatetitles()
+        txtlocation.Text = webwindowt1.Url.ToString
+    End Sub
+
+    Private Sub updatetitles()
+        Select Case currenttab
+            Case 1
+                If Not webwindowt1.DocumentTitle = "" Then lbltab1.Text = webwindowt1.DocumentTitle
+                If webwindowt1.DocumentTitle = "" Then lbtitletext.Text = ShiftOSDesktop.webbrowsername Else lbtitletext.Text = ShiftOSDesktop.webbrowsername & " - " & webwindowt1.DocumentTitle
+                centretitletext()
+                pnltab1.BackColor = Color.FromName("ControlLight")
+                pnltab2.BackColor = Color.White
+                pnltab3.BackColor = Color.White
+                pnltab4.BackColor = Color.White
+            Case 2
+                If Not webwindowt2.DocumentTitle = "" Then lbltab2.Text = webwindowt2.DocumentTitle
+                If webwindowt2.DocumentTitle = "" Then lbtitletext.Text = ShiftOSDesktop.webbrowsername Else lbtitletext.Text = ShiftOSDesktop.webbrowsername & " - " & webwindowt2.DocumentTitle
+                centretitletext()
+                pnltab2.BackColor = Color.FromName("ControlLight")
+                pnltab1.BackColor = Color.White
+                pnltab3.BackColor = Color.White
+                pnltab4.BackColor = Color.White
+            Case 3
+                If Not webwindowt3.DocumentTitle = "" Then lbltab3.Text = webwindowt3.DocumentTitle
+                If webwindowt3.DocumentTitle = "" Then lbtitletext.Text = ShiftOSDesktop.webbrowsername Else lbtitletext.Text = ShiftOSDesktop.webbrowsername & " - " & webwindowt3.DocumentTitle
+                centretitletext()
+                pnltab3.BackColor = Color.FromName("ControlLight")
+                pnltab2.BackColor = Color.White
+                pnltab1.BackColor = Color.White
+                pnltab4.BackColor = Color.White
+            Case 4
+                If Not webwindowt4.DocumentTitle = "" Then lbltab4.Text = webwindowt4.DocumentTitle
+                If webwindowt4.DocumentTitle = "" Then lbtitletext.Text = ShiftOSDesktop.webbrowsername Else lbtitletext.Text = ShiftOSDesktop.webbrowsername & " - " & webwindowt4.DocumentTitle
+                centretitletext()
+                pnltab4.BackColor = Color.FromName("ControlLight")
+                pnltab2.BackColor = Color.White
+                pnltab3.BackColor = Color.White
+                pnltab1.BackColor = Color.White
+        End Select
+    End Sub
+
+    Private Sub centretitletext()
+        If ShiftOSDesktop.boughttitletext = False Then
+            lbtitletext.Hide()
+        Else
+            lbtitletext.Font = New Font(ShiftOSDesktop.titletextfont, ShiftOSDesktop.titletextsize, ShiftOSDesktop.titletextstyle)
+            lbtitletext.Show()
+        End If
+
+        If ShiftOSDesktop.boughtwindowborders = True Then
+            closebutton.Location = New Point(titlebar.Size.Width - ShiftOSDesktop.closebuttonside - closebutton.Size.Width, ShiftOSDesktop.closebuttontop)
+            rollupbutton.Location = New Point(titlebar.Size.Width - ShiftOSDesktop.rollupbuttonside - rollupbutton.Size.Width, ShiftOSDesktop.rollupbuttontop)
+            minimizebutton.Location = New Point(titlebar.Size.Width - ShiftOSDesktop.minimizebuttonside - minimizebutton.Size.Width, ShiftOSDesktop.minimizebuttontop)
+            Select Case ShiftOSDesktop.titletextposition
+                Case "Left"
+                    lbtitletext.Location = New Point(ShiftOSDesktop.titletextside, ShiftOSDesktop.titletexttop)
+                Case "Centre"
+                    lbtitletext.Location = New Point((titlebar.Width / 2) - lbtitletext.Width / 2, ShiftOSDesktop.titletexttop)
+            End Select
+            lbtitletext.ForeColor = ShiftOSDesktop.titletextcolour
+        Else
+            closebutton.Location = New Point(titlebar.Size.Width - ShiftOSDesktop.closebuttonside - pgtoplcorner.Width - pgtoprcorner.Width - closebutton.Size.Width, ShiftOSDesktop.closebuttontop)
+            rollupbutton.Location = New Point(titlebar.Size.Width - ShiftOSDesktop.rollupbuttonside - pgtoplcorner.Width - pgtoprcorner.Width - rollupbutton.Size.Width, ShiftOSDesktop.rollupbuttontop)
+            minimizebutton.Location = New Point(titlebar.Size.Width - ShiftOSDesktop.minimizebuttonside - pgtoplcorner.Width - pgtoprcorner.Width - minimizebutton.Size.Width, ShiftOSDesktop.minimizebuttontop)
+            Select Case ShiftOSDesktop.titletextposition
+                Case "Left"
+                    lbtitletext.Location = New Point(ShiftOSDesktop.titletextside + pgtoplcorner.Width, ShiftOSDesktop.titletexttop)
+                Case "Centre"
+                    lbtitletext.Location = New Point((titlebar.Width / 2) - lbtitletext.Width / 2, ShiftOSDesktop.titletexttop)
+            End Select
+            lbtitletext.ForeColor = ShiftOSDesktop.titletextcolour
+        End If
+    End Sub
+
+    Private Sub btnback_Click(sender As Object, e As EventArgs) Handles btnback.Click
+        Select Case currenttab
+            Case 1
+                If webwindowt1.CanGoBack = True Then webwindowt1.GoBack()
+            Case 2
+                If webwindowt2.CanGoBack = True Then webwindowt2.GoBack()
+            Case 3
+                If webwindowt3.CanGoBack = True Then webwindowt3.GoBack()
+            Case 4
+                If webwindowt4.CanGoBack = True Then webwindowt4.GoBack()
+        End Select
+    End Sub
+
+    Private Sub btnforward_Click(sender As Object, e As EventArgs) Handles btnforward.Click
+        Select Case currenttab
+            Case 1
+                If webwindowt1.CanGoForward = True Then webwindowt1.GoForward()
+            Case 2
+                If webwindowt2.CanGoForward = True Then webwindowt2.GoForward()
+            Case 3
+                If webwindowt3.CanGoForward = True Then webwindowt3.GoForward()
+            Case 4
+                If webwindowt4.CanGoForward = True Then webwindowt4.GoForward()
+        End Select
+    End Sub
+
+    Private Sub gohome()
+        Select Case currenttab
+            Case 1
+                webwindowt1.Navigate(ShiftOSDesktop.webbrowserhomepage)
+                centretitletext()
+            Case 2
+                webwindowt2.Navigate(ShiftOSDesktop.webbrowserhomepage)
+                centretitletext()
+            Case 3
+                webwindowt3.Navigate(ShiftOSDesktop.webbrowserhomepage)
+                centretitletext()
+            Case 4
+                webwindowt4.Navigate(ShiftOSDesktop.webbrowserhomepage)
+                centretitletext()
+        End Select
+        
+    End Sub
+
+    Private Sub btnhome_Click(sender As Object, e As EventArgs) Handles btnhome.Click
+        gohome()
+    End Sub
+
+    Private Sub txtlocation_MouseClick(sender As Object, e As MouseEventArgs) Handles txtlocation.MouseClick
+        txtlocation.SelectAll()
+    End Sub
+
+    Private Sub txtlocation_mouseenter(sender As Object, e As EventArgs) Handles txtlocation.GotFocus
+        oldlocationtxt = txtlocation.Text
+        txtlocation.Text = ""
+    End Sub
+    Private Sub txtlocation_mouseleave(sender As Object, e As EventArgs) Handles txtlocation.LostFocus
+        If txtlocation.Text = "" Then txtlocation.Text = oldlocationtxt
+    End Sub
+
+    'switching tabs
+    Private Sub pnltab1_Click(sender As Object, e As EventArgs) Handles pnltab1.Click
+        currenttab = 1
+        webwindowt1.Dock = DockStyle.Fill
+        webwindowt1.BringToFront()
+        updatetitles()
+        txtlocation.Text = "Search or Enter an address"
+        If webwindowt1.DocumentTitle = "" Then lbtitletext.Text = "Web Browser" Else lbtitletext.Text = "Web Browser - " & webwindowt1.DocumentTitle
+    End Sub
+
+    Private Sub pnltab2_Click(sender As Object, e As EventArgs) Handles pnltab2.Click
+        currenttab = 2
+        webwindowt2.Dock = DockStyle.Fill
+        webwindowt2.BringToFront()
+        updatetitles()
+        txtlocation.Text = "Search or Enter an address"
+        If webwindowt2.DocumentTitle = "" Then lbtitletext.Text = "Web Browser" Else lbtitletext.Text = "Web Browser - " & webwindowt2.DocumentTitle
+    End Sub
+
+    Private Sub pnltab3_Click(sender As Object, e As EventArgs) Handles pnltab3.Click
+        currenttab = 3
+        webwindowt3.Dock = DockStyle.Fill
+        webwindowt3.BringToFront()
+        updatetitles()
+        txtlocation.Text = "Search or Enter an address"
+        If webwindowt3.DocumentTitle = "" Then lbtitletext.Text = "Web Browser" Else lbtitletext.Text = "Web Browser - " & webwindowt3.DocumentTitle
+    End Sub
+
+    Private Sub pnltab4_Click(sender As Object, e As EventArgs) Handles pnltab4.Click
+        currenttab = 4
+        webwindowt4.Dock = DockStyle.Fill
+        webwindowt4.BringToFront()
+        updatetitles()
+        txtlocation.Text = "Search or Enter an address"
+        If webwindowt4.DocumentTitle = "" Then lbtitletext.Text = "Web Browser" Else lbtitletext.Text = "Web Browser - " & webwindowt4.DocumentTitle
+    End Sub
+
+    Private Sub webloading(ByVal sender As Object, ByVal e As System.Windows.Forms.WebBrowserProgressChangedEventArgs) Handles webwindowt1.ProgressChanged, webwindowt2.ProgressChanged, webwindowt3.ProgressChanged, webwindowt4.ProgressChanged
+        Try
+            If e.MaximumProgress > 0L AndAlso e.CurrentProgress > 0L Then
+                siteloadprogress.Value = CInt(Math.Round((100 * e.CurrentProgress / e.MaximumProgress)))
+            ElseIf e.MaximumProgress = 0L AndAlso e.CurrentProgress = 0L Then
+                siteloadprogress.Value = 0
+            End If
+        Catch ex As Exception
+            siteloadprogress.Value = 0
+        End Try
+    End Sub
+
+    Private Sub updatetabsizes()
+        Dim totalsize As Integer = Me.Width - pgleft.Width - pgright.Width - 10
+        pnltab1.Size = New Size(totalsize / 4, pnltab1.Height)
+        pnltab2.Size = New Size(totalsize / 4, pnltab2.Height)
+        pnltab3.Size = New Size(totalsize / 4, pnltab3.Height)
+        pnltab4.Size = New Size(totalsize / 4, pnltab4.Height)
+        pnltab2.Location = New Point(pgleft.Width + 5 + pnltab1.Width, pnltab2.Location.Y)
+        pnltab3.Location = New Point(pgleft.Width + 5 + pnltab1.Width + pnltab2.Width, pnltab3.Location.Y)
+        pnltab4.Location = New Point(pgleft.Width + 5 + pnltab1.Width + pnltab2.Width + pnltab3.Width, pnltab4.Location.Y)
+    End Sub
+End Class

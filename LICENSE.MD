@@ -1,21 +1,33 @@
-The MIT License (MIT)
+*(change this to a more standard open or closed source license in the future)*
+
+ShiftOS temporary license as of 1st December 2014
 
-Copyright (c) 2015 ShiftOS/Philip Adams
+This document is auto-extracted from the ShiftOS executable if version is beta 5.2 or greater
+
+These terms apply to everyone
+
+## Definitions
+
+- The program, the executable or ShiftOS refers to the distributed ShiftOS binary executable program. (ie: ShiftOS.exe)
+- Source code refers to the decompiled code of ShiftOS (ie: ShiftOSDesktop.vb)
+
+## You can:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+- Redistribute the executable if this license is also provided and link to orginal forum/website is given (shiftos.net)
+- Use for any non-commercial purpose that does not restrict users
+
+## You must:
+
+- Include the original copyright notice when redistributing binary copies of this program
+
+## You cannot:
+
+- Use this program commercially
+- Use this program to restrict users (e.g. using this software to implement DRM standards)
+- Redistribute copies of this source code to non-maintainers
+- Decompile the executable or attempt to view/access the source code in any other way without the prior permission of a lead developer.
+- Sublicense
+
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.

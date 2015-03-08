@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="pullside.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>130, 17</value>
+  </metadata>
+  <metadata name="pullbs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>224, 17</value>
+  </metadata>
+  <metadata name="pullbottom.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>308, 17</value>
+  </metadata>
+  <metadata name="AllLinksMustHaveATooltipForTheirUrl.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>421, 17</value>
+  </metadata>
+  <data name="lblhomehomedescription.Text" xml:space="preserve">
+    <value>Shiftnet is a network hosted on the ShiftOS servers, it is only available to ShiftOS users, so you should feel privileged. The Shiftnet has some great websites, but you've probably already gone to explore them without reading this. If so, good luck, if not, here are some tips:
+
+All Shiftnet domains are as follow:
+ - They start with shiftnet, followed by a dot and the server they are hosted on, after this, another dot and the website name. The address then has a slash and the page name followed by a dot and 'rnp'
+ - The 'rnp' stands for remote network page
+ - shiftnet.main means the site is on the main ShiftOS servers and is guaranteed to be safe, anywhere else could be dangerous and give you a virus - be warned
+
+Here are a few website we recommend to get you started:</value>
+  </data>
+  <data name="lblminimatchlabyrinthbuyinstuct.Text" xml:space="preserve">
+    <value>Dodge can be purchased using Bitnotes, to buy Dodge, simply send Bitnotes the minimatch website Bitnote address, puting your account in credit. You should see you balance in the top lefthand corner and below.
+
+Your current balance is: </value>
+  </data>
+  <data name="Label29.Text" xml:space="preserve">
+    <value>Labyrinth is a maze escape game with a 100 second time limit. The aim of the game is to get through as many mazes as you can before the timer runs out. Earn 2 Code Point for each maze you pass!
+
+                      Requirements:
+
+- Download Manager
+- Software Installer
+- Gray</value>
+  </data>
+  <data name="lblminimatchdodgehow2buydetails.Text" xml:space="preserve">
+    <value>Dodge can be purchased using Bitnotes, to buy Dodge, simply send Bitnotes the minimatch website Bitnote address, puting your account in credit. You should see you balance in the top lefthand corner and below.
+
+Your current balance is: </value>
+  </data>
+  <data name="lblminimatchaboutdetails.Text" xml:space="preserve">
+    <value>Dodge in simple, quick and fun to earn a few extra codepoint! Basically, all you need to do is dodge the falling objects as for as long as you can.
+
+                       Requirements:
+
+ - Download Manager
+ - Software Installer</value>
+  </data>
+  <data name="lblshiftomizerpaymentinstruct.Text" xml:space="preserve">
+    <value>Please complete your payment by sending &lt;total&gt; Bitnotes to &lt;bitnote address&gt;
+
+We do not give change, overpayment will be counted as a tip towards the developers.
+
+Once we have recived &lt;total&gt; bitnotes and verified the senders ip as yours, a download link will appear on screen.</value>
+  </data>
+  <data name="lblbitnotediggerdescription.Text" xml:space="preserve">
+    <value>Bitnote digging is the process of processing Bitnote payments, for each 'block' of transactions processed, the you will be awarded a certain amount of Bitnotes. Digging is one way to earn Bitnotes. The speed will depend the grade of digger you use. Prices for each grade of digger are listed below:</value>
+  </data>
+  <data name="lblbitnotecurrencyexchangedescription.Text" xml:space="preserve">
+    <value>Haven't got a fast Digger? Better at earning Code Points than Bitnotes? Wish you could exchange them? You've come the right place. This currency exchange web page allows you to swap your Code Points for Bitnotes depending on the exchange rate of the day.</value>
+  </data>
+  <data name="lblbitnotewalletdescription1.Text" xml:space="preserve">
+    <value>The Bitnote Wallet is an application designed to allow users to transfer Bitnotes with ease.
+It automatically keeps a record of your balance and all your transactions, it allows you to quickly pay for a product or </value>
+  </data>
+  <data name="lblbitnotehowgettxt.Text" xml:space="preserve">
+    <value>Bitnotes are managed through the Bitnote Wallet, this can be freely download from this site.
+There are two ways to get Bitnotes into your wallet. The first is a currency exchange, allowing you to exchange Code Points for Bitnotes depending on the exchange rate of the day. This can be done on the exchange page of our website.
+The other way to get Bitnotes is digging them the Bitnote Digger. This can be freely downloaded off our website, however, it is recommended that you upgrade it a faster digging speed. You can view prices and speeds on the digger download page.</value>
+  </data>
+  <data name="lblbitnoteabouttxt.Text" xml:space="preserve">
+    <value>Bitnotes are a virtual currency used for worldwide transactions. It uses the latest shiftnet peer networking  technologies to keep all payments secure, fast, anonymous and absolutely free. Bitnotes are the payment network of the future, the future starts here - download now!</value>
+  </data>
+  <metadata name="tmrloadsite.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="AllLinksMustHaveATooltipForTheirUrl.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>421, 17</value>
+  </metadata>
+  <metadata name="tmrshiftomizerwaitinglist.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>676, 17</value>
+  </metadata>
+  <metadata name="qctext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>862, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>41</value>
+  </metadata>
+</root>

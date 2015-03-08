@@ -1,0 +1,7 @@
+Desktop++ v1.0
+
+Ever wanted to have a useful desktop with icons? Icons that can open files, websites or other content? Icons that can be dragged across the screen any way you like? Well, Desktop++ is for you. Desktop++ constantly scans 'C:/ShiftOS/Home/Desktop' and creates an icon for each file and folder within.
+
+Desktop++ also allows you to change between Icon and Tile view, where Tile view gives more information, and Icon View allows simplicity and draggability. It also allows you to dump a Text File containing the specs of your PC. The possibilities are endless.
+
+By using Desktop++, you agree that we send anonymous usability data directly to DevX.

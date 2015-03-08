@@ -1,0 +1,6 @@
+### SHIFTOS SYSTEM INFORMATION DUMP ###
+ 
+ShiftOS Version: 0.0.1.0
+User Name: theultimate
+CPU: AMD A6-3400M APU with Radeon(tm) HD Graphics
+Random Access Memory (RAM): 3559 Megabytes
