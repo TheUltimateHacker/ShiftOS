@@ -11,4 +11,4 @@ Currently ShiftOS is just a game engine and the focus is on gameplay rather than
 Yes, you can download ShiftOS right now and play at no cost however the game is only in the early stages of development and missing loads of content that will be available in the full release. Whether or not ShiftOS will be free once it's finished is uncertain. My goal is to fund the game entirely by donations and future advertisements on the forum and ShiftOS YouTube channel so I can earn money developing ShiftOS.
 
 #Is ShiftOS an Indie Game?
-Currently ShiftOS is an indie game meaning that I (one person) have developed the game from scratch with no external help 
+Currently ShiftOS is an open source indie game managed by a team of people. Anyone can contribute to shiftos, but your pull requests will be monitored and tested.
