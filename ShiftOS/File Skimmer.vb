@@ -545,6 +545,8 @@ Public Class File_Skimmer
     End Function
 
     Private Sub showcontents()
+        Me.Show()
+
         lvfiles.Items.Clear()
 
         lvfiles.Items.Add("Exit Folder", 5)
