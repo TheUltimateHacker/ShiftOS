@@ -198,6 +198,7 @@ Partial Class OrcWrite
         Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.RichTextBox1.BulletIndent = 10
         Me.RichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RichTextBox1.Font = New System.Drawing.Font("Times New Roman", 11.0!)
         Me.RichTextBox1.Location = New System.Drawing.Point(0, 0)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.Size = New System.Drawing.Size(798, 348)
@@ -284,6 +285,7 @@ Partial Class OrcWrite
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(121, 21)
         Me.ComboBox2.TabIndex = 39
+        Me.ComboBox2.Text = "Left"
         '
         'TextBox1
         '
@@ -291,6 +293,7 @@ Partial Class OrcWrite
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(29, 20)
         Me.TextBox1.TabIndex = 38
+        Me.TextBox1.Text = "11"
         '
         'Label1
         '
@@ -357,6 +360,7 @@ Partial Class OrcWrite
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
         Me.ComboBox1.TabIndex = 32
+        Me.ComboBox1.Text = "Times New Roman"
         '
         'Button1
         '
