@@ -251,6 +251,7 @@
 
     'new 0.0.9 features
     Public boughtskinstates As Boolean = False
+    Public boughtdesktopicons As Boolean = False
 
     'Colour Picker Memories
     Public anymemory(15) As Color
@@ -1056,7 +1057,7 @@
         SortOutBooleans(VideoPlayerCorrupted, 610, False)
         SortOutBooleans(VirusScannerCorrupted, 612, False)
         SortOutBooleans(WebBrowserCorrupted, 613, False)
-
+        If boughtdesktopicons = True Then savelines(614) = 11 Else savelines(614) = 10
         IO.File.WriteAllLines(ShiftOSPath + "Shiftum42\Drivers\HDD.dri", savelines)
         File_Crypt.EncryptFile(ShiftOSPath + "Shiftum42\Drivers\HDD.dri", "C:/ShiftOS/Shiftum42/SKernal.sft", sSecretKey)
         Try
@@ -1572,7 +1573,7 @@
         SortOutBooleans(VideoPlayerCorrupted, 610, True)
         SortOutBooleans(VirusScannerCorrupted, 612, True)
         SortOutBooleans(WebBrowserCorrupted, 613, True)
-
+        If loadlines(614) = 11 Then boughtdesktopicons = True Else boughtdesktopicons = False
         Viruses.startactiveviruses()
         If IO.File.Exists(ShiftOSPath + "Shiftum42\Skins\Current\skindata.dat") Then loadcurrentskin()
         If My.Computer.FileSystem.DirectoryExists(ShiftOSPath + "Shiftum42\Icons") Then setupicons()
@@ -1968,6 +1969,13 @@
         Else
             ApplicationsToolStripMenuItem.Visible = False
         End If
+
+        ContextMenuStrip1.ForeColor = Skins.launcheritemcolour
+        ContextMenuStrip1.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
+        For Each Item In NewToolStripMenuItem.DropDownItems
+            Item.ForeColor = Skins.launcheritemcolour
+            Item.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
+        Next
 
         If boughtalclock = True Then
             ClockToolStripMenuItem.Visible = True
