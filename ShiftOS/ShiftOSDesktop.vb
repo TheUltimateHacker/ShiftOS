@@ -1573,7 +1573,11 @@
         SortOutBooleans(VideoPlayerCorrupted, 610, True)
         SortOutBooleans(VirusScannerCorrupted, 612, True)
         SortOutBooleans(WebBrowserCorrupted, 613, True)
-        If loadlines(614) = 11 Then boughtdesktopicons = True Else boughtdesktopicons = False
+        Try
+            If loadlines(614) = 11 Then boughtdesktopicons = True Else boughtdesktopicons = False
+        Catch
+            boughtdesktopicons = False
+        End Try
         Viruses.startactiveviruses()
         If IO.File.Exists(ShiftOSPath + "Shiftum42\Skins\Current\skindata.dat") Then loadcurrentskin()
         If My.Computer.FileSystem.DirectoryExists(ShiftOSPath + "Shiftum42\Icons") Then setupicons()
@@ -4775,7 +4779,11 @@
         If Skins.enabledraggableicons = True Then
             Dim lvi As ListViewItem = CType(e.Data.GetData("System.Windows.Forms.ListViewItem"), ListViewItem)
             Dim Offset As Size = Size.Subtract(Cursor.Size, New Size(Cursor.HotSpot.X, Cursor.HotSpot.Y))
-            lvi.Position = Point.Subtract(desktopicons.PointToClient(New Point(e.X, e.Y)), Offset)
+            If (e.X < 53) Then
+                lvi.Position = Point.Subtract(desktopicons.PointToClient(New Point(53, e.Y)), Offset)
+            Else
+                lvi.Position = Point.Subtract(desktopicons.PointToClient(New Point(e.X, e.Y)), Offset)
+            End If
             e.Effect = DragDropEffects.Move
         End If
 
