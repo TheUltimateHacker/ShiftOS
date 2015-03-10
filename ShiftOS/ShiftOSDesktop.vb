@@ -1976,6 +1976,10 @@
             Item.ForeColor = Skins.launcheritemcolour
             Item.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
         Next
+        For Each Item In TileViewToolStripMenuItem.DropDownItems
+            Item.ForeColor = Skins.launcheritemcolour
+            Item.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
+        Next
 
         If boughtalclock = True Then
             ClockToolStripMenuItem.Visible = True
@@ -4620,50 +4624,53 @@
 
     Public Sub refreshIcons()
         desktopicons.Items.Clear()
+        desktopicons.ForeColor = Skins.icontextcolor
+        desktopicons.View = iconview1
+        If Skins.showicons = True Then
+            desktopicons.LargeImageList = File_Skimmer.ImageList1
+            desktopicons.SmallImageList = File_Skimmer.ImageList1
 
-        desktopicons.LargeImageList = File_Skimmer.ImageList1
-        desktopicons.SmallImageList = File_Skimmer.ImageList1
+            Dim dir As New IO.DirectoryInfo("C:\ShiftOS\Home\Desktop")
+            Dim files As IO.FileInfo() = dir.GetFiles()
+            Dim file As IO.FileInfo
+            Dim folders As IO.DirectoryInfo() = dir.GetDirectories()
+            Dim folder As IO.DirectoryInfo
+            Dim filetype As Integer
+            For Each folder In folders
+                Dim Str(3) As String
 
-        Dim dir As New IO.DirectoryInfo("C:\ShiftOS\Home\Desktop")
-        Dim files As IO.FileInfo() = dir.GetFiles()
-        Dim file As IO.FileInfo
-        Dim folders As IO.DirectoryInfo() = dir.GetDirectories()
-        Dim folder As IO.DirectoryInfo
-        Dim filetype As Integer
-        For Each folder In folders
-            Dim Str(3) As String
+                Str(0) = folder.Name
+                Str(1) = folder.LastAccessTime
+                Str(2) = "Directory"
 
-            Str(0) = folder.Name
-            Str(1) = folder.LastAccessTime
-            Str(2) = "Directory"
+                Dim folderIcon As New ListViewItem
+                folderIcon.Text = Str(0)
+                folderIcon.Tag = folder.FullName
+                folderIcon.SubItems.Add(Str(1))
+                folderIcon.SubItems.Add(Str(2))
+                folderIcon.ImageIndex = 0
 
-            Dim folderIcon As New ListViewItem
-            folderIcon.Text = Str(0)
-            folderIcon.Tag = folder.FullName
-            folderIcon.SubItems.Add(Str(1))
-            folderIcon.SubItems.Add(Str(2))
-            folderIcon.ImageIndex = 0
+                desktopicons.Items.Add(folderIcon)
+            Next
 
-            desktopicons.Items.Add(folderIcon)
-        Next
+            For Each file In files
+                Dim filename As String = file.Name
+                Dim fileex As String = file.Extension
+                Dim program As String
+                Dim item As New ListViewItem
 
-        For Each file In files
-            Dim filename As String = file.Name
-            Dim fileex As String = file.Extension
-            Dim program As String
-            Dim item As New ListViewItem
+                item.Text = filename
+                item.Tag = file.FullName
+                item.SubItems.Add(file.LastWriteTime)
 
-            item.Text = filename
-            item.Tag = file.FullName
-            item.SubItems.Add(file.LastWriteTime)
+                filetype = File_Skimmer.getExType(fileex)(0)
+                program = File_Skimmer.getExType(fileex)(1)
 
-            filetype = File_Skimmer.getExType(fileex)(0)
-            program = File_Skimmer.getExType(fileex)(1)
-
-            item.SubItems.Add(program)
-            item.ImageIndex = filetype
-            desktopicons.Items.Add(item)
-        Next
+                item.SubItems.Add(program)
+                item.ImageIndex = filetype
+                desktopicons.Items.Add(item)
+            Next
+        End If
     End Sub
 
     Private Sub ClickDesktopIcon(sender As Object, e As EventArgs) Handles desktopicons.DoubleClick
@@ -4679,7 +4686,7 @@
         infobox.resizeAndLoad(infobox.Width, 325) 'Resizes Infobox because if not, the full text for the message is cut off.
     End Sub
 
-    Private Sub IconViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IconViewToolStripMenuItem.Click
+    Private Sub IconViewToolStripMenuItem_Click(sender As Object, e As EventArgs)
         desktopicons.View = View.LargeIcon
         refreshIcons()
     End Sub
@@ -4704,7 +4711,14 @@
         infobox.Show()
     End Sub
 
-    Private Sub desktopicons_SelectedIndexChanged(sender As Object, e As EventArgs) Handles desktopicons.SelectedIndexChanged
+    Private Sub contextmenu_Show(sender As Object, e As PaintEventArgs) Handles ContextMenuStrip1.Paint
+        If desktopicons.SelectedItems.Count > 0 Then
+            TileViewToolStripMenuItem.Visible = True
+            fileActionsSeparator.Visible = True
+        Else
+            TileViewToolStripMenuItem.Visible = False
+            fileActionsSeparator.Visible = False
+        End If
 
     End Sub
 
@@ -4745,18 +4759,34 @@
     End Sub
 
     Private Sub desktopicons_ItemDrag(ByVal sender As Object, ByVal e As System.Windows.Forms.ItemDragEventArgs) Handles desktopicons.ItemDrag
-        Dim lvi As ListViewItem = CType(e.Item, ListViewItem)
-        desktopicons.DoDragDrop(New DataObject("System.Windows.Forms.ListViewItem", lvi), DragDropEffects.Move)
+        If Skins.enabledraggableicons = True Then
+            Dim lvi As ListViewItem = CType(e.Item, ListViewItem)
+            desktopicons.DoDragDrop(New DataObject("System.Windows.Forms.ListViewItem", lvi), DragDropEffects.Move)
+        End If
     End Sub
     Private Sub desktopicons_DragEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles desktopicons.DragEnter
-        If e.Data.GetDataPresent("System.Windows.Forms.ListViewItem") Then
-            e.Effect = DragDropEffects.Move
+        If Skins.enabledraggableicons = True Then
+            If e.Data.GetDataPresent("System.Windows.Forms.ListViewItem") Then
+                e.Effect = DragDropEffects.Move
+            End If
         End If
     End Sub
     Private Sub desktopicons_DragOver(ByVal sender As Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles desktopicons.DragOver
-        Dim lvi As ListViewItem = CType(e.Data.GetData("System.Windows.Forms.ListViewItem"), ListViewItem)
-        Dim Offset As Size = Size.Subtract(Cursor.Size, New Size(Cursor.HotSpot.X, Cursor.HotSpot.Y))
-        lvi.Position = Point.Subtract(desktopicons.PointToClient(New Point(e.X, e.Y)), Offset)
-        e.Effect = DragDropEffects.Move
+        If Skins.enabledraggableicons = True Then
+            Dim lvi As ListViewItem = CType(e.Data.GetData("System.Windows.Forms.ListViewItem"), ListViewItem)
+            Dim Offset As Size = Size.Subtract(Cursor.Size, New Size(Cursor.HotSpot.X, Cursor.HotSpot.Y))
+            lvi.Position = Point.Subtract(desktopicons.PointToClient(New Point(e.X, e.Y)), Offset)
+            e.Effect = DragDropEffects.Move
+        End If
+
+    End Sub
+
+    Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
+        If My.Computer.FileSystem.DirectoryExists(desktopicons.SelectedItems(0).Tag) Then
+            My.Computer.FileSystem.DeleteDirectory(desktopicons.SelectedItems(0).Tag, FileIO.DeleteDirectoryOption.DeleteAllContents)
+        Else
+            My.Computer.FileSystem.DeleteFile(desktopicons.SelectedItems(0).Tag)
+        End If
+        refreshIcons()
     End Sub
 End Class

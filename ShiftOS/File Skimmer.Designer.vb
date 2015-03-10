@@ -333,14 +333,14 @@ Partial Class File_Skimmer
         Me.fileactions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteToolStripMenuItem})
         Me.fileactions.Name = "fileactions"
         Me.fileactions.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.fileactions.Size = New System.Drawing.Size(153, 48)
+        Me.fileactions.Size = New System.Drawing.Size(108, 26)
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.BackColor = System.Drawing.Color.Black
         Me.DeleteToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'pullbs

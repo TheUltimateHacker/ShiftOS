@@ -45,6 +45,7 @@ Partial Class Shifter
         Me.btnapply = New System.Windows.Forms.Button()
         Me.catholder = New System.Windows.Forms.Panel()
         Me.btnreset = New System.Windows.Forms.Button()
+        Me.btndeskdoubleplus = New System.Windows.Forms.Button()
         Me.btnprograms = New System.Windows.Forms.Button()
         Me.btnicons = New System.Windows.Forms.Button()
         Me.btnwindows = New System.Windows.Forms.Button()
@@ -314,8 +315,21 @@ Partial Class Shifter
         Me.Label109 = New System.Windows.Forms.Label()
         Me.Label111 = New System.Windows.Forms.Label()
         Me.pgcontents = New System.Windows.Forms.Panel()
+        Me.pnldeskdoubleplus = New System.Windows.Forms.Panel()
         Me.tmrfix = New System.Windows.Forms.Timer(Me.components)
         Me.tmrdelay = New System.Windows.Forms.Timer(Me.components)
+        Me.pnldppoptions = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.desktopiconspreview = New System.Windows.Forms.ListView()
+        Me.btndppicons = New System.Windows.Forms.Button()
+        Me.btndppfiles = New System.Windows.Forms.Button()
+        Me.btndppappearance = New System.Windows.Forms.Button()
+        Me.btndppfunctions = New System.Windows.Forms.Button()
+        Me.pnldppfunctions = New System.Windows.Forms.Panel()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.pnldppicons = New System.Windows.Forms.Panel()
+        Me.Label117 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.pgleft.SuspendLayout()
         Me.pgright.SuspendLayout()
         Me.titlebar.SuspendLayout()
@@ -356,6 +370,11 @@ Partial Class Shifter
         CType(Me.prepnlicon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlreset.SuspendLayout()
         Me.pgcontents.SuspendLayout()
+        Me.pnldeskdoubleplus.SuspendLayout()
+        Me.pnldppoptions.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        Me.pnldppfunctions.SuspendLayout()
+        Me.pnldppicons.SuspendLayout()
         Me.SuspendLayout()
         '
         'pgleft
@@ -528,6 +547,7 @@ Partial Class Shifter
         '
         Me.catholder.BackColor = System.Drawing.Color.White
         Me.catholder.Controls.Add(Me.btnreset)
+        Me.catholder.Controls.Add(Me.btndeskdoubleplus)
         Me.catholder.Controls.Add(Me.btnprograms)
         Me.catholder.Controls.Add(Me.btnicons)
         Me.catholder.Controls.Add(Me.btnwindows)
@@ -543,13 +563,27 @@ Partial Class Shifter
         Me.btnreset.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnreset.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnreset.Font = New System.Drawing.Font("Cambria", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnreset.Location = New System.Drawing.Point(0, 116)
+        Me.btnreset.Location = New System.Drawing.Point(0, 145)
         Me.btnreset.Name = "btnreset"
         Me.btnreset.Size = New System.Drawing.Size(119, 29)
         Me.btnreset.TabIndex = 8
         Me.btnreset.TabStop = False
         Me.btnreset.Text = "Reset"
         Me.btnreset.UseVisualStyleBackColor = False
+        '
+        'btndeskdoubleplus
+        '
+        Me.btndeskdoubleplus.BackColor = System.Drawing.Color.White
+        Me.btndeskdoubleplus.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btndeskdoubleplus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btndeskdoubleplus.Font = New System.Drawing.Font("Cambria", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btndeskdoubleplus.Location = New System.Drawing.Point(0, 116)
+        Me.btndeskdoubleplus.Name = "btndeskdoubleplus"
+        Me.btndeskdoubleplus.Size = New System.Drawing.Size(119, 29)
+        Me.btndeskdoubleplus.TabIndex = 9
+        Me.btndeskdoubleplus.TabStop = False
+        Me.btndeskdoubleplus.Text = "Desktop++"
+        Me.btndeskdoubleplus.UseVisualStyleBackColor = False
         '
         'btnprograms
         '
@@ -3430,6 +3464,7 @@ Partial Class Shifter
         'pgcontents
         '
         Me.pgcontents.BackColor = System.Drawing.Color.White
+        Me.pgcontents.Controls.Add(Me.pnldeskdoubleplus)
         Me.pgcontents.Controls.Add(Me.pnlreset)
         Me.pgcontents.Controls.Add(Me.pnlwindowsoptions)
         Me.pgcontents.Controls.Add(Me.pnldesktopoptions)
@@ -3443,12 +3478,136 @@ Partial Class Shifter
         Me.pgcontents.Size = New System.Drawing.Size(596, 307)
         Me.pgcontents.TabIndex = 0
         '
+        'pnldeskdoubleplus
+        '
+        Me.pnldeskdoubleplus.Controls.Add(Me.Panel2)
+        Me.pnldeskdoubleplus.Controls.Add(Me.pnldppoptions)
+        Me.pnldeskdoubleplus.Location = New System.Drawing.Point(134, 9)
+        Me.pnldeskdoubleplus.Name = "pnldeskdoubleplus"
+        Me.pnldeskdoubleplus.Size = New System.Drawing.Size(457, 292)
+        Me.pnldeskdoubleplus.TabIndex = 19
+        '
         'tmrfix
         '
         Me.tmrfix.Interval = 5000
         '
         'tmrdelay
         '
+        '
+        'pnldppoptions
+        '
+        Me.pnldppoptions.Controls.Add(Me.pnldppicons)
+        Me.pnldppoptions.Controls.Add(Me.pnldppfunctions)
+        Me.pnldppoptions.Controls.Add(Me.btndppfunctions)
+        Me.pnldppoptions.Controls.Add(Me.btndppappearance)
+        Me.pnldppoptions.Controls.Add(Me.btndppfiles)
+        Me.pnldppoptions.Controls.Add(Me.btndppicons)
+        Me.pnldppoptions.Location = New System.Drawing.Point(5, 176)
+        Me.pnldppoptions.Name = "pnldppoptions"
+        Me.pnldppoptions.Size = New System.Drawing.Size(446, 110)
+        Me.pnldppoptions.TabIndex = 0
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.desktopiconspreview)
+        Me.Panel2.Location = New System.Drawing.Point(5, 8)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(448, 166)
+        Me.Panel2.TabIndex = 1
+        '
+        'desktopiconspreview
+        '
+        Me.desktopiconspreview.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.desktopiconspreview.Location = New System.Drawing.Point(0, 0)
+        Me.desktopiconspreview.Name = "desktopiconspreview"
+        Me.desktopiconspreview.Size = New System.Drawing.Size(448, 166)
+        Me.desktopiconspreview.TabIndex = 0
+        Me.desktopiconspreview.UseCompatibleStateImageBehavior = False
+        '
+        'btndppicons
+        '
+        Me.btndppicons.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btndppicons.Location = New System.Drawing.Point(7, 35)
+        Me.btndppicons.Name = "btndppicons"
+        Me.btndppicons.Size = New System.Drawing.Size(75, 23)
+        Me.btndppicons.TabIndex = 0
+        Me.btndppicons.Text = "Icons"
+        Me.btndppicons.UseVisualStyleBackColor = True
+        '
+        'btndppfiles
+        '
+        Me.btndppfiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btndppfiles.Location = New System.Drawing.Point(7, 58)
+        Me.btndppfiles.Name = "btndppfiles"
+        Me.btndppfiles.Size = New System.Drawing.Size(75, 23)
+        Me.btndppfiles.TabIndex = 1
+        Me.btndppfiles.Text = "Files"
+        Me.btndppfiles.UseVisualStyleBackColor = True
+        '
+        'btndppappearance
+        '
+        Me.btndppappearance.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btndppappearance.Location = New System.Drawing.Point(7, 81)
+        Me.btndppappearance.Name = "btndppappearance"
+        Me.btndppappearance.Size = New System.Drawing.Size(75, 23)
+        Me.btndppappearance.TabIndex = 2
+        Me.btndppappearance.Text = "Appearance"
+        Me.btndppappearance.UseVisualStyleBackColor = True
+        '
+        'btndppfunctions
+        '
+        Me.btndppfunctions.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btndppfunctions.Location = New System.Drawing.Point(7, 12)
+        Me.btndppfunctions.Name = "btndppfunctions"
+        Me.btndppfunctions.Size = New System.Drawing.Size(75, 23)
+        Me.btndppfunctions.TabIndex = 3
+        Me.btndppfunctions.Text = "Functions"
+        Me.btndppfunctions.UseVisualStyleBackColor = True
+        '
+        'pnldppfunctions
+        '
+        Me.pnldppfunctions.Controls.Add(Me.CheckBox1)
+        Me.pnldppfunctions.Location = New System.Drawing.Point(89, 6)
+        Me.pnldppfunctions.Name = "pnldppfunctions"
+        Me.pnldppfunctions.Size = New System.Drawing.Size(352, 100)
+        Me.pnldppfunctions.TabIndex = 4
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(7, 8)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(122, 17)
+        Me.CheckBox1.TabIndex = 0
+        Me.CheckBox1.Text = "Icons are Draggable"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'pnldppicons
+        '
+        Me.pnldppicons.Controls.Add(Me.Button1)
+        Me.pnldppicons.Controls.Add(Me.Label117)
+        Me.pnldppicons.Location = New System.Drawing.Point(89, 6)
+        Me.pnldppicons.Name = "pnldppicons"
+        Me.pnldppicons.Size = New System.Drawing.Size(352, 100)
+        Me.pnldppicons.TabIndex = 5
+        '
+        'Label117
+        '
+        Me.Label117.AutoSize = True
+        Me.Label117.Location = New System.Drawing.Point(7, 12)
+        Me.Label117.Name = "Label117"
+        Me.Label117.Size = New System.Drawing.Size(82, 13)
+        Me.Label117.TabIndex = 0
+        Me.Label117.Text = "Icon Text Color:"
+        '
+        'Button1
+        '
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Location = New System.Drawing.Point(88, 6)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(29, 23)
+        Me.Button1.TabIndex = 1
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Shifter
         '
@@ -3526,6 +3685,13 @@ Partial Class Shifter
         Me.pnlreset.ResumeLayout(False)
         Me.pgcontents.ResumeLayout(False)
         Me.pgcontents.PerformLayout()
+        Me.pnldeskdoubleplus.ResumeLayout(False)
+        Me.pnldppoptions.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.pnldppfunctions.ResumeLayout(False)
+        Me.pnldppfunctions.PerformLayout()
+        Me.pnldppicons.ResumeLayout(False)
+        Me.pnldppicons.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -3821,4 +3987,18 @@ Partial Class Shifter
     Friend WithEvents Label115 As System.Windows.Forms.Label
     Friend WithEvents launcheritemfont As System.Windows.Forms.ComboBox
     Friend WithEvents Label114 As System.Windows.Forms.Label
+    Friend WithEvents btndeskdoubleplus As System.Windows.Forms.Button
+    Friend WithEvents pnldeskdoubleplus As System.Windows.Forms.Panel
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents desktopiconspreview As System.Windows.Forms.ListView
+    Friend WithEvents pnldppoptions As System.Windows.Forms.Panel
+    Friend WithEvents pnldppfunctions As System.Windows.Forms.Panel
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+    Friend WithEvents btndppfunctions As System.Windows.Forms.Button
+    Friend WithEvents btndppappearance As System.Windows.Forms.Button
+    Friend WithEvents btndppfiles As System.Windows.Forms.Button
+    Friend WithEvents btndppicons As System.Windows.Forms.Button
+    Friend WithEvents pnldppicons As System.Windows.Forms.Panel
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Label117 As System.Windows.Forms.Label
 End Class

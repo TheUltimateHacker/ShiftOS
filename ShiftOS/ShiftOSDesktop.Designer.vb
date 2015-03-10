@@ -189,9 +189,10 @@ Partial Class ShiftOSDesktop
         Me.WebpageToolStripMenuItem = New System.Windows.Forms.ToolStripSeparator()
         Me.ShortcutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.IconViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TileViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.RenameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.fileActionsSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.desktoppanel.SuspendLayout()
         Me.pnlpanelbuttonholder.SuspendLayout()
@@ -1903,7 +1904,7 @@ Partial Class ShiftOSDesktop
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ToolStripMenuItem3, Me.IconViewToolStripMenuItem, Me.TileViewToolStripMenuItem, Me.ToolStripMenuItem4, Me.AboutToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ToolStripMenuItem3, Me.TileViewToolStripMenuItem, Me.fileActionsSeparator, Me.AboutToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.Size = New System.Drawing.Size(170, 104)
         '
@@ -1971,22 +1972,29 @@ Partial Class ShiftOSDesktop
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
         Me.ToolStripMenuItem3.Size = New System.Drawing.Size(166, 6)
         '
-        'IconViewToolStripMenuItem
-        '
-        Me.IconViewToolStripMenuItem.Name = "IconViewToolStripMenuItem"
-        Me.IconViewToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
-        Me.IconViewToolStripMenuItem.Text = "Icon View"
-        '
         'TileViewToolStripMenuItem
         '
+        Me.TileViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RenameToolStripMenuItem, Me.DeleteToolStripMenuItem})
         Me.TileViewToolStripMenuItem.Name = "TileViewToolStripMenuItem"
         Me.TileViewToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
-        Me.TileViewToolStripMenuItem.Text = "Tile View"
+        Me.TileViewToolStripMenuItem.Text = "File Actions"
         '
-        'ToolStripMenuItem4
+        'RenameToolStripMenuItem
         '
-        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(166, 6)
+        Me.RenameToolStripMenuItem.Name = "RenameToolStripMenuItem"
+        Me.RenameToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.RenameToolStripMenuItem.Text = "Rename"
+        '
+        'DeleteToolStripMenuItem
+        '
+        Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.DeleteToolStripMenuItem.Text = "Delete"
+        '
+        'fileActionsSeparator
+        '
+        Me.fileActionsSeparator.Name = "fileActionsSeparator"
+        Me.fileActionsSeparator.Size = New System.Drawing.Size(166, 6)
         '
         'AboutToolStripMenuItem
         '
@@ -2291,9 +2299,10 @@ Partial Class ShiftOSDesktop
     Friend WithEvents WebpageToolStripMenuItem As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ShortcutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem3 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents IconViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TileViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem4 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents fileActionsSeparator As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents NewSkin As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RenameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DeleteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

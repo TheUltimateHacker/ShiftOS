@@ -142,6 +142,9 @@ The basic process of modifying your ShiftOS interface is very simple. You first 
   <metadata name="predesktopappmenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>680, 17</value>
   </metadata>
+  <metadata name="predesktopappmenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>680, 17</value>
+  </metadata>
   <data name="Label69.Text" xml:space="preserve">
     <value>Welcome to the desktop settings panel. Here you can modify the appearance of the controls that are displayed on your desktop. Just select a sub option to the left to get started!
 

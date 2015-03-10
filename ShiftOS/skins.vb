@@ -138,6 +138,14 @@ Module Skins
     Public panelbutton As Image = Nothing
     Public panelbuttonlayout As String = 3
 
+    'Below is all for the Desktop Icons patch.
+
+    Public enabledraggableicons As Boolean = True
+    Public icontextcolor As Color = Color.White
+    Public showicons As Boolean = True
+    Public iconview1 As View = View.LargeIcon
+    Public iconview2 As View = View.Tile
+
     Private Function GetImage(ByVal fileName As String) As Bitmap
         Dim ret As Bitmap
         Using img As Image = Image.FromFile(fileName)
@@ -369,7 +377,11 @@ Module Skins
             If Not loaddata(109) = "" Then enablebordercorners = loaddata(109)
 
             'for adding extra features, check:
-            'If loaddata(110) = "" Or loaddata(110) = "End of skin data" Then dostuff()
+            If loaddata(110) = "" Or loaddata(110) = "End of skin data" Then loaddata(110) = enabledraggableicons Else enabledraggableicons = loaddata(110)
+            If loaddata(111) = "" Or loaddata(111) = "End of skin data" Then loaddata(111) = icontextcolor.ToArgb Else icontextcolor = Color.FromArgb(loaddata(111))
+            If loaddata(112) = "" Or loaddata(112) = "End of skin data" Then loaddata(112) = showicons Else showicons = loaddata(112)
+            If loaddata(113) = "" Or loaddata(113) = "End of skin data" Then loaddata(113) = iconview1 Else iconview1 = loaddata(113)
+            If loaddata(114) = "" Or loaddata(114) = "End of skin data" Then loaddata(114) = iconview2 Else iconview2 = loaddata(114)
         Else
             setupdefaults()
         End If
@@ -542,7 +554,11 @@ Module Skins
         savedata(107) = launcheritemsize
         savedata(108) = launcheritemstyle
         savedata(109) = enablebordercorners
-
+        savedata(110) = enabledraggableicons
+        savedata(111) = icontextcolor.ToArgb
+        savedata(112) = showicons
+        savedata(113) = iconview1
+        savedata(114) = iconview2
         ' End of skin data text was at line 110, if adding future items, check for "End of skin data" on line 110
         savedata(200) = "End of skin data"
         File.WriteAllLines(savepath + "Shiftum42\Skins\Loaded\data.dat", savedata)
@@ -672,6 +688,7 @@ Module Skins
         applauncherclick = Nothing
         panelbutton = Nothing
         panelbuttonlayout = 3
+        enabledraggableicons = True
     End Sub
     Private Sub saveimage(ByVal img As Image, ByVal name As String)
         If Not IsNothing(img) Then

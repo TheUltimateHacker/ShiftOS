@@ -93,9 +93,13 @@ Public Class File_Skimmer
     End Sub
 
     Private Sub closebutton_Click(sender As Object, e As EventArgs) Handles closebutton.Click
+        ShiftOSDesktop.refreshIcons()
         Me.Close()
     End Sub
 
+    Private Sub Me_Close(sender As Object, e As EventArgs) Handles MyBase.FormClosing
+        ShiftOSDesktop.refreshIcons()
+    End Sub
     Private Sub closebutton_MouseEnter(sender As Object, e As EventArgs) Handles closebutton.MouseEnter, closebutton.MouseUp
         closebutton.BackgroundImage = Skins.closebtnhover
     End Sub
@@ -935,4 +939,6 @@ Public Class File_Skimmer
     Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
         btndeletefile_Click()
     End Sub
+
+    
 End Class

@@ -1646,6 +1646,9 @@
 
     Private Sub pnlnewcolour_Click(sender As Object, e As EventArgs) Handles pnlnewcolour.Click
         Select Case colourtochange
+            Case "Desktop Icon Text Color"
+                Shifter.icontextcolor = pnlnewcolour.BackColor
+
             Case "Title Bar Colour"
                 Shifter.titlebarcolour = pnlnewcolour.BackColor
                 If Shifter.shifterskintitlebar(0) Is Nothing Then  Else Shifter.shifterskintitlebar(0).Dispose()

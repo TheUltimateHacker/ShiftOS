@@ -83,6 +83,7 @@
     Public minimizebuttonwidth As Integer
     Public minimizebuttonside As Integer
     Public minimizebuttontop As Integer
+    Public icontextcolor As Color
 
     'skins
     Public shifterskinimages(100) As String
@@ -123,7 +124,7 @@
     Public customizationsdone As Integer
     Public customizationpointsearned As Integer
     Dim bmp As Bitmap
-
+#Region "Template Code"
     Private Sub Template_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         justopened = True
         Me.Left = (Screen.PrimaryScreen.Bounds.Width - Me.Width) / 2
@@ -517,8 +518,8 @@
         Me.Hide()
         ShiftOSDesktop.setuppanelbuttons()
     End Sub
+#End Region
 
-    'end of general setup
 
     Private Sub initialsetup()
         titlebarcolour = Skins.titlebarcolour
@@ -598,6 +599,23 @@
         txtlauncheritemtxtsize.Text = Skins.launcheritemsize
         launcheritemtxtcolour.BackColor = Skins.launcheritemcolour
         launcheritemfont.Text = Skins.launcheritemfont
+        icontextcolor = Skins.icontextcolor
+
+        'Uncomment when I (The Ultimate Hacker) have gotten the Shiftnet Download for
+        'Desktop++ Done:
+
+        'If ShiftOSDesktop.boughtdesktopicons = True Then
+        '    btndeskdoubleplus.Visible = True
+        'End If
+
+        desktopiconspreview.BackColor = Skins.desktopbackgroundcolour
+        If Skins.desktopbackground Is Nothing Then desktopiconspreview.BackgroundImage = Nothing Else desktopiconspreview.BackgroundImage = Skins.desktopbackground
+        desktopiconspreview.BackgroundImageLayout = Skins.desktopbackgroundlayout
+        desktopiconspreview.ForeColor = Skins.icontextcolor
+        CheckBox1.Checked = Skins.enabledraggableicons
+        refreshIcons()
+
+
 
         'skins
         'Array.Copy(ShiftOSDesktop.skinimages, shifterskinimages, shifterskinimages.Length)
@@ -1368,6 +1386,9 @@
             Skins.enablebordercorners = cbindividualbordercolours.Checked
             Skins.titleiconfromside = titlebariconside
             Skins.titleiconfromtop = titlebaricontop
+            Skins.enabledraggableicons = CheckBox1.Checked
+            Skins.icontextcolor = icontextcolor
+
             ' APPLY
             Skins.saveskinfiles(True)
             'windows resize fix
@@ -2975,7 +2996,7 @@
             pnllauncheritems.Show()
             pnllauncheritems.BringToFront()
 
-            
+
         Else
             infobox.title = "Shifter - Setting not found!"
             infobox.textinfo = "This setting can not be altered due to no system configuration files matching this option." & Environment.NewLine & Environment.NewLine & "The system files required are either corrupt or do not exist!"
@@ -3004,5 +3025,80 @@
 
     Private Sub launcheritemstyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles launcheritemstyle.SelectedIndexChanged
         setuppreshifterstuff()
+    End Sub
+
+    Private Sub btndeskdoubleplus_Click(sender As Object, e As EventArgs) Handles btndeskdoubleplus.Click
+        pnldeskdoubleplus.BringToFront()
+    End Sub
+
+
+
+    Public Sub refreshIcons()
+        desktopiconspreview.Items.Clear()
+        If Skins.showicons = True Then
+            desktopiconspreview.LargeImageList = File_Skimmer.ImageList1
+            desktopiconspreview.SmallImageList = File_Skimmer.ImageList1
+
+            Dim dir As New IO.DirectoryInfo("C:\ShiftOS\Home\Desktop")
+            Dim files As IO.FileInfo() = dir.GetFiles()
+            Dim file As IO.FileInfo
+            Dim folders As IO.DirectoryInfo() = dir.GetDirectories()
+            Dim folder As IO.DirectoryInfo
+            Dim filetype As Integer
+            For Each folder In folders
+                Dim Str(3) As String
+
+                Str(0) = folder.Name
+                Str(1) = folder.LastAccessTime
+                Str(2) = "Directory"
+
+                Dim folderIcon As New ListViewItem
+                folderIcon.Text = Str(0)
+                folderIcon.Tag = folder.FullName
+                folderIcon.SubItems.Add(Str(1))
+                folderIcon.SubItems.Add(Str(2))
+                folderIcon.ImageIndex = 0
+
+                desktopiconspreview.Items.Add(folderIcon)
+            Next
+
+            For Each file In files
+                Dim filename As String = file.Name
+                Dim fileex As String = file.Extension
+                Dim program As String
+                Dim item As New ListViewItem
+
+                item.Text = filename
+                item.Tag = file.FullName
+                item.SubItems.Add(file.LastWriteTime)
+
+                filetype = File_Skimmer.getExType(fileex)(0)
+                program = File_Skimmer.getExType(fileex)(1)
+
+                item.SubItems.Add(program)
+                item.ImageIndex = filetype
+                desktopiconspreview.Items.Add(item)
+            Next
+        End If
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+
+    End Sub
+
+    Private Sub btndppfunctions_Click(sender As Object, e As EventArgs) Handles btndppfunctions.Click
+        pnldppfunctions.BringToFront()
+    End Sub
+
+    Private Sub btndppicons_Click(sender As Object, e As EventArgs) Handles btndppicons.Click
+        pnldppicons.BringToFront()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Colour_Picker.colourtochange = "Desktop Icon Text Color"
+        Colour_Picker.oldcolour = icontextcolor
+        Colour_Picker.Show()
+        Button1.BackColor = icontextcolor
+        desktopiconspreview.ForeColor = icontextcolor
     End Sub
 End Class
