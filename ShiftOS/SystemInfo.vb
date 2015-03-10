@@ -443,4 +443,8 @@
         SysInfoBox4.Text = (String.Format("{0} Megabytes", System.Math.Round(My.Computer.Info.TotalPhysicalMemory / (1024 * 1024)), 2).ToString)
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        File_Saver.savingprogram = "sysinf"
+        File_Saver.Show()
+    End Sub
 End Class

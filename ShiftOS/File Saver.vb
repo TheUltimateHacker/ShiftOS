@@ -546,7 +546,7 @@ Public Class File_Saver
             End Select
 
             Select Case savingprogram
-                Case "textpad"
+                Case "textpad", "sysinf"
                     If fileex = ".txt" Then lvfiles.Items.Add(filename, filetype)
                 Case "skinloader"
                     If fileex = ".skn" Then lvfiles.Items.Add(filename, filetype)
@@ -657,6 +657,20 @@ Public Class File_Saver
         If txtfilename.Text = "" Then
         Else
             Select Case savingprogram
+                Case "sysinf"
+                    Dim sw As New IO.StreamWriter(lbllocation.Text & "/" & txtfilename.Text & ".txt")
+                    sw.WriteLine("### SHIFTOS SYSTEM INFORMATION DUMP ###")
+                    sw.WriteLine(" ")
+                    sw.WriteLine("ShiftOS Version: " & ShiftOSDesktop.ingameversion)
+                    sw.WriteLine("User Name: " & ShiftOSDesktop.username)
+                    Dim PrcName As String
+
+                    PrcName = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0", "ProcessorNameString", Nothing)
+                    sw.WriteLine("CPU: " & PrcName)
+                    sw.WriteLine("Random Access Memory (RAM): " & (String.Format("{0} Megabytes", System.Math.Round(My.Computer.Info.TotalPhysicalMemory / (1024 * 1024)), 2).ToString))
+                    sw.Close()
+                    Me.Close()
+                    ShiftOSDesktop.refreshIcons()
                 Case "textpad"
                     My.Computer.FileSystem.WriteAllText(lbllocation.Text & "/" & filename, TextPad.txtuserinput.Text, False)
                     TextPad.needtosave = False

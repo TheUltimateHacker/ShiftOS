@@ -27,6 +27,8 @@ Partial Class systeminfo
         Me.pullbs = New System.Windows.Forms.Timer(Me.components)
         Me.pgcontents = New System.Windows.Forms.Panel()
         Me.SysInfoBox = New System.Windows.Forms.GroupBox()
+        Me.SysInfoTextBox5 = New System.Windows.Forms.TextBox()
+        Me.SysInfoLabel5 = New System.Windows.Forms.Label()
         Me.SysInfoBox2 = New System.Windows.Forms.TextBox()
         Me.SysInfoBox1 = New System.Windows.Forms.TextBox()
         Me.SysInfoLabel2 = New System.Windows.Forms.Label()
@@ -50,8 +52,7 @@ Partial Class systeminfo
         Me.pgbottomlcorner = New System.Windows.Forms.Panel()
         Me.pgleft = New System.Windows.Forms.Panel()
         Me.titlebar = New System.Windows.Forms.Panel()
-        Me.SysInfoLabel5 = New System.Windows.Forms.Label()
-        Me.SysInfoTextBox5 = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.pgcontents.SuspendLayout()
         Me.SysInfoBox.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -95,6 +96,25 @@ Partial Class systeminfo
         Me.SysInfoBox.TabStop = False
         Me.SysInfoBox.Text = "ShiftOS"
         '
+        'SysInfoTextBox5
+        '
+        Me.SysInfoTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.SysInfoTextBox5.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.SysInfoTextBox5.Location = New System.Drawing.Point(145, 68)
+        Me.SysInfoTextBox5.Name = "SysInfoTextBox5"
+        Me.SysInfoTextBox5.ReadOnly = True
+        Me.SysInfoTextBox5.Size = New System.Drawing.Size(277, 20)
+        Me.SysInfoTextBox5.TabIndex = 9
+        '
+        'SysInfoLabel5
+        '
+        Me.SysInfoLabel5.AutoSize = True
+        Me.SysInfoLabel5.Location = New System.Drawing.Point(7, 75)
+        Me.SysInfoLabel5.Name = "SysInfoLabel5"
+        Me.SysInfoLabel5.Size = New System.Drawing.Size(122, 13)
+        Me.SysInfoLabel5.TabIndex = 8
+        Me.SysInfoLabel5.Text = "ShiftOS Computer Name"
+        '
         'SysInfoBox2
         '
         Me.SysInfoBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -135,6 +155,7 @@ Partial Class systeminfo
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.SysInfoLabel3)
         Me.GroupBox1.Controls.Add(Me.SysInfoBox3)
         Me.GroupBox1.Controls.Add(Me.SysInfoBox4)
@@ -159,20 +180,20 @@ Partial Class systeminfo
         '
         Me.SysInfoBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SysInfoBox3.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.SysInfoBox3.Location = New System.Drawing.Point(124, 15)
+        Me.SysInfoBox3.Location = New System.Drawing.Point(68, 15)
         Me.SysInfoBox3.Name = "SysInfoBox3"
         Me.SysInfoBox3.ReadOnly = True
-        Me.SysInfoBox3.Size = New System.Drawing.Size(277, 20)
+        Me.SysInfoBox3.Size = New System.Drawing.Size(220, 20)
         Me.SysInfoBox3.TabIndex = 8
         '
         'SysInfoBox4
         '
         Me.SysInfoBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SysInfoBox4.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.SysInfoBox4.Location = New System.Drawing.Point(124, 46)
+        Me.SysInfoBox4.Location = New System.Drawing.Point(68, 48)
         Me.SysInfoBox4.Name = "SysInfoBox4"
         Me.SysInfoBox4.ReadOnly = True
-        Me.SysInfoBox4.Size = New System.Drawing.Size(277, 20)
+        Me.SysInfoBox4.Size = New System.Drawing.Size(220, 20)
         Me.SysInfoBox4.TabIndex = 9
         '
         'SysInfoLabel4
@@ -316,26 +337,17 @@ Partial Class systeminfo
         Me.titlebar.Size = New System.Drawing.Size(442, 30)
         Me.titlebar.TabIndex = 19
         '
-        'SysInfoLabel5
+        'Button1
         '
-        Me.SysInfoLabel5.AutoSize = True
-        Me.SysInfoLabel5.Location = New System.Drawing.Point(7, 75)
-        Me.SysInfoLabel5.Name = "SysInfoLabel5"
-        Me.SysInfoLabel5.Size = New System.Drawing.Size(122, 13)
-        Me.SysInfoLabel5.TabIndex = 8
-        Me.SysInfoLabel5.Text = "ShiftOS Computer Name"
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Location = New System.Drawing.Point(294, 15)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(122, 55)
+        Me.Button1.TabIndex = 10
+        Me.Button1.Text = "Dump to Text File"
+        Me.Button1.UseVisualStyleBackColor = True
         '
-        'SysInfoTextBox5
-        '
-        Me.SysInfoTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.SysInfoTextBox5.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.SysInfoTextBox5.Location = New System.Drawing.Point(145, 68)
-        Me.SysInfoTextBox5.Name = "SysInfoTextBox5"
-        Me.SysInfoTextBox5.ReadOnly = True
-        Me.SysInfoTextBox5.Size = New System.Drawing.Size(277, 20)
-        Me.SysInfoTextBox5.TabIndex = 9
-        '
-        'SystemInfo
+        'systeminfo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -346,7 +358,7 @@ Partial Class systeminfo
         Me.Controls.Add(Me.pgleft)
         Me.Controls.Add(Me.titlebar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "SystemInfo"
+        Me.Name = "systeminfo"
         Me.Text = "SystemInfo"
         Me.TopMost = True
         Me.pgcontents.ResumeLayout(False)
@@ -391,4 +403,5 @@ Partial Class systeminfo
     Friend WithEvents titlebar As System.Windows.Forms.Panel
     Friend WithEvents SysInfoTextBox5 As System.Windows.Forms.TextBox
     Friend WithEvents SysInfoLabel5 As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class
