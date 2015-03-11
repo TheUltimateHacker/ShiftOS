@@ -33,4 +33,11 @@
 
         Main_Launcher.UpdateOptions()
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim folDialog As New FolderBrowserDialog
+        If folDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            TextBox1.Text = folDialog.SelectedPath
+        End If
+    End Sub
 End Class
