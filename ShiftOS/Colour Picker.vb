@@ -1646,6 +1646,8 @@
 
     Private Sub pnlnewcolour_Click(sender As Object, e As EventArgs) Handles pnlnewcolour.Click
         Select Case colourtochange
+            Case "Username Text Color"
+                Shifter.usernametextcolor = pnlnewcolour.BackColor
             Case "Desktop Icon Text Color"
                 Shifter.icontextcolor = pnlnewcolour.BackColor
 

@@ -194,6 +194,52 @@ Partial Class ShiftOSDesktop
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.fileActionsSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.pnladvapplauncher = New System.Windows.Forms.Panel()
+        Me.pnladvmain = New System.Windows.Forms.Panel()
+        Me.tscadvmainframe = New System.Windows.Forms.ToolStripContainer()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.UtilitiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TerminalToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileSkimmerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SystemInformationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShifterToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SkinLoaderToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SkinShifterToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.IconManagerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NameChangerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InternetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShiftnetToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShiftoriumToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WebBrowserToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DownloadManagerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InstallerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BitnoteDiggerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BitnoteWalletToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FloodGateManagerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VirusScannerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GamesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DodgeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SnakeyToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PongToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.KnowledgeInputToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LabyrinthToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AccessoriesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ArtpadToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TextpadToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OrcWriteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AudioPlayerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VideoPlayerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClockToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CalculatorToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.lvadvfiles = New System.Windows.Forms.ListView()
+        Me.pnladvplaces = New System.Windows.Forms.Panel()
+        Me.lvadvplaces = New System.Windows.Forms.ListView()
+        Me.pnladvbottombar = New System.Windows.Forms.Panel()
+        Me.btnadvshutdown = New System.Windows.Forms.Button()
+        Me.pnladvtopbar = New System.Windows.Forms.Panel()
+        Me.lbuser = New System.Windows.Forms.Label()
         Me.desktoppanel.SuspendLayout()
         Me.pnlpanelbuttonholder.SuspendLayout()
         Me.pnlpanelbuttonclock.SuspendLayout()
@@ -272,6 +318,15 @@ Partial Class ShiftOSDesktop
         Me.pnlpanelbuttonfloatybird.SuspendLayout()
         CType(Me.tbfloatybirdicon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
+        Me.pnladvapplauncher.SuspendLayout()
+        Me.pnladvmain.SuspendLayout()
+        Me.tscadvmainframe.BottomToolStripPanel.SuspendLayout()
+        Me.tscadvmainframe.ContentPanel.SuspendLayout()
+        Me.tscadvmainframe.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
+        Me.pnladvplaces.SuspendLayout()
+        Me.pnladvbottombar.SuspendLayout()
+        Me.pnladvtopbar.SuspendLayout()
         Me.SuspendLayout()
         '
         'desktoppanel
@@ -1906,7 +1961,7 @@ Partial Class ShiftOSDesktop
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ToolStripMenuItem3, Me.TileViewToolStripMenuItem, Me.fileActionsSeparator, Me.AboutToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(170, 104)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(170, 82)
         '
         'NewToolStripMenuItem
         '
@@ -2002,12 +2057,360 @@ Partial Class ShiftOSDesktop
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
         Me.AboutToolStripMenuItem.Text = "About Desktop++"
         '
+        'pnladvapplauncher
+        '
+        Me.pnladvapplauncher.BackColor = System.Drawing.Color.Gray
+        Me.pnladvapplauncher.Controls.Add(Me.pnladvmain)
+        Me.pnladvapplauncher.Controls.Add(Me.pnladvplaces)
+        Me.pnladvapplauncher.Controls.Add(Me.pnladvbottombar)
+        Me.pnladvapplauncher.Controls.Add(Me.pnladvtopbar)
+        Me.pnladvapplauncher.Location = New System.Drawing.Point(0, 24)
+        Me.pnladvapplauncher.Name = "pnladvapplauncher"
+        Me.pnladvapplauncher.Size = New System.Drawing.Size(320, 526)
+        Me.pnladvapplauncher.TabIndex = 2
+        Me.pnladvapplauncher.Visible = False
+        '
+        'pnladvmain
+        '
+        Me.pnladvmain.BackColor = System.Drawing.Color.Black
+        Me.pnladvmain.Controls.Add(Me.tscadvmainframe)
+        Me.pnladvmain.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnladvmain.Location = New System.Drawing.Point(0, 55)
+        Me.pnladvmain.Name = "pnladvmain"
+        Me.pnladvmain.Size = New System.Drawing.Size(184, 427)
+        Me.pnladvmain.TabIndex = 3
+        '
+        'tscadvmainframe
+        '
+        '
+        'tscadvmainframe.BottomToolStripPanel
+        '
+        Me.tscadvmainframe.BottomToolStripPanel.Controls.Add(Me.ToolStrip1)
+        '
+        'tscadvmainframe.ContentPanel
+        '
+        Me.tscadvmainframe.ContentPanel.Controls.Add(Me.lvadvfiles)
+        Me.tscadvmainframe.ContentPanel.Size = New System.Drawing.Size(184, 377)
+        Me.tscadvmainframe.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tscadvmainframe.Location = New System.Drawing.Point(0, 0)
+        Me.tscadvmainframe.Name = "tscadvmainframe"
+        Me.tscadvmainframe.Size = New System.Drawing.Size(184, 427)
+        Me.tscadvmainframe.TabIndex = 0
+        Me.tscadvmainframe.Text = "ToolStripContainer1"
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
+        Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(184, 25)
+        Me.ToolStrip1.Stretch = True
+        Me.ToolStrip1.TabIndex = 0
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UtilitiesToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.InternetToolStripMenuItem, Me.GamesToolStripMenuItem, Me.AccessoriesToolStripMenuItem})
+        Me.ToolStripButton1.Image = Global.ShiftOS.My.Resources.Resources.iconFileSkimmer
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(104, 22)
+        Me.ToolStripButton1.Text = "All Programs"
+        '
+        'UtilitiesToolStripMenuItem
+        '
+        Me.UtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TerminalToolStripMenuItem1, Me.FileSkimmerToolStripMenuItem1, Me.SystemInformationToolStripMenuItem})
+        Me.UtilitiesToolStripMenuItem.Name = "UtilitiesToolStripMenuItem"
+        Me.UtilitiesToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.UtilitiesToolStripMenuItem.Text = "Utilities"
+        '
+        'TerminalToolStripMenuItem1
+        '
+        Me.TerminalToolStripMenuItem1.Name = "TerminalToolStripMenuItem1"
+        Me.TerminalToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
+        Me.TerminalToolStripMenuItem1.Text = "Terminal"
+        '
+        'FileSkimmerToolStripMenuItem1
+        '
+        Me.FileSkimmerToolStripMenuItem1.Name = "FileSkimmerToolStripMenuItem1"
+        Me.FileSkimmerToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
+        Me.FileSkimmerToolStripMenuItem1.Text = "File Skimmer"
+        '
+        'SystemInformationToolStripMenuItem
+        '
+        Me.SystemInformationToolStripMenuItem.Name = "SystemInformationToolStripMenuItem"
+        Me.SystemInformationToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.SystemInformationToolStripMenuItem.Text = "System Information"
+        '
+        'SettingsToolStripMenuItem
+        '
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShifterToolStripMenuItem1, Me.SkinLoaderToolStripMenuItem1, Me.SkinShifterToolStripMenuItem1, Me.IconManagerToolStripMenuItem1, Me.NameChangerToolStripMenuItem1})
+        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.SettingsToolStripMenuItem.Text = "Settings"
+        '
+        'ShifterToolStripMenuItem1
+        '
+        Me.ShifterToolStripMenuItem1.Name = "ShifterToolStripMenuItem1"
+        Me.ShifterToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
+        Me.ShifterToolStripMenuItem1.Text = "Shifter"
+        '
+        'SkinLoaderToolStripMenuItem1
+        '
+        Me.SkinLoaderToolStripMenuItem1.Name = "SkinLoaderToolStripMenuItem1"
+        Me.SkinLoaderToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
+        Me.SkinLoaderToolStripMenuItem1.Text = "Skin Loader"
+        '
+        'SkinShifterToolStripMenuItem1
+        '
+        Me.SkinShifterToolStripMenuItem1.Name = "SkinShifterToolStripMenuItem1"
+        Me.SkinShifterToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
+        Me.SkinShifterToolStripMenuItem1.Text = "Skin Shifter"
+        '
+        'IconManagerToolStripMenuItem1
+        '
+        Me.IconManagerToolStripMenuItem1.Name = "IconManagerToolStripMenuItem1"
+        Me.IconManagerToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
+        Me.IconManagerToolStripMenuItem1.Text = "Icon Manager"
+        '
+        'NameChangerToolStripMenuItem1
+        '
+        Me.NameChangerToolStripMenuItem1.Name = "NameChangerToolStripMenuItem1"
+        Me.NameChangerToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
+        Me.NameChangerToolStripMenuItem1.Text = "Name Changer"
+        '
+        'InternetToolStripMenuItem
+        '
+        Me.InternetToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShiftnetToolStripMenuItem1, Me.ShiftoriumToolStripMenuItem1, Me.WebBrowserToolStripMenuItem1, Me.DownloadManagerToolStripMenuItem1, Me.InstallerToolStripMenuItem1, Me.BitnoteDiggerToolStripMenuItem1, Me.BitnoteWalletToolStripMenuItem1, Me.FloodGateManagerToolStripMenuItem, Me.VirusScannerToolStripMenuItem1})
+        Me.InternetToolStripMenuItem.Name = "InternetToolStripMenuItem"
+        Me.InternetToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.InternetToolStripMenuItem.Text = "Internet"
+        '
+        'ShiftnetToolStripMenuItem1
+        '
+        Me.ShiftnetToolStripMenuItem1.Name = "ShiftnetToolStripMenuItem1"
+        Me.ShiftnetToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
+        Me.ShiftnetToolStripMenuItem1.Text = "Shiftnet"
+        '
+        'ShiftoriumToolStripMenuItem1
+        '
+        Me.ShiftoriumToolStripMenuItem1.Name = "ShiftoriumToolStripMenuItem1"
+        Me.ShiftoriumToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
+        Me.ShiftoriumToolStripMenuItem1.Text = "Shiftorium"
+        '
+        'WebBrowserToolStripMenuItem1
+        '
+        Me.WebBrowserToolStripMenuItem1.Name = "WebBrowserToolStripMenuItem1"
+        Me.WebBrowserToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
+        Me.WebBrowserToolStripMenuItem1.Text = "Web Browser"
+        '
+        'DownloadManagerToolStripMenuItem1
+        '
+        Me.DownloadManagerToolStripMenuItem1.Name = "DownloadManagerToolStripMenuItem1"
+        Me.DownloadManagerToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
+        Me.DownloadManagerToolStripMenuItem1.Text = "Download Manager"
+        '
+        'InstallerToolStripMenuItem1
+        '
+        Me.InstallerToolStripMenuItem1.Name = "InstallerToolStripMenuItem1"
+        Me.InstallerToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
+        Me.InstallerToolStripMenuItem1.Text = "Installer"
+        '
+        'BitnoteDiggerToolStripMenuItem1
+        '
+        Me.BitnoteDiggerToolStripMenuItem1.Name = "BitnoteDiggerToolStripMenuItem1"
+        Me.BitnoteDiggerToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
+        Me.BitnoteDiggerToolStripMenuItem1.Text = "Bitnote Digger"
+        '
+        'BitnoteWalletToolStripMenuItem1
+        '
+        Me.BitnoteWalletToolStripMenuItem1.Name = "BitnoteWalletToolStripMenuItem1"
+        Me.BitnoteWalletToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
+        Me.BitnoteWalletToolStripMenuItem1.Text = "Bitnote Wallet"
+        '
+        'FloodGateManagerToolStripMenuItem
+        '
+        Me.FloodGateManagerToolStripMenuItem.Name = "FloodGateManagerToolStripMenuItem"
+        Me.FloodGateManagerToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.FloodGateManagerToolStripMenuItem.Text = "FloodGate Manager"
+        '
+        'VirusScannerToolStripMenuItem1
+        '
+        Me.VirusScannerToolStripMenuItem1.Name = "VirusScannerToolStripMenuItem1"
+        Me.VirusScannerToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
+        Me.VirusScannerToolStripMenuItem1.Text = "Virus Scanner"
+        '
+        'GamesToolStripMenuItem
+        '
+        Me.GamesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DodgeToolStripMenuItem1, Me.SnakeyToolStripMenuItem1, Me.PongToolStripMenuItem1, Me.KnowledgeInputToolStripMenuItem1, Me.LabyrinthToolStripMenuItem})
+        Me.GamesToolStripMenuItem.Name = "GamesToolStripMenuItem"
+        Me.GamesToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.GamesToolStripMenuItem.Text = "Games"
+        '
+        'DodgeToolStripMenuItem1
+        '
+        Me.DodgeToolStripMenuItem1.Name = "DodgeToolStripMenuItem1"
+        Me.DodgeToolStripMenuItem1.Size = New System.Drawing.Size(164, 22)
+        Me.DodgeToolStripMenuItem1.Text = "Dodge"
+        '
+        'SnakeyToolStripMenuItem1
+        '
+        Me.SnakeyToolStripMenuItem1.Name = "SnakeyToolStripMenuItem1"
+        Me.SnakeyToolStripMenuItem1.Size = New System.Drawing.Size(164, 22)
+        Me.SnakeyToolStripMenuItem1.Text = "Snakey"
+        '
+        'PongToolStripMenuItem1
+        '
+        Me.PongToolStripMenuItem1.Name = "PongToolStripMenuItem1"
+        Me.PongToolStripMenuItem1.Size = New System.Drawing.Size(164, 22)
+        Me.PongToolStripMenuItem1.Text = "Pong"
+        '
+        'KnowledgeInputToolStripMenuItem1
+        '
+        Me.KnowledgeInputToolStripMenuItem1.Name = "KnowledgeInputToolStripMenuItem1"
+        Me.KnowledgeInputToolStripMenuItem1.Size = New System.Drawing.Size(164, 22)
+        Me.KnowledgeInputToolStripMenuItem1.Text = "Knowledge Input"
+        '
+        'LabyrinthToolStripMenuItem
+        '
+        Me.LabyrinthToolStripMenuItem.Name = "LabyrinthToolStripMenuItem"
+        Me.LabyrinthToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
+        Me.LabyrinthToolStripMenuItem.Text = "Labyrinth"
+        '
+        'AccessoriesToolStripMenuItem
+        '
+        Me.AccessoriesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArtpadToolStripMenuItem1, Me.TextpadToolStripMenuItem1, Me.OrcWriteToolStripMenuItem1, Me.AudioPlayerToolStripMenuItem1, Me.VideoPlayerToolStripMenuItem1, Me.ClockToolStripMenuItem1, Me.CalculatorToolStripMenuItem1})
+        Me.AccessoriesToolStripMenuItem.Name = "AccessoriesToolStripMenuItem"
+        Me.AccessoriesToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.AccessoriesToolStripMenuItem.Text = "Accessories"
+        '
+        'ArtpadToolStripMenuItem1
+        '
+        Me.ArtpadToolStripMenuItem1.Name = "ArtpadToolStripMenuItem1"
+        Me.ArtpadToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
+        Me.ArtpadToolStripMenuItem1.Text = "Artpad"
+        '
+        'TextpadToolStripMenuItem1
+        '
+        Me.TextpadToolStripMenuItem1.Name = "TextpadToolStripMenuItem1"
+        Me.TextpadToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
+        Me.TextpadToolStripMenuItem1.Text = "Textpad"
+        '
+        'OrcWriteToolStripMenuItem1
+        '
+        Me.OrcWriteToolStripMenuItem1.Name = "OrcWriteToolStripMenuItem1"
+        Me.OrcWriteToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
+        Me.OrcWriteToolStripMenuItem1.Text = "OrcWrite"
+        '
+        'AudioPlayerToolStripMenuItem1
+        '
+        Me.AudioPlayerToolStripMenuItem1.Name = "AudioPlayerToolStripMenuItem1"
+        Me.AudioPlayerToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
+        Me.AudioPlayerToolStripMenuItem1.Text = "Audio Player"
+        '
+        'VideoPlayerToolStripMenuItem1
+        '
+        Me.VideoPlayerToolStripMenuItem1.Name = "VideoPlayerToolStripMenuItem1"
+        Me.VideoPlayerToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
+        Me.VideoPlayerToolStripMenuItem1.Text = "Video Player"
+        '
+        'ClockToolStripMenuItem1
+        '
+        Me.ClockToolStripMenuItem1.Name = "ClockToolStripMenuItem1"
+        Me.ClockToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
+        Me.ClockToolStripMenuItem1.Text = "Clock"
+        '
+        'CalculatorToolStripMenuItem1
+        '
+        Me.CalculatorToolStripMenuItem1.Name = "CalculatorToolStripMenuItem1"
+        Me.CalculatorToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
+        Me.CalculatorToolStripMenuItem1.Text = "Calculator"
+        '
+        'lvadvfiles
+        '
+        Me.lvadvfiles.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lvadvfiles.Location = New System.Drawing.Point(0, 0)
+        Me.lvadvfiles.Name = "lvadvfiles"
+        Me.lvadvfiles.Size = New System.Drawing.Size(184, 377)
+        Me.lvadvfiles.TabIndex = 0
+        Me.lvadvfiles.UseCompatibleStateImageBehavior = False
+        '
+        'pnladvplaces
+        '
+        Me.pnladvplaces.BackColor = System.Drawing.Color.White
+        Me.pnladvplaces.Controls.Add(Me.lvadvplaces)
+        Me.pnladvplaces.Dock = System.Windows.Forms.DockStyle.Right
+        Me.pnladvplaces.Location = New System.Drawing.Point(184, 55)
+        Me.pnladvplaces.Name = "pnladvplaces"
+        Me.pnladvplaces.Size = New System.Drawing.Size(136, 427)
+        Me.pnladvplaces.TabIndex = 2
+        '
+        'lvadvplaces
+        '
+        Me.lvadvplaces.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lvadvplaces.Location = New System.Drawing.Point(0, 0)
+        Me.lvadvplaces.Name = "lvadvplaces"
+        Me.lvadvplaces.Size = New System.Drawing.Size(136, 427)
+        Me.lvadvplaces.TabIndex = 0
+        Me.lvadvplaces.UseCompatibleStateImageBehavior = False
+        Me.lvadvplaces.View = System.Windows.Forms.View.SmallIcon
+        '
+        'pnladvbottombar
+        '
+        Me.pnladvbottombar.Controls.Add(Me.btnadvshutdown)
+        Me.pnladvbottombar.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.pnladvbottombar.Location = New System.Drawing.Point(0, 482)
+        Me.pnladvbottombar.Name = "pnladvbottombar"
+        Me.pnladvbottombar.Size = New System.Drawing.Size(320, 44)
+        Me.pnladvbottombar.TabIndex = 1
+        '
+        'btnadvshutdown
+        '
+        Me.btnadvshutdown.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.btnadvshutdown.FlatAppearance.BorderSize = 0
+        Me.btnadvshutdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnadvshutdown.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Italic)
+        Me.btnadvshutdown.ForeColor = System.Drawing.Color.White
+        Me.btnadvshutdown.Image = Global.ShiftOS.My.Resources.Resources.iconshutdown
+        Me.btnadvshutdown.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnadvshutdown.Location = New System.Drawing.Point(0, 0)
+        Me.btnadvshutdown.Name = "btnadvshutdown"
+        Me.btnadvshutdown.Size = New System.Drawing.Size(320, 44)
+        Me.btnadvshutdown.TabIndex = 0
+        Me.btnadvshutdown.Text = "Shut Down ShiftOS"
+        Me.btnadvshutdown.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnadvshutdown.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnadvshutdown.UseVisualStyleBackColor = True
+        '
+        'pnladvtopbar
+        '
+        Me.pnladvtopbar.Controls.Add(Me.lbuser)
+        Me.pnladvtopbar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnladvtopbar.Location = New System.Drawing.Point(0, 0)
+        Me.pnladvtopbar.Name = "pnladvtopbar"
+        Me.pnladvtopbar.Size = New System.Drawing.Size(320, 55)
+        Me.pnladvtopbar.TabIndex = 0
+        '
+        'lbuser
+        '
+        Me.lbuser.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lbuser.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Italic)
+        Me.lbuser.ForeColor = System.Drawing.Color.White
+        Me.lbuser.Location = New System.Drawing.Point(0, 0)
+        Me.lbuser.Name = "lbuser"
+        Me.lbuser.Size = New System.Drawing.Size(320, 55)
+        Me.lbuser.TabIndex = 0
+        Me.lbuser.Text = "Username"
+        Me.lbuser.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'ShiftOSDesktop
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(1268, 685)
+        Me.Controls.Add(Me.pnladvapplauncher)
         Me.Controls.Add(Me.desktopicons)
         Me.Controls.Add(Me.desktoppanel)
         Me.KeyPreview = True
@@ -2131,6 +2534,18 @@ Partial Class ShiftOSDesktop
         Me.pnlpanelbuttonfloatybird.PerformLayout()
         CType(Me.tbfloatybirdicon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip1.ResumeLayout(False)
+        Me.pnladvapplauncher.ResumeLayout(False)
+        Me.pnladvmain.ResumeLayout(False)
+        Me.tscadvmainframe.BottomToolStripPanel.ResumeLayout(False)
+        Me.tscadvmainframe.BottomToolStripPanel.PerformLayout()
+        Me.tscadvmainframe.ContentPanel.ResumeLayout(False)
+        Me.tscadvmainframe.ResumeLayout(False)
+        Me.tscadvmainframe.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
+        Me.pnladvplaces.ResumeLayout(False)
+        Me.pnladvbottombar.ResumeLayout(False)
+        Me.pnladvtopbar.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -2305,4 +2720,50 @@ Partial Class ShiftOSDesktop
     Friend WithEvents NewSkin As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RenameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DeleteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents pnladvapplauncher As System.Windows.Forms.Panel
+    Friend WithEvents pnladvmain As System.Windows.Forms.Panel
+    Friend WithEvents tscadvmainframe As System.Windows.Forms.ToolStripContainer
+    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripDropDownButton
+    Friend WithEvents UtilitiesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TerminalToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FileSkimmerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SystemInformationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ShifterToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SkinLoaderToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SkinShifterToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents IconManagerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents NameChangerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents InternetToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ShiftnetToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ShiftoriumToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents WebBrowserToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DownloadManagerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents InstallerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BitnoteDiggerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BitnoteWalletToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FloodGateManagerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents VirusScannerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents GamesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DodgeToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SnakeyToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PongToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents KnowledgeInputToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LabyrinthToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AccessoriesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ArtpadToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TextpadToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OrcWriteToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AudioPlayerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents VideoPlayerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ClockToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CalculatorToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents pnladvplaces As System.Windows.Forms.Panel
+    Friend WithEvents pnladvbottombar As System.Windows.Forms.Panel
+    Friend WithEvents pnladvtopbar As System.Windows.Forms.Panel
+    Friend WithEvents btnadvshutdown As System.Windows.Forms.Button
+    Friend WithEvents lvadvplaces As System.Windows.Forms.ListView
+    Friend WithEvents lvadvfiles As System.Windows.Forms.ListView
+    Friend WithEvents lbuser As System.Windows.Forms.Label
 End Class

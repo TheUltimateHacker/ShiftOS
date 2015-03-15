@@ -146,6 +146,32 @@ Module Skins
     Public iconview1 As View = View.LargeIcon
     Public iconview2 As View = View.Tile
 
+    'DevX's Advanced App Launcher (coded by The Ultimate Hacker)
+
+    Public topBarHeight As Integer = 50
+    Public bottomBarHeight As Integer = 50
+    Public placesSide As String = "Left"
+    Public startHeight As Integer = 526
+    Public startWidth As Integer = 320
+    Public shutdownstring As String = "Shut Down ShiftOS"
+    Public userNamePosition = "Middle, Right"
+    Public recentIconsHorizontal As Boolean = False
+    Public usernametextcolor As Color = Color.White
+    Public usernamefont As String = "Trebuchet MS"
+    Public usernamefontsize As Integer = 12
+    Public usernamefontstyle As FontStyle = FontStyle.Bold
+    Public userNamePanelBackgroundColor As Color = Color.Gray
+    Public userNamePanelBackground As Image
+    Public powerPanelBackgroundColor As Color = Color.Gray
+    Public powerPanelBackgroundImage As Image
+    Public shutdownTextColor As Color = Color.White
+    Public shutdownTextFont As String = "Trebuchet MS"
+    Public shutdownTextSize As Integer = 12
+    Public shutdownTextStyle As FontStyle = FontStyle.Italic
+    Public usrPanelBackgroundLayout As ImageLayout = ImageLayout.Stretch
+    Public pwrPanelBackgroundLayout As ImageLayout = ImageLayout.Stretch
+
+
     Private Function GetImage(ByVal fileName As String) As Bitmap
         Dim ret As Bitmap
         Using img As Image = Image.FromFile(fileName)
@@ -165,6 +191,12 @@ Module Skins
     End Sub
     ' LOAD SKIN FROM SAVE FOLDER
     Public Sub loadimages()
+        If File.Exists(savepath + "Shiftum42\Skins\Loaded\userbar") Then
+            userNamePanelBackground = GetImage(savepath + "Shiftum42\Skins\Loaded\userbar")
+        End If
+        If File.Exists(savepath + "Shiftum42\Skins\Loaded\powerbar") Then
+            userNamePanelBackground = GetImage(savepath + "Shiftum42\Skins\Loaded\powerbar")
+        End If
         If File.Exists(savepath + "Shiftum42\Skins\Loaded\titlebar") Then
             titlebar = GetImage(savepath + "Shiftum42\Skins\Loaded\titlebar")
         Else : titlebar = Nothing
@@ -381,7 +413,28 @@ Module Skins
             If loaddata(111) = "" Or loaddata(111) = "End of skin data" Then loaddata(111) = icontextcolor.ToArgb Else icontextcolor = Color.FromArgb(loaddata(111))
             If loaddata(112) = "" Or loaddata(112) = "End of skin data" Then loaddata(112) = showicons Else showicons = loaddata(112)
             If loaddata(113) = "" Or loaddata(113) = "End of skin data" Then loaddata(113) = iconview1 Else iconview1 = loaddata(113)
-            If loaddata(114) = "" Or loaddata(114) = "End of skin data" Then loaddata(114) = iconview2 Else iconview2 = loaddata(114)
+            If loaddata(114) = "" Then topBarHeight = 50 Else topBarHeight = loaddata(114)
+            If loaddata(115) = "" Then bottomBarHeight = 50 Else bottomBarHeight = loaddata(115)
+            If loaddata(116) = "" Then placesSide = "Left" Else placesSide = loaddata(116)
+            If loaddata(117) = "" Then startHeight = 526 Else startHeight = loaddata(117)
+            If loaddata(118) = "" Then startWidth = 320 Else startWidth = loaddata(118)
+            If loaddata(119) = "" Then shutdownstring = "Shut Down ShiftOS" Else shutdownstring = loaddata(119)
+            If loaddata(120) = "" Then userNamePosition = "Middle, Right" Else userNamePosition = loaddata(200)
+            If loaddata(121) = "" Then recentIconsHorizontal = False Else recentIconsHorizontal = loaddata(201)
+            If loaddata(122) = "" Then usernametextcolor = Color.White Else usernametextcolor = Color.FromArgb(loaddata(202))
+            If loaddata(123) = "" Then usernamefont = "Trebuchet MS" Else usernamefont = loaddata(203)
+            If loaddata(124) = "" Then usernamefontsize = 12 Else usernamefontsize = loaddata(204)
+            If loaddata(125) = "" Then usernamefontstyle = FontStyle.Bold Else usernamefontstyle = loaddata(125)
+            If loaddata(126) = "" Then userNamePanelBackgroundColor = Color.Gray Else userNamePanelBackgroundColor = Color.FromArgb(loaddata(126))
+            If loaddata(127) = "" Then powerPanelBackgroundColor = Color.Gray Else powerPanelBackgroundColor = Color.FromArgb(loaddata(127))
+            If loaddata(128) = "" Then shutdownTextColor = Color.White Else shutdownTextColor = Color.FromArgb(loaddata(128))
+            If loaddata(129) = "" Then shutdownTextFont = "Trebuchet MS" Else shutdownTextFont = loaddata(129)
+            If loaddata(130) = "" Then shutdownTextSize = 12 Else shutdownTextSize = loaddata(130)
+            If loaddata(131) = "" Then shutdownTextStyle = FontStyle.Italic Else shutdownTextStyle = loaddata(132)
+            If loaddata(132) = "" Then usrPanelBackgroundLayout = ImageLayout.Stretch Else usrPanelBackgroundLayout = loaddata(132)
+            If loaddata(133) = "" Then pwrPanelBackgroundLayout = ImageLayout.Stretch Else pwrPanelBackgroundLayout = loaddata(133)
+
+
         Else
             setupdefaults()
         End If
@@ -447,6 +500,8 @@ Module Skins
         saveimage(panelbutton, "panelbutton")
         saveimage(bottomleftcorner, "bottomleftcorner")
         saveimage(bottomrightcorner, "bottomrightcorner")
+        saveimage(userNamePanelBackground, "userbar")
+        saveimage(powerPanelBackgroundImage, "powerbar")
         'save settings to dat file
         Dim savedata(200) As String
         ' setting and colour as saved in the order they are declared, image's are saved in sepporate preset files,
@@ -558,7 +613,27 @@ Module Skins
         savedata(111) = icontextcolor.ToArgb
         savedata(112) = showicons
         savedata(113) = iconview1
-        savedata(114) = iconview2
+        savedata(114) = topBarHeight
+        savedata(115) = bottomBarHeight
+        savedata(116) = placesSide
+        savedata(117) = startHeight
+        savedata(118) = startWidth
+        savedata(119) = shutdownstring
+        savedata(120) = userNamePosition
+        savedata(121) = recentIconsHorizontal
+        savedata(122) = usernametextcolor.ToArgb
+        savedata(123) = usernamefont
+        savedata(124) = usernamefontsize
+        savedata(125) = usernamefontstyle
+        savedata(126) = userNamePanelBackgroundColor.ToArgb
+        savedata(127) = powerPanelBackgroundColor.ToArgb
+        savedata(128) = shutdownTextColor.ToArgb
+        savedata(129) = shutdownTextFont
+        savedata(130) = shutdownTextSize
+        savedata(131) = shutdownTextStyle
+        savedata(132) = usrPanelBackgroundLayout
+        savedata(133) = pwrPanelBackgroundLayout
+
         ' End of skin data text was at line 110, if adding future items, check for "End of skin data" on line 110
         savedata(200) = "End of skin data"
         File.WriteAllLines(savepath + "Shiftum42\Skins\Loaded\data.dat", savedata)

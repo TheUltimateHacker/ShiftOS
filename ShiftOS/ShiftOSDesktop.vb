@@ -234,6 +234,9 @@
     Public virusscannergrade As Integer = 0
     Public boughttextpadtrm As Boolean = False
     Public boughtshiftapplauncheritems As Boolean = False
+    Public boughtadvapplauncher As Boolean = False
+
+
 
     'Apps bought through shiftnet
     Public installedcalculator As Boolean = False
@@ -1058,6 +1061,7 @@
         SortOutBooleans(VirusScannerCorrupted, 612, False)
         SortOutBooleans(WebBrowserCorrupted, 613, False)
         If boughtdesktopicons = True Then savelines(614) = 11 Else savelines(614) = 10
+        If boughtadvapplauncher = True Then savelines(615) = 11 Else savelines(615) = 10
         IO.File.WriteAllLines(ShiftOSPath + "Shiftum42\Drivers\HDD.dri", savelines)
         File_Crypt.EncryptFile(ShiftOSPath + "Shiftum42\Drivers\HDD.dri", "C:/ShiftOS/Shiftum42/SKernal.sft", sSecretKey)
         Try
@@ -1578,6 +1582,11 @@
         Catch
             boughtdesktopicons = False
         End Try
+        Try
+            If loadlines(615) = 11 Then boughtadvapplauncher = True Else boughtadvapplauncher = False
+        Catch
+            boughtadvapplauncher = False
+        End Try
         Viruses.startactiveviruses()
         If IO.File.Exists(ShiftOSPath + "Shiftum42\Skins\Current\skindata.dat") Then loadcurrentskin()
         If My.Computer.FileSystem.DirectoryExists(ShiftOSPath + "Shiftum42\Icons") Then setupicons()
@@ -1591,6 +1600,10 @@
         Else
             loadgame()
             Terminal.runterminalfile(ShiftOSPath + "Shiftum42\autorun.trm")
+        End If
+
+        If Not My.Computer.FileSystem.DirectoryExists(ShiftOSPath + "\SoftwareData\AdvStart\Recent") Then
+            IO.Directory.CreateDirectory(ShiftOSPath + "\SoftwareData\AdvStart\Recent")
         End If
         ToolStripManager.Renderer = New MyToolStripRenderer()
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
@@ -1974,6 +1987,56 @@
             ApplicationsToolStripMenuItem.Visible = False
         End If
 
+        'Adv. App Launcher Bug Fix Code
+
+
+
+
+        'DevX's Advanced App Launcher Skin Code
+        lbuser.Font = New Font(Skins.usernamefont, Skins.usernamefontsize, Skins.usernamefontstyle)
+        lbuser.ForeColor = Skins.usernametextcolor
+        If Skins.recentIconsHorizontal = True Then
+            lvadvfiles.Alignment = ListViewAlignment.Top
+            lvadvfiles.View = View.LargeIcon
+        Else
+            lvadvfiles.Alignment = ListViewAlignment.Left
+            lvadvfiles.View = View.SmallIcon
+        End If
+
+        Select Case Skins.placesSide
+            Case "Left"
+                pnladvplaces.Dock = DockStyle.Left
+            Case "Right"
+                pnladvplaces.Dock = DockStyle.Right
+        End Select
+
+
+        pnladvtopbar.Height = Skins.topBarHeight
+        pnladvbottombar.Height = Skins.bottomBarHeight
+        Select Case Skins.userNamePosition
+            Case "Top, Left"
+                lbuser.TextAlign = ContentAlignment.TopLeft
+            Case "Top, Middle"
+                lbuser.TextAlign = ContentAlignment.TopCenter
+            Case "Top, Right"
+                lbuser.TextAlign = ContentAlignment.TopRight
+            Case "Middle, Left"
+                lbuser.TextAlign = ContentAlignment.MiddleLeft
+            Case "Middle, Middle"
+                lbuser.TextAlign = ContentAlignment.MiddleCenter
+            Case "Middle, Right"
+                lbuser.TextAlign = ContentAlignment.MiddleRight
+            Case "Bottom, Left"
+                lbuser.TextAlign = ContentAlignment.BottomLeft
+            Case "Bottom, Middle"
+                lbuser.TextAlign = ContentAlignment.BottomCenter
+            Case "Bottom. Right"
+                lbuser.TextAlign = ContentAlignment.BottomRight
+        End Select
+
+        'End ADV App Launcher Code
+
+        'Desktop++ Skin Code
         ContextMenuStrip1.ForeColor = Skins.launcheritemcolour
         ContextMenuStrip1.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
         For Each Item In NewToolStripMenuItem.DropDownItems
@@ -1984,6 +2047,9 @@
             Item.ForeColor = Skins.launcheritemcolour
             Item.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
         Next
+
+        'End Desktop++ Code
+
 
         If boughtalclock = True Then
             ClockToolStripMenuItem.Visible = True
@@ -4675,6 +4741,30 @@
                 desktopicons.Items.Add(item)
             Next
         End If
+        lvadvplaces.Items.Clear()
+        lvadvplaces.SmallImageList = File_Skimmer.ImageList1
+        lvadvplaces.LargeImageList = File_Skimmer.ImageList1
+
+        For Each folder In My.Computer.FileSystem.GetDirectories("C:\ShiftOS\Home")
+            Dim placeinfo As New IO.DirectoryInfo(folder)
+            Dim place As New ListViewItem
+            place.Text = placeinfo.Name
+            place.Tag = placeinfo.FullName
+            place.ImageIndex = 0
+            lvadvplaces.Items.Add(place)
+        Next
+        lvadvfiles.Items.Clear()
+        lvadvfiles.LargeImageList = File_Skimmer.ImageList1
+        lvadvfiles.SmallImageList = File_Skimmer.ImageList1
+        For Each File In My.Computer.FileSystem.GetFiles("C:\ShiftOS\SoftwareData\AdvStart\Recent")
+            Dim fileinfo As New IO.FileInfo(File)
+            Dim item As New ListViewItem
+            item.Text = fileinfo.Name
+            item.Tag = fileinfo.FullName
+            Dim fileex As String = fileinfo.Extension
+            item.ImageIndex = File_Skimmer.getExType(fileex)(0)
+            lvadvfiles.Items.Add(item)
+        Next
     End Sub
 
     Private Sub ClickDesktopIcon(sender As Object, e As EventArgs) Handles desktopicons.DoubleClick
@@ -4796,5 +4886,323 @@
             My.Computer.FileSystem.DeleteFile(desktopicons.SelectedItems(0).Tag)
         End If
         refreshIcons()
+    End Sub
+
+    Private Sub TerminalToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TerminalToolStripMenuItem1.Click
+        Terminal.Show()
+        Terminal.TopMost = True
+        hideStart()
+    End Sub
+
+    Private Sub FileSkimmerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles FileSkimmerToolStripMenuItem1.Click
+        If boughtfileskimmer = True Then
+            File_Skimmer.Show()
+            File_Skimmer.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find app 'File Skimmer'.")
+        End If
+    End Sub
+
+    Private Sub SystemInformationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SystemInformationToolStripMenuItem.Click
+        If installedsysinfo = True Then
+            systeminfo.Show()
+            systeminfo.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find app 'System Information'.")
+        End If
+    End Sub
+
+    Private Sub ShifterToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ShifterToolStripMenuItem1.Click
+        If boughtshifter = True Then
+            Shifter.Show()
+            Shifter.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find app 'Shifter'.")
+        End If
+    End Sub
+
+    Private Sub SkinLoaderToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SkinLoaderToolStripMenuItem1.Click
+        If boughtskinloader = True Then
+            Skin_Loader.Show()
+            Skin_Loader.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find app 'Skin Loader'.")
+        End If
+    End Sub
+
+    Private Sub SkinShifterToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SkinShifterToolStripMenuItem1.Click
+        If boughtskinshifter Then
+            Skinshifter.Show()
+            Skinshifter.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'skinshifter.saa'.")
+        End If
+    End Sub
+
+    Private Sub IconManagerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles IconManagerToolStripMenuItem1.Click
+        If boughticonmanager = True Then
+            Icon_Manager.Show()
+            Icon_Manager.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'icon_manager.saa'.")
+        End If
+    End Sub
+
+    Private Sub NameChangerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles NameChangerToolStripMenuItem1.Click
+        If boughtnamechanger = True Then
+            Name_Changer.Show()
+            Name_Changer.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'namechanger.saa'.")
+        End If
+    End Sub
+
+    Private Sub ShiftnetToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ShiftnetToolStripMenuItem1.Click
+        If boughtshiftnet = True Then
+            Shiftnet.Show()
+            Shiftnet.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'shiftnet.dri'.")
+        End If
+    End Sub
+
+    Private Sub ShiftoriumToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ShiftoriumToolStripMenuItem1.Click
+        Shiftorium.Show()
+        Shiftorium.TopMost = True
+        hideStart()
+    End Sub
+
+    Private Sub WebBrowserToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles WebBrowserToolStripMenuItem1.Click
+        If boughtwebbrowser = True Then
+            Web_Browser.Show()
+            Web_Browser.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'webbrowser.saa'.")
+        End If
+    End Sub
+
+    Private Sub DownloadManagerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DownloadManagerToolStripMenuItem1.Click
+        If boughtshiftnet = True Then
+            Downloadmanager.Show()
+            Downloadmanager.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'shiftnet.dri'.")
+        End If
+    End Sub
+
+    Private Sub InstallerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles InstallerToolStripMenuItem1.Click
+        If boughtshiftnet = True Then
+            Installer.Show()
+            Installer.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'shiftnet.dri'.")
+        End If
+    End Sub
+
+    Private Sub BitnoteDiggerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles BitnoteDiggerToolStripMenuItem1.Click
+        If boughtbitnotedigger = True Then
+            Bitnote_Digger.Show()
+            Bitnote_Digger.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'btn_dig.dri'.")
+        End If
+    End Sub
+
+    Private Sub BitnoteWalletToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles BitnoteWalletToolStripMenuItem1.Click
+        If boughtbitnotewallet = True Then
+            Bitnote_Wallet.Show()
+            Bitnote_Wallet.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'btn_wallet.saa'.")
+        End If
+    End Sub
+
+    Private Sub FloodGateManagerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FloodGateManagerToolStripMenuItem.Click
+        If boughtfloodgate = True Then
+            FloodGate_Manager.Show()
+            FloodGate_Manager.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'floodgateman.saa'.")
+        End If
+    End Sub
+
+    Private Sub VirusScannerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles VirusScannerToolStripMenuItem1.Click
+        If installedvirusscanner = True Then
+            VirusScanner.Show()
+            VirusScanner.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'virusscanner.saa'.")
+        End If
+    End Sub
+
+    Private Sub DodgeToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DodgeToolStripMenuItem1.Click
+        If installeddodge = True Then
+            Dodge.Show()
+            Dodge.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find app 'Dodge'.")
+        End If
+    End Sub
+
+    Private Sub SnakeyToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SnakeyToolStripMenuItem1.Click
+        If boughtsnakey = True Then
+            Snakey.Show()
+            Snakey.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find app 'Snakey'.")
+        End If
+    End Sub
+
+    Private Sub PongToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PongToolStripMenuItem1.Click
+        If boughtpong = True Then
+            Pong.Show()
+            Pong.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find app 'Pong'.")
+    End Sub
+
+    Private Sub KnowledgeInputToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles KnowledgeInputToolStripMenuItem1.Click
+        Knowledge_Input.Show()
+        Knowledge_Input.TopMost = True
+        hideStart()
+    End Sub
+
+    Private Sub LabyrinthToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LabyrinthToolStripMenuItem.Click
+        Labyrinth.Show()
+        Labyrinth.TopMost = True
+        hideStart()
+    End Sub
+
+    Private Sub ArtpadToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ArtpadToolStripMenuItem1.Click
+        If boughtartpad = True Then
+            ArtPad.Show()
+            ArtPad.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find app 'Artpad'.")
+        End If
+    End Sub
+
+    Private Sub TextpadToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TextpadToolStripMenuItem1.Click
+        If boughttextpad = True Then
+            TextPad.Show()
+            TextPad.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find app 'TextPad'.")
+        End If
+
+    End Sub
+
+    Private Sub OrcWriteToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles OrcWriteToolStripMenuItem1.Click
+        If installedorcwrite = True Then
+            OrcWrite.Show()
+            OrcWrite.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find driver 'OWDHandler.dri'.")
+        End If
+    End Sub
+
+    Private Sub AudioPlayerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AudioPlayerToolStripMenuItem1.Click
+        If boughtaudioplayer = True Then
+            Audio_Player.Show()
+            Audio_Player.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'audplay.saa'.")
+        End If
+    End Sub
+
+    Private Sub VideoPlayerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles VideoPlayerToolStripMenuItem1.Click
+        If boughtvideoplayer = True Then
+            Video_Player.Show()
+            Video_Player.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find file 'video_player.saa'.")
+        End If
+    End Sub
+
+    Private Sub ClockToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ClockToolStripMenuItem1.Click
+        If boughtclock = True Then
+            Clock.Show()
+            Clock.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find app 'Clock'.")
+        End If
+    End Sub
+
+    Private Sub CalculatorToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CalculatorToolStripMenuItem1.Click
+        If boughtcalculator = True Then
+            Calculator.Show()
+            Calculator.TopMost = True
+            hideStart()
+        Else
+            infobox.showinfo("Error", "Could not find app 'Calculator'.")
+        End If
+    End Sub
+
+    Public Sub hideStart()
+        pnladvapplauncher.Hide()
+    End Sub
+
+    Private Sub btnadvshutdown_Click(sender As Object, e As EventArgs) Handles btnadvshutdown.Click
+        savegame()
+        shutdownshiftos()
+    End Sub
+
+    Private Sub lvadvplaces_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvadvplaces.SelectedIndexChanged
+        If lvadvplaces.SelectedItems.Count > 0 Then
+            Dim fName As String = lvadvplaces.SelectedItems(0).Tag
+            fName = fName.Replace("\", "/")
+            File_Skimmer.OpenFile(fName)
+        End If
+        pnladvapplauncher.Hide()
+    End Sub
+
+    Private Sub lvadvfiles_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvadvfiles.SelectedIndexChanged
+        If lvadvfiles.SelectedItems.Count > 0 Then
+            File_Skimmer.OpenFile(lvadvfiles.SelectedItems(0).Tag)
+        End If
+        pnladvapplauncher.Hide()
+    End Sub
+
+    Private Sub ApplicationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ApplicationsToolStripMenuItem.Click
+        If boughtadvapplauncher = False Then
+            ApplicationsToolStripMenuItem.DropDownItems.Clear()
+            If pnladvapplauncher.Visible = False Then
+                pnladvapplauncher.Show()
+            Else
+                pnladvapplauncher.Hide()
+            End If
+            lbuser.Text = username
+            Select Case Skins.desktoppanelposition
+                Case "Top"
+                    pnladvapplauncher.Location = New Point(0, desktoppanel.Height)
+                Case "Bottom"
+                    pnladvapplauncher.Location = New Point(0, Me.Height - desktoppanel.Height - pnladvapplauncher.Height)
+            End Select
+            setupdesktop()
+        End If
     End Sub
 End Class

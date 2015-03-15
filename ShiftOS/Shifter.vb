@@ -124,6 +124,28 @@
     Public customizationsdone As Integer
     Public customizationpointsearned As Integer
     Dim bmp As Bitmap
+
+    'DevX's ADV. App Launcher
+
+    Public usernametextcolor As Color = Skins.usernametextcolor
+    Public shutdowntextcolor As Color = Skins.shutdownTextColor
+    Public usernamebgcolor As Color = Skins.userNamePanelBackgroundColor
+    Public powerpanelbgcolor As Color = Skins.powerPanelBackgroundColor
+    Public powerpanelbgimage As Image = Skins.powerPanelBackgroundImage
+    Public usernamebgimage As Image = Skins.userNamePanelBackground
+    Public usernamefont As String = Skins.usernamefont
+    Public usernamefontsize As Integer = Skins.usernamefontsize
+    Public usernamefontstyle As FontStyle = Skins.usernamefontstyle
+    Public ShutDownString As String = Skins.shutdownstring
+    Public powerpanelfont As String = Skins.shutdownTextFont
+    Public powerpanelfontsize As Integer = Skins.shutdownTextSize
+    Public powerpanelfontstyle As FontStyle = Skins.shutdownTextStyle
+    Public usrbglayout As ImageLayout = Skins.usrPanelBackgroundLayout
+    Public pwrbglayout As ImageLayout = Skins.pwrPanelBackgroundLayout
+
+
+
+
 #Region "Template Code"
     Private Sub Template_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         justopened = True
@@ -614,6 +636,34 @@
         desktopiconspreview.ForeColor = Skins.icontextcolor
         CheckBox1.Checked = Skins.enabledraggableicons
         refreshIcons()
+
+        'Adv. App Launcher Setup Code
+
+        Dim fStyleForAAL As String 'Just for simplicity, ignore.
+        cmbaalusrfont.Text = usernamefont
+        Select Case usernamefontstyle
+            Case FontStyle.Regular
+                fStyleForAAL = "Regular"
+            Case FontStyle.Bold
+                fStyleForAAL = "Bold"
+            Case FontStyle.Italic
+                fStyleForAAL = "Italic"
+            Case FontStyle.Underline
+                fStyleForAAL = "Underline"
+            Case Else
+                fStyleForAAL = "Regular"
+        End Select
+        cmbaalusrstyle.Text = fStyleForAAL
+        nudusrsize.Value = usernamefontsize
+        btnaalpwrpnlbg.BackColor = powerpanelbgcolor
+        If powerpanelbgimage Is Nothing Then btnaalpwrpnlbg.BackgroundImage = Nothing Else btnaalpwrpnlbg.BackgroundImage = powerpanelbgimage
+        btnaalpwrpnlbg.BackgroundImageLayout = pwrbglayout
+        btnaalusrpnlbg.BackColor = usernamebgcolor
+        If usernamebgimage Is Nothing Then btnaalusrpnlbg.BackgroundImage = Nothing Else btnaalusrpnlbg.BackgroundImage = usernamebgimage
+        btnaalusrpnlbg.BackgroundImageLayout = usrbglayout
+
+
+
 
 
 
@@ -1232,6 +1282,7 @@
             comboappbuttontextfont.Items.Add(myFont.Name)
             cbpanelbuttonfont.Items.Add(myFont.Name)
             launcheritemfont.Items.Add(myFont.Name)
+            cmbaalusrfont.Items.Add(myFont.Name)
         Next 'font_family
     End Sub
 
@@ -1388,6 +1439,14 @@
             Skins.titleiconfromtop = titlebaricontop
             Skins.enabledraggableicons = CheckBox1.Checked
             Skins.icontextcolor = icontextcolor
+
+            'Adv App Launcher - Suggested by DevX
+
+            Skins.usernametextcolor = usernametextcolor
+            Skins.usernamefont = usernamefont
+            Skins.usernamefontsize = usernamefontsize
+            Skins.usernamefontstyle = usernamefontstyle
+
 
             ' APPLY
             Skins.saveskinfiles(True)
@@ -1897,13 +1956,17 @@
         pnlwindowsoptions.Size = New Size(458, 297)
         pnlwindowsoptions.Show()
         pnlwindowsoptions.BringToFront()
+
     End Sub
+
+
 
     Private Sub btnreset_Click(sender As Object, e As EventArgs) Handles btnreset.Click
         pnlreset.Location = New Point(133, 6)
         pnlreset.Size = New Size(458, 297)
         pnlreset.Show()
         pnlreset.BringToFront()
+
     End Sub
 
     Private Sub pnltitlebarcolour_Click(sender As Object, e As MouseEventArgs) Handles pnltitlebarcolour.Click
@@ -3101,4 +3164,46 @@
         Button1.BackColor = icontextcolor
         desktopiconspreview.ForeColor = icontextcolor
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        pnlshiftadvapplauncher.BringToFront()
+
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles btnaalusrtextcolor.Click
+        Colour_Picker.colourtochange = "Username Text Color"
+        Colour_Picker.oldcolour = usernametextcolor
+        Colour_Picker.Show()
+        btnaalusrtextcolor.BackColor = usernametextcolor
+    End Sub
+
+    Private Sub cmbaalusrfont_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbaalusrfont.SelectedIndexChanged
+        usernamefont = cmbaalusrfont.SelectedItem
+    End Sub
+
+    Private Sub nudusrsize_ValueChanged(sender As Object, e As EventArgs) Handles nudusrsize.ValueChanged
+        If Not nudusrsize.Value = 0 Then
+            usernamefontsize = nudusrsize.Value
+        Else
+            nudusrsize.Value = 1
+        End If
+
+    End Sub
+
+    Private Sub cmbaalusrstyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbaalusrstyle.SelectedIndexChanged
+        Select Case cmbaalusrstyle.SelectedItem
+            Case "Regular"
+                usernamefontstyle = FontStyle.Regular
+            Case "Bold"
+                usernamefontstyle = FontStyle.Bold
+            Case "Italic"
+                usernamefontstyle = FontStyle.Italic
+            Case "Underline"
+                usernamefontstyle = FontStyle.Underline
+            Case Else
+                usernamefontstyle = FontStyle.Regular
+        End Select
+    End Sub
+
+    
 End Class

@@ -13,7 +13,7 @@
 
     Dim canvaswidth As Integer = 150
     Dim canvasheight As Integer = 100
-    Dim canvasbitmap As New Drawing.Bitmap(canvaswidth, canvasheight)
+    Public canvasbitmap As New Drawing.Bitmap(canvaswidth, canvasheight)
     Dim canvascolor As Color = Color.White
 
     Dim previewcanvasbitmap As New Drawing.Bitmap(canvaswidth, canvasheight)

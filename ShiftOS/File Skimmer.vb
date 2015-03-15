@@ -617,14 +617,14 @@ Public Class File_Skimmer
         'Check if selected item is a file or folder. It it's a folder check its extension
 
         If path Like "*.owd" Then
-            If ShiftOSDesktop.boughtorcwrite = True Then
+            If ShiftOSDesktop.installedorcwrite = True Then
                 Dim sr As New IO.StreamReader(path)
                 OrcWrite.RichTextBox1.Rtf = sr.ReadToEnd()
                 sr.Close()
                 OrcWrite.Show()
                 OrcWrite.TopMost = True
             Else
-                infobox.showinfo("Application Not Found", "ShiftOS could not find an application able the open .owd files.")
+                infobox.showinfo("Application Not Found", "ShiftOS could not find an application able to open .owd files.")
             End If
         ElseIf path Like "*.txt" Then
             If TextPad.needtosave = False Then

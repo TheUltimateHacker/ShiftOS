@@ -695,6 +695,7 @@ Public Class File_Saver
                 Case "artpad"
                     ArtPad.savelocation = lbllocation.Text & "/" & filename
                     ArtPad.saveimage()
+                    ArtPad.canvasbitmap.Save("C:\ShiftOS\SoftwareData\AdvStart\Recent\" & txtfilename.Text & ".pic", Imaging.ImageFormat.Bmp)
                     ArtPad.needtosave = False
                     ShiftOSDesktop.codepoints = ShiftOSDesktop.codepoints + ArtPad.codepointsearned
                     If ShiftOSDesktop.boughttitletext = True Then
@@ -710,6 +711,9 @@ Public Class File_Saver
                 Case "orcwrite"
                     OrcWrite.savepath = lbllocation.Text & "/" & filename
                     OrcWrite.savedocument()
+                    Dim sw As New IO.StreamWriter("C:\ShiftOS\SoftwareData\AdvStart\Recent\" & txtfilename.Text + ".owd")
+                    sw.Write(OrcWrite.RichTextBox1.Rtf)
+                    sw.Close()
             End Select
             Me.Close()
         End If

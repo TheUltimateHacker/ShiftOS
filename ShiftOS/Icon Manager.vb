@@ -733,10 +733,10 @@
 
         icontochange.BackgroundImage = GetImage(openedfilelocation)
         If over64 = True Then
-            icontochange.backgroundimagelayout = BackgroundImageLayout.Stretch
+            icontochange.backgroundimagelayout = ImageLayout.Stretch
             over64 = False
         Else
-            icontochange.backgroundimagelayout = BackgroundImageLayout.Center
+            icontochange.backgroundimagelayout = ImageLayout.Center
         End If
 
     End Sub

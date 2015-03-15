@@ -160,6 +160,9 @@ The preview window above will track your modifications live until you click "App
 
 </value>
   </data>
+  <data name="Label119.Text" xml:space="preserve">
+    <value>Welcome to the Advanced App Launcher Settings! Here, you can customize your Advanced App Launcher to look anyway you like! Be creative! Use the buttons at the bottom to cycle through the different options, and when you're done, click "Apply Changes"!</value>
+  </data>
   <metadata name="tmrfix.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1115, 17</value>
   </metadata>
