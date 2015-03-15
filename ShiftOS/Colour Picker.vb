@@ -382,9 +382,12 @@
     End Sub
 
     Private Sub Clock_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        ShiftOSDesktop.programsopen = ShiftOSDesktop.programsopen - 1
-        Me.Hide()
-        ShiftOSDesktop.setuppanelbuttons()
+        Try
+            ShiftOSDesktop.programsopen = ShiftOSDesktop.programsopen - 1
+            Me.Hide()
+            ShiftOSDesktop.setuppanelbuttons()
+        Catch
+        End Try
     End Sub
 
     'end of general setup
@@ -2046,7 +2049,7 @@
             ShiftOSDesktop.lastcolourpick = pnlnewcolour.BackColor
             Shifter.setuppreshifterstuff()
         End If
-       
+
         Me.Close()
     End Sub
 
