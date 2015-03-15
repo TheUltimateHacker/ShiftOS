@@ -1062,8 +1062,8 @@
         SortOutBooleans(WebBrowserCorrupted, 613, False)
         If boughtdesktopicons = True Then savelines(614) = 11 Else savelines(614) = 10
         If boughtadvapplauncher = True Then savelines(615) = 11 Else savelines(615) = 10
-        IO.File.WriteAllLines(ShiftOSPath + "Shiftum42\Drivers\HDD.dri", savelines)
-        File_Crypt.EncryptFile(ShiftOSPath + "Shiftum42\Drivers\HDD.dri", "C:\ShiftOS\Shiftum42\SKernal.sft", sSecretKey)
+        IO.File.WriteAllLines(ShiftOSPath + "\Shiftum42\Drivers\HDD.dri", savelines)
+        File_Crypt.EncryptFile(ShiftOSPath + "\Shiftum42\Drivers\HDD.dri", "C:\ShiftOS\Shiftum42\SKernal.sft", sSecretKey)
         Try
             Dim sw As New IO.StreamWriter(Paths.dnldata & "Downloadhistory.lst")
             sw.Write(downloadmanagerhistory)
