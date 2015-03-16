@@ -581,7 +581,19 @@ Public Class Terminal
     End Sub
 
     Private Sub DoCommand()
-
+        If command Like "speak_infobox '*' '*'" Then
+            Dim findwords() As String = command.Split("'")
+            Helper.speakInfoBox(findwords(1), findwords(3))
+        End If
+        If command Like "speak '*'" Then
+            Dim findwords() As String = command.Split("'")
+            If Not findwords(1) = "" Then
+                Helper.speak(findwords(1))
+            Else
+                Helper.speak("I'm sorry, but you didn't enter anything for me to speak.")
+            End If
+            further = False
+        End If
         If command Like "alias *" Then
             CreatingAlias1 = False
             CreatingAlias2 = False

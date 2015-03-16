@@ -2122,7 +2122,7 @@ Partial Class ShiftOSDesktop
         '
         Me.UtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TerminalToolStripMenuItem1, Me.FileSkimmerToolStripMenuItem1, Me.SystemInformationToolStripMenuItem})
         Me.UtilitiesToolStripMenuItem.Name = "UtilitiesToolStripMenuItem"
-        Me.UtilitiesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UtilitiesToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.UtilitiesToolStripMenuItem.Text = "Utilities"
         '
         'TerminalToolStripMenuItem1
@@ -2147,7 +2147,7 @@ Partial Class ShiftOSDesktop
         '
         Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShifterToolStripMenuItem1, Me.SkinLoaderToolStripMenuItem1, Me.SkinShifterToolStripMenuItem1, Me.IconManagerToolStripMenuItem1, Me.NameChangerToolStripMenuItem1})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'ShifterToolStripMenuItem1
@@ -2184,7 +2184,7 @@ Partial Class ShiftOSDesktop
         '
         Me.InternetToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShiftnetToolStripMenuItem1, Me.ShiftoriumToolStripMenuItem1, Me.WebBrowserToolStripMenuItem1, Me.DownloadManagerToolStripMenuItem1, Me.InstallerToolStripMenuItem1, Me.BitnoteDiggerToolStripMenuItem1, Me.BitnoteWalletToolStripMenuItem1, Me.FloodGateManagerToolStripMenuItem, Me.VirusScannerToolStripMenuItem1})
         Me.InternetToolStripMenuItem.Name = "InternetToolStripMenuItem"
-        Me.InternetToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.InternetToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.InternetToolStripMenuItem.Text = "Internet"
         '
         'ShiftnetToolStripMenuItem1
@@ -2245,7 +2245,7 @@ Partial Class ShiftOSDesktop
         '
         Me.GamesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DodgeToolStripMenuItem1, Me.SnakeyToolStripMenuItem1, Me.PongToolStripMenuItem1, Me.KnowledgeInputToolStripMenuItem1, Me.LabyrinthToolStripMenuItem})
         Me.GamesToolStripMenuItem.Name = "GamesToolStripMenuItem"
-        Me.GamesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.GamesToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.GamesToolStripMenuItem.Text = "Games"
         '
         'DodgeToolStripMenuItem1
@@ -2282,7 +2282,7 @@ Partial Class ShiftOSDesktop
         '
         Me.AccessoriesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArtpadToolStripMenuItem1, Me.TextpadToolStripMenuItem1, Me.OrcWriteToolStripMenuItem1, Me.AudioPlayerToolStripMenuItem1, Me.VideoPlayerToolStripMenuItem1, Me.ClockToolStripMenuItem1, Me.CalculatorToolStripMenuItem1})
         Me.AccessoriesToolStripMenuItem.Name = "AccessoriesToolStripMenuItem"
-        Me.AccessoriesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AccessoriesToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.AccessoriesToolStripMenuItem.Text = "Accessories"
         '
         'ArtpadToolStripMenuItem1

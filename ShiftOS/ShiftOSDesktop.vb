@@ -5233,4 +5233,8 @@
         refreshIcons()
         'End If
     End Sub
+
+    Private Sub StartFixer(sender As Object, e As MouseEventArgs) Handles desktopicons.MouseDown, pnlpanelbuttonholder.MouseDown
+        If pnladvapplauncher.Visible = True Then pnladvapplauncher.Visible = False
+    End Sub
 End Class
