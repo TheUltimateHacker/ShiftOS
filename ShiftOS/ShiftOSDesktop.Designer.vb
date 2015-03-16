@@ -163,7 +163,7 @@ Partial Class ShiftOSDesktop
         Me.WebBrowserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VideoplayerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VirusScannerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.unitySeperator = New System.Windows.Forms.ToolStripSeparator()
         Me.UnityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShutdownToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.timepanel = New System.Windows.Forms.Panel()
@@ -198,7 +198,7 @@ Partial Class ShiftOSDesktop
         Me.pnladvmain = New System.Windows.Forms.Panel()
         Me.tscadvmainframe = New System.Windows.Forms.ToolStripContainer()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.allPrograms = New System.Windows.Forms.ToolStripDropDownButton()
         Me.UtilitiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TerminalToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileSkimmerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -1654,7 +1654,7 @@ Partial Class ShiftOSDesktop
         Me.ApplicationsToolStripMenuItem.AutoSize = False
         Me.ApplicationsToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
         Me.ApplicationsToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ApplicationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArtpadToolStripMenuItem, Me.AudioplayerToolStripMenuItem, Me.BitnoteDiggerToolStripMenuItem, Me.BitnoteWalletToolStripMenuItem, Me.CalculatorToolStripMenuItem, Me.ClockToolStripMenuItem, Me.DodgeToolStripMenuItem, Me.downloadmanagerToolStripMenuItem, Me.FileSkimmerToolStripMenuItem, Me.FloodGateToolStripMenuItem, Me.IconManagerToolStripMenuItem, Me.InstallerToolStripMenuItem, Me.KnowledgeInputToolStripMenuItem, Me.MazeToolStripMenuItem, Me.NameChangerToolStripMenuItem, Me.orcwriteToolStripMenuItem, Me.PongToolStripMenuItem, Me.ShifterToolStripMenuItem, Me.ShiftnetToolStripMenuItem, Me.ShiftoriumToolStripMenuItem, Me.SkinLoaderToolStripMenuItem, Me.SkinShifterToolStripMenuItem, Me.SnakeyToolStripMenuItem, Me.sysinfoToolStripMenuItem, Me.TerminalToolStripMenuItem, Me.TextPadToolStripMenuItem, Me.WebBrowserToolStripMenuItem, Me.VideoplayerToolStripMenuItem, Me.VirusScannerToolStripMenuItem, Me.ToolStripSeparator1, Me.UnityToolStripMenuItem, Me.ShutdownToolStripMenuItem})
+        Me.ApplicationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArtpadToolStripMenuItem, Me.AudioplayerToolStripMenuItem, Me.BitnoteDiggerToolStripMenuItem, Me.BitnoteWalletToolStripMenuItem, Me.CalculatorToolStripMenuItem, Me.ClockToolStripMenuItem, Me.DodgeToolStripMenuItem, Me.downloadmanagerToolStripMenuItem, Me.FileSkimmerToolStripMenuItem, Me.FloodGateToolStripMenuItem, Me.IconManagerToolStripMenuItem, Me.InstallerToolStripMenuItem, Me.KnowledgeInputToolStripMenuItem, Me.MazeToolStripMenuItem, Me.NameChangerToolStripMenuItem, Me.orcwriteToolStripMenuItem, Me.PongToolStripMenuItem, Me.ShifterToolStripMenuItem, Me.ShiftnetToolStripMenuItem, Me.ShiftoriumToolStripMenuItem, Me.SkinLoaderToolStripMenuItem, Me.SkinShifterToolStripMenuItem, Me.SnakeyToolStripMenuItem, Me.sysinfoToolStripMenuItem, Me.TerminalToolStripMenuItem, Me.TextPadToolStripMenuItem, Me.WebBrowserToolStripMenuItem, Me.VideoplayerToolStripMenuItem, Me.VirusScannerToolStripMenuItem, Me.unitySeperator, Me.UnityToolStripMenuItem, Me.ShutdownToolStripMenuItem})
         Me.ApplicationsToolStripMenuItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ApplicationsToolStripMenuItem.Name = "ApplicationsToolStripMenuItem"
         Me.ApplicationsToolStripMenuItem.Padding = New System.Windows.Forms.Padding(2, 0, 2, 0)
@@ -1847,12 +1847,12 @@ Partial Class ShiftOSDesktop
         Me.VirusScannerToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.VirusScannerToolStripMenuItem.Text = "Virus Scanner"
         '
-        'ToolStripSeparator1
+        'unitySeperator
         '
-        Me.ToolStripSeparator1.BackColor = System.Drawing.Color.Transparent
-        Me.ToolStripSeparator1.ForeColor = System.Drawing.Color.White
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(211, 6)
+        Me.unitySeperator.BackColor = System.Drawing.Color.Transparent
+        Me.unitySeperator.ForeColor = System.Drawing.Color.White
+        Me.unitySeperator.Name = "unitySeperator"
+        Me.unitySeperator.Size = New System.Drawing.Size(211, 6)
         '
         'UnityToolStripMenuItem
         '
@@ -2102,27 +2102,27 @@ Partial Class ShiftOSDesktop
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.allPrograms})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(184, 25)
         Me.ToolStrip1.Stretch = True
         Me.ToolStrip1.TabIndex = 0
         '
-        'ToolStripButton1
+        'allPrograms
         '
-        Me.ToolStripButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UtilitiesToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.InternetToolStripMenuItem, Me.GamesToolStripMenuItem, Me.AccessoriesToolStripMenuItem})
-        Me.ToolStripButton1.Image = Global.ShiftOS.My.Resources.Resources.iconFileSkimmer
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(104, 22)
-        Me.ToolStripButton1.Text = "All Programs"
+        Me.allPrograms.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UtilitiesToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.InternetToolStripMenuItem, Me.GamesToolStripMenuItem, Me.AccessoriesToolStripMenuItem})
+        Me.allPrograms.Image = Global.ShiftOS.My.Resources.Resources.iconFileSkimmer
+        Me.allPrograms.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.allPrograms.Name = "allPrograms"
+        Me.allPrograms.Size = New System.Drawing.Size(104, 22)
+        Me.allPrograms.Text = "All Programs"
         '
         'UtilitiesToolStripMenuItem
         '
         Me.UtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TerminalToolStripMenuItem1, Me.FileSkimmerToolStripMenuItem1, Me.SystemInformationToolStripMenuItem})
         Me.UtilitiesToolStripMenuItem.Name = "UtilitiesToolStripMenuItem"
-        Me.UtilitiesToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.UtilitiesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.UtilitiesToolStripMenuItem.Text = "Utilities"
         '
         'TerminalToolStripMenuItem1
@@ -2147,7 +2147,7 @@ Partial Class ShiftOSDesktop
         '
         Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShifterToolStripMenuItem1, Me.SkinLoaderToolStripMenuItem1, Me.SkinShifterToolStripMenuItem1, Me.IconManagerToolStripMenuItem1, Me.NameChangerToolStripMenuItem1})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'ShifterToolStripMenuItem1
@@ -2184,7 +2184,7 @@ Partial Class ShiftOSDesktop
         '
         Me.InternetToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShiftnetToolStripMenuItem1, Me.ShiftoriumToolStripMenuItem1, Me.WebBrowserToolStripMenuItem1, Me.DownloadManagerToolStripMenuItem1, Me.InstallerToolStripMenuItem1, Me.BitnoteDiggerToolStripMenuItem1, Me.BitnoteWalletToolStripMenuItem1, Me.FloodGateManagerToolStripMenuItem, Me.VirusScannerToolStripMenuItem1})
         Me.InternetToolStripMenuItem.Name = "InternetToolStripMenuItem"
-        Me.InternetToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.InternetToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.InternetToolStripMenuItem.Text = "Internet"
         '
         'ShiftnetToolStripMenuItem1
@@ -2245,7 +2245,7 @@ Partial Class ShiftOSDesktop
         '
         Me.GamesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DodgeToolStripMenuItem1, Me.SnakeyToolStripMenuItem1, Me.PongToolStripMenuItem1, Me.KnowledgeInputToolStripMenuItem1, Me.LabyrinthToolStripMenuItem})
         Me.GamesToolStripMenuItem.Name = "GamesToolStripMenuItem"
-        Me.GamesToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.GamesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.GamesToolStripMenuItem.Text = "Games"
         '
         'DodgeToolStripMenuItem1
@@ -2282,7 +2282,7 @@ Partial Class ShiftOSDesktop
         '
         Me.AccessoriesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArtpadToolStripMenuItem1, Me.TextpadToolStripMenuItem1, Me.OrcWriteToolStripMenuItem1, Me.AudioPlayerToolStripMenuItem1, Me.VideoPlayerToolStripMenuItem1, Me.ClockToolStripMenuItem1, Me.CalculatorToolStripMenuItem1})
         Me.AccessoriesToolStripMenuItem.Name = "AccessoriesToolStripMenuItem"
-        Me.AccessoriesToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.AccessoriesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AccessoriesToolStripMenuItem.Text = "Accessories"
         '
         'ArtpadToolStripMenuItem1
@@ -2556,7 +2556,7 @@ Partial Class ShiftOSDesktop
     Friend WithEvents ShiftoriumToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ClockToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TerminalToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents unitySeperator As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ShutdownToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents paneltimetext As System.Windows.Forms.Label
     Friend WithEvents clocktick As System.Windows.Forms.Timer
@@ -2724,7 +2724,7 @@ Partial Class ShiftOSDesktop
     Friend WithEvents pnladvmain As System.Windows.Forms.Panel
     Friend WithEvents tscadvmainframe As System.Windows.Forms.ToolStripContainer
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripDropDownButton
+    Friend WithEvents allPrograms As System.Windows.Forms.ToolStripDropDownButton
     Friend WithEvents UtilitiesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TerminalToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FileSkimmerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem

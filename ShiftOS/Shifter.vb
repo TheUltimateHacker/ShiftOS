@@ -119,6 +119,8 @@
     Public skinpanelbuttonstyle As ImageLayout = ImageLayout.Stretch
     Public skinminimizebutton(2) As Image
     Public skinminimizebuttonstyle As ImageLayout = ImageLayout.Stretch
+    Public skinuserpanel(2) As Image
+    Public skinshutdownbutton(2) As Image
 
     Public customizationtimepoints As Integer
     Public customizationsdone As Integer
@@ -127,6 +129,8 @@
 
     'DevX's ADV. App Launcher
 
+    Public startWidth As Integer = Skins.startWidth
+    Public startHeight As Integer = Skins.startHeight
     Public usernametextcolor As Color = Skins.usernametextcolor
     Public shutdowntextcolor As Color = Skins.shutdownTextColor
     Public usernamebgcolor As Color = Skins.userNamePanelBackgroundColor
@@ -622,6 +626,9 @@
         launcheritemtxtcolour.BackColor = Skins.launcheritemcolour
         launcheritemfont.Text = Skins.launcheritemfont
         icontextcolor = Skins.icontextcolor
+
+        skinuserpanel(0) = userNamePanelBackground
+        skinshutdownbutton(0) = powerpanelbgimage
 
         'Uncomment when I (The Ultimate Hacker) have gotten the Shiftnet Download for
         'Desktop++ Done:
@@ -1446,8 +1453,19 @@
             Skins.usernamefont = usernamefont
             Skins.usernamefontsize = usernamefontsize
             Skins.usernamefontstyle = usernamefontstyle
-
-
+            Skins.userNamePanelBackgroundColor = usernamebgcolor
+            Try
+                Skins.userNamePanelBackground = skinuserpanel(0)
+            Catch
+                Skins.userNamePanelBackground = Nothing
+            End Try
+            Skins.powerPanelBackgroundColor = powerpanelbgcolor
+            Try
+                Skins.powerPanelBackgroundImage = skinshutdownbutton(0)
+            Catch
+                Skins.powerPanelBackgroundImage = Nothing
+            End Try
+            Skins.pwrPanelBackgroundLayout = pwrbglayout
             ' APPLY
             Skins.saveskinfiles(True)
             'windows resize fix
@@ -3206,4 +3224,39 @@
     End Sub
 
     
+    Private Sub btnaalusrpnlbg_Click(sender As Object, e As MouseEventArgs) Handles btnaalusrpnlbg.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+            Graphic_Picker.graphictochange = "Username Panel Background"
+            Graphic_Picker.ShowDialog()
+            Try
+                btnaalusrpnlbg.BackgroundImage = skinuserpanel(0)
+            Catch
+                btnaalusrpnlbg.BackgroundImage = Nothing
+            End Try
+            btnaalusrpnlbg.BackgroundImageLayout = usrbglayout
+        Else
+            Colour_Picker.colourtochange = "Username Panel Background"
+            Colour_Picker.oldcolour = usernamebgcolor
+            Colour_Picker.ShowDialog()
+            btnaalusrpnlbg.BackColor = usernamebgcolor
+        End If
+    End Sub
+
+    Private Sub btnaalpwrpnlbg_Click(sender As Object, e As MouseEventArgs) Handles btnaalpwrpnlbg.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+            Graphic_Picker.graphictochange = "Shutdown Button Background"
+            Graphic_Picker.ShowDialog()
+            Try
+                btnaalpwrpnlbg.BackgroundImage = skinshutdownbutton(0)
+            Catch
+                btnaalpwrpnlbg.BackgroundImage = Nothing
+            End Try
+            btnaalpwrpnlbg.BackgroundImageLayout = usrbglayout
+        Else
+            Colour_Picker.colourtochange = "Shutdown Button Background"
+            Colour_Picker.oldcolour = powerpanelbgcolor
+            Colour_Picker.ShowDialog()
+            btnaalpwrpnlbg.BackColor = usernamebgcolor
+        End If
+    End Sub
 End Class

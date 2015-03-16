@@ -170,7 +170,7 @@ Module Skins
     Public shutdownTextStyle As FontStyle = FontStyle.Italic
     Public usrPanelBackgroundLayout As ImageLayout = ImageLayout.Stretch
     Public pwrPanelBackgroundLayout As ImageLayout = ImageLayout.Stretch
-
+    Public useClassicAppLauncher As Boolean = True
 
     Private Function GetImage(ByVal fileName As String) As Bitmap
         Dim ret As Bitmap
@@ -195,7 +195,7 @@ Module Skins
             userNamePanelBackground = GetImage(savepath + "Shiftum42\Skins\Loaded\userbar")
         End If
         If File.Exists(savepath + "Shiftum42\Skins\Loaded\powerbar") Then
-            userNamePanelBackground = GetImage(savepath + "Shiftum42\Skins\Loaded\powerbar")
+            powerPanelBackgroundImage = GetImage(savepath + "Shiftum42\Skins\Loaded\powerbar")
         End If
         If File.Exists(savepath + "Shiftum42\Skins\Loaded\titlebar") Then
             titlebar = GetImage(savepath + "Shiftum42\Skins\Loaded\titlebar")
@@ -419,11 +419,11 @@ Module Skins
             If loaddata(117) = "" Then startHeight = 526 Else startHeight = loaddata(117)
             If loaddata(118) = "" Then startWidth = 320 Else startWidth = loaddata(118)
             If loaddata(119) = "" Then shutdownstring = "Shut Down ShiftOS" Else shutdownstring = loaddata(119)
-            If loaddata(120) = "" Then userNamePosition = "Middle, Right" Else userNamePosition = loaddata(200)
-            If loaddata(121) = "" Then recentIconsHorizontal = False Else recentIconsHorizontal = loaddata(201)
-            If loaddata(122) = "" Then usernametextcolor = Color.White Else usernametextcolor = Color.FromArgb(loaddata(202))
-            If loaddata(123) = "" Then usernamefont = "Trebuchet MS" Else usernamefont = loaddata(203)
-            If loaddata(124) = "" Then usernamefontsize = 12 Else usernamefontsize = loaddata(204)
+            If loaddata(120) = "" Then userNamePosition = "Middle, Right" Else userNamePosition = loaddata(120)
+            If loaddata(121) = "" Then recentIconsHorizontal = False Else recentIconsHorizontal = loaddata(121)
+            If loaddata(122) = "" Then usernametextcolor = Color.White Else usernametextcolor = Color.FromArgb(loaddata(122))
+            If loaddata(123) = "" Then usernamefont = "Trebuchet MS" Else usernamefont = loaddata(123)
+            If loaddata(124) = "" Then usernamefontsize = 12 Else usernamefontsize = loaddata(124)
             If loaddata(125) = "" Then usernamefontstyle = FontStyle.Bold Else usernamefontstyle = loaddata(125)
             If loaddata(126) = "" Then userNamePanelBackgroundColor = Color.Gray Else userNamePanelBackgroundColor = Color.FromArgb(loaddata(126))
             If loaddata(127) = "" Then powerPanelBackgroundColor = Color.Gray Else powerPanelBackgroundColor = Color.FromArgb(loaddata(127))
@@ -433,7 +433,7 @@ Module Skins
             If loaddata(131) = "" Then shutdownTextStyle = FontStyle.Italic Else shutdownTextStyle = loaddata(132)
             If loaddata(132) = "" Then usrPanelBackgroundLayout = ImageLayout.Stretch Else usrPanelBackgroundLayout = loaddata(132)
             If loaddata(133) = "" Then pwrPanelBackgroundLayout = ImageLayout.Stretch Else pwrPanelBackgroundLayout = loaddata(133)
-
+            If loaddata(134) = "" Then useClassicAppLauncher = False Else useClassicAppLauncher = loaddata(134)
 
         Else
             setupdefaults()
@@ -633,6 +633,7 @@ Module Skins
         savedata(131) = shutdownTextStyle
         savedata(132) = usrPanelBackgroundLayout
         savedata(133) = pwrPanelBackgroundLayout
+        savedata(134) = useClassicAppLauncher
 
         ' End of skin data text was at line 110, if adding future items, check for "End of skin data" on line 110
         savedata(200) = "End of skin data"

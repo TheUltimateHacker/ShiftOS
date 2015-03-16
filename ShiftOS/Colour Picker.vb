@@ -1762,6 +1762,10 @@
                 Shifter.shifterskinimages(6) = ""
                 Shifter.shifterskinimages(7) = ""
                 Shifter.shifterskinimages(8) = ""
+            Case "Username Panel Background"
+                Shifter.usernamebgcolor = pnlnewcolour.BackColor
+            Case "Shutdown Button Background"
+                Shifter.powerpanelbgcolor = pnlnewcolour.BackColor
             Case "App Launcher Button Colour"
                 Shifter.applauncherbuttoncolour = pnlnewcolour.BackColor
                 If Shifter.skinapplauncherbutton(0) Is Nothing Then  Else Shifter.skinapplauncherbutton(0).Dispose()

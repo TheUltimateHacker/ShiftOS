@@ -1993,8 +1993,26 @@
 
 
         'DevX's Advanced App Launcher Skin Code
+        For Each item In allPrograms.DropDownItems 'Clever way of adding proper font to All Programs, where each subitem of each item is skinned. This uses the default App Launcher skinning system, so you could
+            'indeed rip an entire XP skin, as this engine is also used by the Desktop++ Right-click menu.
+            item.ForeColor = Skins.launcheritemcolour
+            item.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
+            For Each subitem In item.DropDownItems
+                subitem.ForeColor = Skins.launcheritemcolour
+                subitem.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
+            Next
+        Next
+
+
         lbuser.Font = New Font(Skins.usernamefont, Skins.usernamefontsize, Skins.usernamefontstyle)
         lbuser.ForeColor = Skins.usernametextcolor
+        lbuser.BackColor = Skins.userNamePanelBackgroundColor
+        If IsNothing(Skins.userNamePanelBackground) Then lbuser.BackgroundImage = Nothing Else lbuser.BackgroundImage = Skins.userNamePanelBackground
+        lbuser.BackgroundImageLayout = Skins.usrPanelBackgroundLayout
+        btnadvshutdown.BackColor = Skins.powerPanelBackgroundColor
+        If IsNothing(Skins.powerPanelBackgroundImage) Then btnadvshutdown.BackgroundImage = Nothing Else btnadvshutdown.BackgroundImage = Skins.powerPanelBackgroundImage
+        btnadvshutdown.BackgroundImageLayout = Skins.pwrPanelBackgroundLayout
+
         If Skins.recentIconsHorizontal = True Then
             lvadvfiles.Alignment = ListViewAlignment.Top
             lvadvfiles.View = View.LargeIcon
@@ -2039,13 +2057,13 @@
         'Desktop++ Skin Code
         ContextMenuStrip1.ForeColor = Skins.launcheritemcolour
         ContextMenuStrip1.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
-        For Each Item In NewToolStripMenuItem.DropDownItems
-            Item.ForeColor = Skins.launcheritemcolour
-            Item.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
+        For Each item In NewToolStripMenuItem.DropDownItems
+            item.ForeColor = Skins.launcheritemcolour
+            item.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
         Next
-        For Each Item In TileViewToolStripMenuItem.DropDownItems
-            Item.ForeColor = Skins.launcheritemcolour
-            Item.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
+        For Each item In TileViewToolStripMenuItem.DropDownItems
+            item.ForeColor = Skins.launcheritemcolour
+            item.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
         Next
 
         'End Desktop++ Code
@@ -2329,18 +2347,18 @@
 
         If boughtapplaunchershutdown = True Then
             ShutdownToolStripMenuItem.Visible = True
-            ToolStripSeparator1.Visible = True
+            unitySeperator.Visible = True
             If boughtshutdownicon = True Then
                 ShutdownToolStripMenuItem.Image = shutdowniconlauncher
             End If
         Else
             ShutdownToolStripMenuItem.Visible = False
-            ToolStripSeparator1.Visible = False
+            unitySeperator.Visible = False
         End If
 
         If boughtunitymodetoggle = True Then
             UnityToolStripMenuItem.Visible = True
-            ToolStripSeparator1.Visible = True
+            unitySeperator.Visible = True
             If boughtunitytoggleicon = True Then
                 UnityToolStripMenuItem.Image = unitytoggleiconlauncher
             End If
@@ -2363,6 +2381,13 @@
         setuppanelbuttons()
 
         ApplicationsToolStripMenuItem.BackColor = Skins.applauncherbuttoncolour
+        'Fixes an AL bug with ADVAL
+
+        If Skins.useClassicAppLauncher = False Then
+            For Each item In ApplicationsToolStripMenuItem.DropDownItems
+                item.Visible = False
+            Next
+        End If
     End Sub
 
    
@@ -5077,6 +5102,7 @@
             hideStart()
         Else
             infobox.showinfo("Error", "Could not find app 'Pong'.")
+        End If
     End Sub
 
     Private Sub KnowledgeInputToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles KnowledgeInputToolStripMenuItem1.Click
@@ -5188,8 +5214,8 @@
     End Sub
 
     Private Sub ApplicationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ApplicationsToolStripMenuItem.Click
-        If boughtadvapplauncher = False Then
-            ApplicationsToolStripMenuItem.DropDownItems.Clear()
+        If boughtadvapplauncher = False And Skins.useClassicAppLauncher = False Then 'Change false to true when the ability to buy the Advanced App Launcher from the Shiftnet is finished.
+            ApplicationsToolStripMenuItem.HideDropDown()
             If pnladvapplauncher.Visible = False Then
                 pnladvapplauncher.Show()
             Else
@@ -5202,7 +5228,7 @@
                 Case "Bottom"
                     pnladvapplauncher.Location = New Point(0, Me.Height - desktoppanel.Height - pnladvapplauncher.Height)
             End Select
-            setupdesktop()
+            refreshIcons()
         End If
     End Sub
 End Class

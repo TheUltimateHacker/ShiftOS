@@ -14,7 +14,7 @@
     Public imagelocations(2) As String
     Dim skinimages(100) As String
     Dim firstrun As Boolean = True
-
+#Region "Template Code"
     Private Sub Template_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         justopened = True
         Me.Left = (Screen.PrimaryScreen.Bounds.Width - Me.Width) / 2
@@ -29,7 +29,7 @@
         ShiftOSDesktop.setpanelbuttonappearnce(ShiftOSDesktop.pnlpanelbuttongraphicpicker, ShiftOSDesktop.tbgraphicpickericon, ShiftOSDesktop.tbgraphicpickertext, True)
         ShiftOSDesktop.programsopen = ShiftOSDesktop.programsopen + 1
 
-        Array.Copy(Shifter.shifterskinimages, skinimages, skinimages.Length)
+        Array.Copy(Shifter.shifterskinimages, skinimages, Shifter.shifterskinimages.Length)
         'For a = 0 To skinimages.Length - 1
         '    skinimages(a) = Shifter.shifterskinimages(a).Clone
         'Next
@@ -394,12 +394,17 @@
     End Sub
 
     'end of general setup
+#End Region
 
     Private Sub setupgraphics()
         lblobjecttoskin.Text = graphictochange
         picgraphic.Dock = DockStyle.None
 
         Select Case graphictochange
+            Case "Shutdown Button Background"
+                setpreviewsizes(Shifter.startWidth, Shifter.startHeight, Shifter.skinshutdownbutton, Shifter.pwrbglayout, 51, 52, 53)
+            Case "Username Panel Background"
+                setpreviewsizes(Shifter.startWidth, Shifter.startHeight, Shifter.skinuserpanel, Shifter.usrbglayout, 48, 49, 50)
             Case "Close Button"
                 setpreviewsizes(Shifter.closebuttonwidth, Shifter.closebuttonheight, Shifter.skinclosebutton, Shifter.skinclosebuttonstyle, 0, 1, 2)
             Case "Title Bar"
@@ -439,6 +444,14 @@
 
     Private Sub btnapply_Click(sender As Object, e As EventArgs) Handles btnapply.Click
         Select Case graphictochange
+            Case "Shutdown Button Background"
+                Array.Copy(images, Shifter.skinshutdownbutton, Shifter.pwrbglayout)
+                Shifter.skinshutdownbutton(0) = Image.FromFile(imagelocations(0).Clone)
+                Shifter.pwrbglayout = imagestyle
+            Case "Username Panel Background"
+                Array.Copy(images, Shifter.skinuserpanel, Shifter.usrbglayout)
+                Shifter.skinuserpanel(0) = Image.FromFile(imagelocations(0).Clone)
+                Shifter.usrbglayout = imagestyle
             Case "Close Button"
                 Array.Copy(images, Shifter.skinclosebutton, Shifter.skinclosebutton.Length)
                 Shifter.shifterskinimages(0) = imagelocations(0).Clone
