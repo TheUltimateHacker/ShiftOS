@@ -2390,7 +2390,7 @@
         End If
     End Sub
 
-   
+
 
     Public Sub setuppanelbuttons()
         If boughtpanelbuttons Then
@@ -5214,21 +5214,23 @@
     End Sub
 
     Private Sub ApplicationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ApplicationsToolStripMenuItem.Click
-        If boughtadvapplauncher = False And Skins.useClassicAppLauncher = False Then 'Change false to true when the ability to buy the Advanced App Launcher from the Shiftnet is finished.
-            ApplicationsToolStripMenuItem.HideDropDown()
-            If pnladvapplauncher.Visible = False Then
-                pnladvapplauncher.Show()
-            Else
-                pnladvapplauncher.Hide()
-            End If
-            lbuser.Text = username
-            Select Case Skins.desktoppanelposition
-                Case "Top"
-                    pnladvapplauncher.Location = New Point(0, desktoppanel.Height)
-                Case "Bottom"
-                    pnladvapplauncher.Location = New Point(0, Me.Height - desktoppanel.Height - pnladvapplauncher.Height)
-            End Select
-            refreshIcons()
+        'boughtadvapplauncher = True
+        'Skins.useClassicAppLauncher = True
+        'If boughtadvapplauncher = False And Skins.useClassicAppLauncher = False Then 'Change false to true when the ability to buy the Advanced App Launcher from the Shiftnet is finished.
+        ApplicationsToolStripMenuItem.HideDropDown()
+        If pnladvapplauncher.Visible = False Then
+            pnladvapplauncher.Show()
+        Else
+            pnladvapplauncher.Hide()
         End If
+        lbuser.Text = username
+        Select Case Skins.desktoppanelposition
+            Case "Top"
+                pnladvapplauncher.Location = New Point(0, desktoppanel.Height)
+            Case "Bottom"
+                pnladvapplauncher.Location = New Point(0, Me.Height - desktoppanel.Height - pnladvapplauncher.Height)
+        End Select
+        refreshIcons()
+        'End If
     End Sub
 End Class
