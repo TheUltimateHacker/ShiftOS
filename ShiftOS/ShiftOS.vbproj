@@ -244,6 +244,7 @@
     <Compile Include="OrcWrite.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Paths.vb" />
     <Compile Include="ProgressBarEX.Designer.vb">
       <DependentUpon>ProgressBarEX.vb</DependentUpon>
     </Compile>

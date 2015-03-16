@@ -15,7 +15,7 @@
     Public newgame As Boolean = False
     Public lastcolourpick As Color = Color.Gray
     Public programsopen As Integer = 0
-    Public ShiftOSPath As String = "C:\ShiftOS\"
+    Public ShiftOSPath As String = "C:\ShiftOS"
     Private actualshiftversion As String = "0.0.8"
     Public ingameversion As String = "0.0.1.0"
 
@@ -1062,16 +1062,16 @@
         SortOutBooleans(WebBrowserCorrupted, 613, False)
         If boughtdesktopicons = True Then savelines(614) = 11 Else savelines(614) = 10
         If boughtadvapplauncher = True Then savelines(615) = 11 Else savelines(615) = 10
-        IO.File.WriteAllLines(ShiftOSPath + "Shiftum42\Drivers\HDD.dri", savelines)
-        File_Crypt.EncryptFile(ShiftOSPath + "Shiftum42\Drivers\HDD.dri", "C:/ShiftOS/Shiftum42/SKernal.sft", sSecretKey)
+        IO.File.WriteAllLines(Paths.savedata & "Drivers\HDD.dri", savelines)
+        File_Crypt.EncryptFile(Paths.savedata & "Drivers\HDD.dri", Paths.savedata & "SKernal.sft", sSecretKey)
         Try
-            Dim sw As New IO.StreamWriter(ShiftOSPath & "SoftwareData\DownloadManager\Downloadhistory.lst")
+            Dim sw As New IO.StreamWriter(Paths.dnldata & "Downloadhistory.lst")
             sw.Write(downloadmanagerhistory)
             sw.Close()
         Catch ex As Exception
         End Try
 
-        Dim objWriter As New System.IO.StreamWriter("C:/ShiftOS/Shiftum42/HDAccess.sft", False)
+        Dim objWriter As New System.IO.StreamWriter(Paths.savedata & "HDAccess.sft", False)
         objWriter.Write(actualshiftversion)
         objWriter.Close()
 
@@ -1090,8 +1090,8 @@
     End Sub
 
     Private Sub loadgame()
-        File_Crypt.DecryptFile("C:/ShiftOS/Shiftum42/SKernal.sft", ShiftOSPath + "Shiftum42\Drivers\HDD.dri", sSecretKey)
-        loadlines = IO.File.ReadAllLines(ShiftOSPath + "Shiftum42\Drivers\HDD.dri")
+        File_Crypt.DecryptFile(Paths.savedata & "SKernal.sft", Paths.savedata & "Drivers\HDD.dri", sSecretKey)
+        loadlines = IO.File.ReadAllLines(Paths.savedata & "Drivers\HDD.dri")
 
         If loadlines(0) = 11 Then boughttitlebar = True Else boughttitlebar = False
         If loadlines(1) = 11 Then boughtgray = True Else boughtgray = False

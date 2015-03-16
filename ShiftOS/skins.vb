@@ -409,6 +409,7 @@ Module Skins
             If Not loaddata(109) = "" Then enablebordercorners = loaddata(109)
 
             'for adding extra features, check:
+
             If loaddata(110) = "" Or loaddata(110) = "End of skin data" Then loaddata(110) = enabledraggableicons Else enabledraggableicons = loaddata(110)
             If loaddata(111) = "" Or loaddata(111) = "End of skin data" Then loaddata(111) = icontextcolor.ToArgb Else icontextcolor = Color.FromArgb(loaddata(111))
             If loaddata(112) = "" Or loaddata(112) = "End of skin data" Then loaddata(112) = showicons Else showicons = loaddata(112)
@@ -419,11 +420,26 @@ Module Skins
             If loaddata(117) = "" Then startHeight = 526 Else startHeight = loaddata(117)
             If loaddata(118) = "" Then startWidth = 320 Else startWidth = loaddata(118)
             If loaddata(119) = "" Then shutdownstring = "Shut Down ShiftOS" Else shutdownstring = loaddata(119)
+<<<<<<< HEAD
             If loaddata(120) = "" Then userNamePosition = "Middle, Right" Else userNamePosition = loaddata(120)
             If loaddata(121) = "" Then recentIconsHorizontal = False Else recentIconsHorizontal = loaddata(121)
             If loaddata(122) = "" Then usernametextcolor = Color.White Else usernametextcolor = Color.FromArgb(loaddata(122))
             If loaddata(123) = "" Then usernamefont = "Trebuchet MS" Else usernamefont = loaddata(123)
             If loaddata(124) = "" Then usernamefontsize = 12 Else usernamefontsize = loaddata(124)
+=======
+            If loaddata(120) = "" Then userNamePosition = "Middle, Right" Else userNamePosition = loaddata(200)
+            Try
+                If loaddata(121) = "" Then recentIconsHorizontal = False Else recentIconsHorizontal = loaddata(201)
+                If loaddata(122) = "" Then usernametextcolor = Color.White Else usernametextcolor = Color.FromArgb(loaddata(202))
+                If loaddata(123) = "" Then usernamefont = "Trebuchet MS" Else usernamefont = loaddata(203)
+                If loaddata(124) = "" Then usernamefontsize = 12 Else usernamefontsize = loaddata(204)
+            Catch
+                usernametextcolor = Color.White
+                usernamefont = "Trebuchet MS"
+                recentIconsHorizontal = False
+                usernamefontsize = 12
+            End Try
+>>>>>>> origin/master
             If loaddata(125) = "" Then usernamefontstyle = FontStyle.Bold Else usernamefontstyle = loaddata(125)
             If loaddata(126) = "" Then userNamePanelBackgroundColor = Color.Gray Else userNamePanelBackgroundColor = Color.FromArgb(loaddata(126))
             If loaddata(127) = "" Then powerPanelBackgroundColor = Color.Gray Else powerPanelBackgroundColor = Color.FromArgb(loaddata(127))
