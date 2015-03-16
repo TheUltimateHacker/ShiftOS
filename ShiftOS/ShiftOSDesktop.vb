@@ -1588,9 +1588,9 @@
             boughtadvapplauncher = False
         End Try
         Viruses.startactiveviruses()
-        If IO.File.Exists(ShiftOSPath + "Shiftum42\Skins\Current\skindata.dat") Then loadcurrentskin()
-        If My.Computer.FileSystem.DirectoryExists(ShiftOSPath + "Shiftum42\Icons") Then setupicons()
-        If IO.File.Exists(ShiftOSPath & "SoftwareData\DownloadManager\Downloadhistory.lst") Then downloadmanagerhistory = IO.File.ReadAllText(ShiftOSPath & "SoftwareData\DownloadManager\Downloadhistory.lst")
+        If IO.File.Exists(Paths.loadedskin & "skindata.dat") Then loadcurrentskin() ' FIXME (ShiftOSPath + "Shiftum42\Skins\Current\skindata.dat")
+        If My.Computer.FileSystem.DirectoryExists(Paths.savedata & "Icons") Then setupicons()
+        If IO.File.Exists(Paths.dnldata & "Downloadhistory.lst") Then downloadmanagerhistory = IO.File.ReadAllText(ShiftOSPath & "\SoftwareData\DownloadManager\Downloadhistory.lst")
     End Sub
 
     Private Sub ShiftOSDesktop_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -1599,7 +1599,7 @@
             savegame()
         Else
             loadgame()
-            Terminal.runterminalfile(ShiftOSPath + "Shiftum42\autorun.trm")
+            Terminal.runterminalfile(ShiftOSPath + "\Shiftum42\autorun.trm")
         End If
 
         If Not My.Computer.FileSystem.DirectoryExists(ShiftOSPath + "\SoftwareData\AdvStart\Recent") Then
@@ -1617,7 +1617,7 @@
     End Sub
 
     Public Sub loadcurrentskin()
-        skinlines = IO.File.ReadAllLines(ShiftOSPath + "Shiftum42\Skins\Current\skindata.dat")
+        skinlines = IO.File.ReadAllLines(Paths.loadedskin & "skindata.dat")
         titlebarcolour = Color.FromArgb(skinlines(0))
         windowbordercolour = Color.FromArgb(skinlines(1))
         windowbordersize = skinlines(2)
@@ -1811,8 +1811,8 @@
         If Labyrinth.Visible Then Labyrinth.setupall()
         If VirusScanner.Visible Then VirusScanner.setupall()
         If terminalfullscreen = False Then Terminal.setupall()
-        If Not My.Computer.FileSystem.DirectoryExists(ShiftOSPath & "/Home/Desktop") Then
-            IO.Directory.CreateDirectory(ShiftOSPath & "/Home/Desktop")
+        If Not My.Computer.FileSystem.DirectoryExists(ShiftOSPath & "\Home\Desktop") Then
+            IO.Directory.CreateDirectory(ShiftOSPath & "\Home\Desktop")
         End If
         'Desktop Icons
         If unitymode = False Then
@@ -4098,14 +4098,14 @@
     'End Sub
 
     Public Sub setupiconprocess(ByVal location As String, ByRef imagetochange As Image)
-        If IO.File.Exists(ShiftOSPath + "Shiftum42\Icons\" & location & ".pic") Then
-            imagetochange = GetImage(ShiftOSPath + "Shiftum42\Icons\" & location & ".pic")
+        If IO.File.Exists(ShiftOSPath + "\Shiftum42\Icons\" & location & ".pic") Then
+            imagetochange = GetImage(ShiftOSPath + "\Shiftum42\Icons\" & location & ".pic")
         End If
     End Sub
 
     Public Sub setupicons()
 
-        iconmanagericondatalines = IO.File.ReadAllLines(ShiftOSPath + "Shiftum42\Icons\icondata.dat")
+        iconmanagericondatalines = IO.File.ReadAllLines(ShiftOSPath + "\Shiftum42\Icons\icondata.dat")
         titlebariconsize = iconmanagericondatalines(0)
         panelbuttoniconsize = iconmanagericondatalines(1)
         launchericonsize = iconmanagericondatalines(2)
@@ -4725,7 +4725,7 @@
             desktopicons.LargeImageList = File_Skimmer.ImageList1
             desktopicons.SmallImageList = File_Skimmer.ImageList1
 
-            Dim dir As New IO.DirectoryInfo("C:\ShiftOS\Home\Desktop")
+            Dim dir As New IO.DirectoryInfo(Paths.desktop)
             Dim files As IO.FileInfo() = dir.GetFiles()
             Dim file As IO.FileInfo
             Dim folders As IO.DirectoryInfo() = dir.GetDirectories()
@@ -4770,7 +4770,7 @@
         lvadvplaces.SmallImageList = File_Skimmer.ImageList1
         lvadvplaces.LargeImageList = File_Skimmer.ImageList1
 
-        For Each folder In My.Computer.FileSystem.GetDirectories("C:\ShiftOS\Home")
+        For Each folder In My.Computer.FileSystem.GetDirectories(Paths.home)
             Dim placeinfo As New IO.DirectoryInfo(folder)
             Dim place As New ListViewItem
             place.Text = placeinfo.Name
@@ -4781,7 +4781,7 @@
         lvadvfiles.Items.Clear()
         lvadvfiles.LargeImageList = File_Skimmer.ImageList1
         lvadvfiles.SmallImageList = File_Skimmer.ImageList1
-        For Each File In My.Computer.FileSystem.GetFiles("C:\ShiftOS\SoftwareData\AdvStart\Recent")
+        For Each File In My.Computer.FileSystem.GetFiles(Paths.advdata & "Recent")
             Dim fileinfo As New IO.FileInfo(File)
             Dim item As New ListViewItem
             item.Text = fileinfo.Name

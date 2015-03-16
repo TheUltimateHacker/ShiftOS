@@ -11,8 +11,9 @@
     '      Download Manager Data - Paths.dnldata - Not sure what this does
     '    Save Data - Paths.savedata - The game has it's save file in here
     '      Skin Directory - Paths.skindir - Self explanatory.
-    '        Loaded Skin Directory - Paths.loadedSkin - Where the contents of .skn files are extracted to.
+    '        Loaded Skin Directory - Paths.loadedskin - Where the contents of .skn files are extracted to.
     '          Sound Directory - Paths.sounddir - Where sound files (such as Infobox chime) are stored, coming soon.
+    '        Current Skin Directory - Paths.currentskin - ??????????
     '    Home Directory - Paths.home - This is the folder that contains all the user's files
     '      Desktop - Paths.desktop - All the files that appear on your desktop should be stored here
     '      Documents - Paths.documents - The documents folder is where the user puts their documents
@@ -39,6 +40,7 @@
     Public skindir As String = savedata & "Skins\"
 
     Public loadedskin As String = skindir & "Loaded\"
+    Public currentskin As String = skindir & "Current\"
 
     Public sounddir As String = loadedskin & "Sound Files\"
 

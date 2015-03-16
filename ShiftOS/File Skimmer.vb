@@ -589,16 +589,28 @@ Public Class File_Skimmer
                 infobox.textinfo = "Unable to move into a higher directory due to error reading the requested folder on the drive." & Environment.NewLine & Environment.NewLine & "You can only enter directories formatted in the ShiftOS file system (ShiftFS)"
                 infobox.Show()
             Else
-                Dim endloop As Boolean = False
-                lbllocation.Text = lbllocation.Text.Substring(0, lbllocation.Text.Length - 1)
+                Dim directoryInfo As System.IO.DirectoryInfo
+                directoryInfo = System.IO.Directory.GetParent(lbllocation.Text)
+                If (directoryInfo.FullName = "C:\") Then Dim errerror As String = "an error" Else lbllocation.Text = directoryInfo.FullName
 
-                While endloop = False
-                    If lbllocation.Text.Substring(lbllocation.Text.Length - 1) = "/" Then
-                        endloop = True
-                    Else
-                        lbllocation.Text = lbllocation.Text.Substring(0, lbllocation.Text.Length - 1)
-                    End If
-                End While
+                'Dim endloop As Boolean = False
+                'lbllocation.Text = lbllocation.Text.Substring(0, lbllocation.Text.Length - 1)
+
+                'While endloop = False
+                '    Try
+                '        If lbllocation.Text.Substring(lbllocation.Text.Length - 1) = "/" Then
+                '            endloop = True
+                '        Else
+                '            lbllocation.Text = lbllocation.Text.Substring(0, lbllocation.Text.Length - 1)
+                '        End If
+                '    Catch
+                '        infobox.title = "File Skimmer - Error!"
+                '        infobox.textinfo = "Unable to move into a higher directory due to error reading the requested folder on the drive." & Environment.NewLine & Environment.NewLine & "An error occured going up"
+                '        infobox.Show()
+                '    End Try
+                'End While
+
+
                 showcontents()
             End If
         Else
