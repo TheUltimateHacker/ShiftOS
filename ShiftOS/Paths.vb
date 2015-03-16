@@ -5,11 +5,14 @@
     ' Paths:
     '  Root path - Paths.root - DO NOT USE UNLESS NECISARY (Opening files from the file skimmer, blocking the user from going above C:\ShiftOS, ect)
     '    Software Data - Paths.progdata - This is the base path for all program data. If you are adding a folder to this path, add a variable in here
-    '      AdvStart - Paths.advdata - I'm not fully sure what this does
+    '      AdvStart - Paths.advda - Stores stuff like recent files, for example if you go to Paths.advstart\Recent in Explorer, you'll see the same files you see in the Advanced AL's Recent section.
     '      Knowledge Input Data - Paths.kidata - Knowledge Input uses this to save your lists of words you've found
     '      Shiftnet Data - Paths.shiftnetdata - This is where the shiftnet currently saves it's history
     '      Download Manager Data - Paths.dnldata - Not sure what this does
     '    Save Data - Paths.savedata - The game has it's save file in here
+    '      Skin Directory - Paths.skindir - Self explanatory.
+    '        Loaded Skin Directory - Paths.loadedSkin - Where the contents of .skn files are extracted to.
+    '          Sound Directory - Paths.sounddir - Where sound files (such as Infobox chime) are stored, coming soon.
     '    Home Directory - Paths.home - This is the folder that contains all the user's files
     '      Desktop - Paths.desktop - All the files that appear on your desktop should be stored here
     '      Documents - Paths.documents - The documents folder is where the user puts their documents
@@ -20,7 +23,7 @@
 
 
 
-
+    'Declaration Hierarchy
 
     Public root As String = "C:\ShiftOS\" 'Do NOT use this unless it is for files that must go DIRECTLY in C:\ShiftOS\
 
@@ -32,6 +35,12 @@
     Public dnldata As String = progdata & "DownloadManager\"
 
     Public savedata As String = root & "Shiftum42\"
+
+    Public skindir As String = savedata & "Skins\"
+
+    Public loadedskin As String = skindir & "Loaded\"
+
+    Public sounddir As String = loadedskin & "Sound Files\"
 
     Public home As String = root & "Home\"
 
