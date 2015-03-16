@@ -1157,11 +1157,15 @@ Public Class Skin_Loader
     Private Sub btnapplyskin_Click(sender As Object, e As EventArgs) Handles btnapplyskin.Click
         If skinloaded = True Then
             If loadingsknversion = "2.0 disposal-free skinning" Then
-                If Directory.Exists(ShiftOSPath + "Shiftum42\Skins\Loaded") Then My.Computer.FileSystem.DeleteDirectory(ShiftOSPath + "Shiftum42\Skins\Loaded", FileIO.DeleteDirectoryOption.DeleteAllContents)
+                If Directory.Exists(Paths.loadedskin) Then My.Computer.FileSystem.DeleteDirectory(Paths.loadedskin, FileIO.DeleteDirectoryOption.DeleteAllContents)
+
+
+
                 Directory.CreateDirectory(ShiftOSPath + "Shiftum42\Skins\Loaded")
                 My.Computer.FileSystem.CopyDirectory(ShiftOSPath + "Shiftum42\Skins\Preview", ShiftOSPath + "Shiftum42\Skins\Loaded")
                 Skins.loadimages()
                 skinloaded = False
+
             Else
                 apply1_0skin()
                 skinloaded = False

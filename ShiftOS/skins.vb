@@ -184,119 +184,119 @@ Module Skins
 
     ' LOAD SKIN FROM SKN FILE
     Public Sub loadsknfile(ByVal filepath As String)
-        If Directory.Exists(savepath + "Shiftum42\Skins\Loaded\") Then My.Computer.FileSystem.DeleteDirectory(savepath + "Shiftum42\Skins\Loaded", FileIO.DeleteDirectoryOption.DeleteAllContents)
+        If Directory.Exists(loadedskin) Then My.Computer.FileSystem.DeleteDirectory(savepath + "Shiftum42\Skins\Loaded", FileIO.DeleteDirectoryOption.DeleteAllContents)
         Directory.CreateDirectory(savepath + "Shiftum42\Skins\Loaded")
         System.IO.Compression.ZipFile.ExtractToDirectory(filepath, savepath + "Shiftum42\Skins\Loaded")
         loadimages()
     End Sub
     ' LOAD SKIN FROM SAVE FOLDER
     Public Sub loadimages()
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\userbar") Then
-            userNamePanelBackground = GetImage(savepath + "Shiftum42\Skins\Loaded\userbar")
+        If File.Exists(loadedskin & "userbar") Then
+            userNamePanelBackground = GetImage(loadedskin & "userbar")
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\powerbar") Then
-            powerPanelBackgroundImage = GetImage(savepath + "Shiftum42\Skins\Loaded\powerbar")
+        If File.Exists(loadedskin & "powerbar") Then
+            powerPanelBackgroundImage = GetImage(loadedskin & "powerbar")
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\titlebar") Then
-            titlebar = GetImage(savepath + "Shiftum42\Skins\Loaded\titlebar")
+        If File.Exists(loadedskin & "titlebar") Then
+            titlebar = GetImage(loadedskin & "titlebar")
         Else : titlebar = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\borderleft") Then
-            borderleft = GetImage(savepath + "Shiftum42\Skins\Loaded\borderleft")
+        If File.Exists(loadedskin & "borderleft") Then
+            borderleft = GetImage(loadedskin & "borderleft")
         Else : borderleft = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\borderright") Then
-            borderright = GetImage(savepath + "Shiftum42\Skins\Loaded\borderright".Clone)
+        If File.Exists(loadedskin & "borderright") Then
+            borderright = GetImage(loadedskin & "borderright".Clone)
         Else : borderright = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\borderbottom") Then
-            borderbottom = GetImage(savepath + "Shiftum42\Skins\Loaded\borderbottom".Clone)
+        If File.Exists(loadedskin & "borderbottom") Then
+            borderbottom = GetImage(loadedskin & "borderbottom".Clone)
         Else : borderbottom = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\closebtn") Then
-            closebtn = GetImage(savepath + "Shiftum42\Skins\Loaded\closebtn".Clone)
+        If File.Exists(loadedskin & "closebtn") Then
+            closebtn = GetImage(loadedskin & "closebtn".Clone)
         Else : closebtn = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\closebtnhover") Then
-            closebtnhover = GetImage(savepath + "Shiftum42\Skins\Loaded\closebtnhover".Clone)
+        If File.Exists(loadedskin & "closebtnhover") Then
+            closebtnhover = GetImage(loadedskin & "closebtnhover".Clone)
         Else : closebtnhover = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\closebtnclick") Then
-            closebtnclick = GetImage(savepath + "Shiftum42\Skins\Loaded\closebtnclick".Clone)
+        If File.Exists(loadedskin & "closebtnclick") Then
+            closebtnclick = GetImage(loadedskin & "closebtnclick".Clone)
         Else : closebtnclick = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\rollbtn") Then
-            rollbtn = GetImage(savepath + "Shiftum42\Skins\Loaded\rollbtn".Clone)
+        If File.Exists(loadedskin & "rollbtn") Then
+            rollbtn = GetImage(loadedskin & "rollbtn".Clone)
         Else : rollbtn = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\rollbtnhover") Then
-            rollbtnhover = GetImage(savepath + "Shiftum42\Skins\Loaded\rollbtnhover".Clone)
+        If File.Exists(loadedskin & "rollbtnhover") Then
+            rollbtnhover = GetImage(loadedskin & "rollbtnhover".Clone)
         Else : rollbtnhover = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\rollbtnclick") Then
-            rollbtnclick = GetImage(savepath + "Shiftum42\Skins\Loaded\rollbtnclick".Clone)
+        If File.Exists(loadedskin & "rollbtnclick") Then
+            rollbtnclick = GetImage(loadedskin & "rollbtnclick".Clone)
         Else : rollbtnclick = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\minbtn") Then
-            minbtn = GetImage(savepath + "Shiftum42\Skins\Loaded\minbtn".Clone)
+        If File.Exists(loadedskin & "minbtn") Then
+            minbtn = GetImage(loadedskin & "minbtn".Clone)
         Else : minbtn = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\minbtnhover") Then
-            minbtnhover = GetImage(savepath + "Shiftum42\Skins\Loaded\minbtnhover".Clone)
+        If File.Exists(loadedskin & "minbtnhover") Then
+            minbtnhover = GetImage(loadedskin & "minbtnhover".Clone)
         Else : minbtnhover = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\minbtnclick") Then
-            minbtnclick = GetImage(savepath + "Shiftum42\Skins\Loaded\minbtnclick".Clone)
+        If File.Exists(loadedskin & "minbtnclick") Then
+            minbtnclick = GetImage(loadedskin & "minbtnclick".Clone)
         Else : minbtnclick = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\rightcorner") Then
-            rightcorner = GetImage(savepath + "Shiftum42\Skins\Loaded\rightcorner".Clone)
+        If File.Exists(loadedskin & "rightcorner") Then
+            rightcorner = GetImage(loadedskin & "rightcorner".Clone)
         Else : rightcorner = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\leftcorner") Then
-            leftcorner = GetImage(savepath + "Shiftum42\Skins\Loaded\leftcorner".Clone)
+        If File.Exists(loadedskin & "leftcorner") Then
+            leftcorner = GetImage(loadedskin & "leftcorner".Clone)
         Else : leftcorner = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\desktoppanel") Then
-            desktoppanel = GetImage(savepath + "Shiftum42\Skins\Loaded\desktoppanel".Clone)
+        If File.Exists(loadedskin & "desktoppanel") Then
+            desktoppanel = GetImage(loadedskin & "desktoppanel".Clone)
         Else : desktoppanel = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\desktopbackground") Then
-            desktopbackground = GetImage(savepath + "Shiftum42\Skins\Loaded\desktopbackground".Clone)
+        If File.Exists(loadedskin & "desktopbackground") Then
+            desktopbackground = GetImage(loadedskin & "desktopbackground".Clone)
         Else : desktopbackground = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\panelbutton") Then
-            panelbutton = GetImage(savepath + "Shiftum42\Skins\Loaded\panelbutton".Clone)
+        If File.Exists(loadedskin & "panelbutton") Then
+            panelbutton = GetImage(loadedskin & "panelbutton".Clone)
         Else : panelbutton = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\applaunchermouseover") Then
-            applaunchermouseover = GetImage(savepath + "Shiftum42\Skins\Loaded\applaunchermouseover".Clone)
+        If File.Exists(loadedskin & "applaunchermouseover") Then
+            applaunchermouseover = GetImage(loadedskin & "applaunchermouseover".Clone)
         Else : applaunchermouseover = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\applauncher") Then
-            applauncher = GetImage(savepath + "Shiftum42\Skins\Loaded\applauncher".Clone)
+        If File.Exists(loadedskin & "applauncher") Then
+            applauncher = GetImage(loadedskin & "applauncher".Clone)
         Else : applauncher = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\applauncherclick") Then
-            applauncherclick = GetImage(savepath + "Shiftum42\Skins\Loaded\applauncherclick".Clone)
+        If File.Exists(loadedskin & "applauncherclick") Then
+            applauncherclick = GetImage(loadedskin & "applauncherclick".Clone)
         Else : applauncherclick = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\panelclock") Then
-            panelclock = GetImage(savepath + "Shiftum42\Skins\Loaded\panelclock".Clone)
+        If File.Exists(loadedskin & "panelclock") Then
+            panelclock = GetImage(loadedskin & "panelclock".Clone)
         Else : panelclock = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\bottomleftcorner") Then
-            bottomleftcorner = GetImage(savepath + "Shiftum42\Skins\Loaded\bottomleftcorner".Clone)
+        If File.Exists(loadedskin & "bottomleftcorner") Then
+            bottomleftcorner = GetImage(loadedskin & "bottomleftcorner".Clone)
         Else : bottomleftcorner = Nothing
         End If
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\bottomrightcorner") Then
-            bottomrightcorner = GetImage(savepath + "Shiftum42\Skins\Loaded\bottomrightcorner".Clone)
+        If File.Exists(loadedskin & "bottomrightcorner") Then
+            bottomrightcorner = GetImage(loadedskin & "bottomrightcorner".Clone)
         Else : bottomrightcorner = Nothing
         End If
         'load settings
         Dim loaddata(200) As String
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\data.dat") Then
-            Dim sr As StreamReader = New StreamReader(savepath + "Shiftum42\Skins\Loaded\data.dat")
+        If File.Exists(loadedskin & "data.dat") Then
+            Dim sr As StreamReader = New StreamReader(loadedskin & "data.dat")
 
             For i As Integer = 0 To 200 Step 1
                 loaddata(i) = sr.ReadLine
@@ -414,32 +414,22 @@ Module Skins
             If loaddata(111) = "" Or loaddata(111) = "End of skin data" Then loaddata(111) = icontextcolor.ToArgb Else icontextcolor = Color.FromArgb(loaddata(111))
             If loaddata(112) = "" Or loaddata(112) = "End of skin data" Then loaddata(112) = showicons Else showicons = loaddata(112)
             If loaddata(113) = "" Or loaddata(113) = "End of skin data" Then loaddata(113) = iconview1 Else iconview1 = loaddata(113)
-            If loaddata(114) = "" Then topBarHeight = 50 Else topBarHeight = loaddata(114)
+            Try
+                If loaddata(114) = "" Then topBarHeight = 50 Else topBarHeight = loaddata(114)
+            Catch ex As Exception
+                topBarHeight = 50
+                infobox.showinfo("Error - Bad Skin File", "It appears that there was an error loading parts of this skin. The unloadable data has been reset to default values.")
+            End Try
             If loaddata(115) = "" Then bottomBarHeight = 50 Else bottomBarHeight = loaddata(115)
             If loaddata(116) = "" Then placesSide = "Left" Else placesSide = loaddata(116)
             If loaddata(117) = "" Then startHeight = 526 Else startHeight = loaddata(117)
             If loaddata(118) = "" Then startWidth = 320 Else startWidth = loaddata(118)
             If loaddata(119) = "" Then shutdownstring = "Shut Down ShiftOS" Else shutdownstring = loaddata(119)
-<<<<<<< HEAD
             If loaddata(120) = "" Then userNamePosition = "Middle, Right" Else userNamePosition = loaddata(120)
             If loaddata(121) = "" Then recentIconsHorizontal = False Else recentIconsHorizontal = loaddata(121)
             If loaddata(122) = "" Then usernametextcolor = Color.White Else usernametextcolor = Color.FromArgb(loaddata(122))
             If loaddata(123) = "" Then usernamefont = "Trebuchet MS" Else usernamefont = loaddata(123)
             If loaddata(124) = "" Then usernamefontsize = 12 Else usernamefontsize = loaddata(124)
-=======
-            If loaddata(120) = "" Then userNamePosition = "Middle, Right" Else userNamePosition = loaddata(200)
-            Try
-                If loaddata(121) = "" Then recentIconsHorizontal = False Else recentIconsHorizontal = loaddata(201)
-                If loaddata(122) = "" Then usernametextcolor = Color.White Else usernametextcolor = Color.FromArgb(loaddata(202))
-                If loaddata(123) = "" Then usernamefont = "Trebuchet MS" Else usernamefont = loaddata(203)
-                If loaddata(124) = "" Then usernamefontsize = 12 Else usernamefontsize = loaddata(204)
-            Catch
-                usernametextcolor = Color.White
-                usernamefont = "Trebuchet MS"
-                recentIconsHorizontal = False
-                usernamefontsize = 12
-            End Try
->>>>>>> origin/master
             If loaddata(125) = "" Then usernamefontstyle = FontStyle.Bold Else usernamefontstyle = loaddata(125)
             If loaddata(126) = "" Then userNamePanelBackgroundColor = Color.Gray Else userNamePanelBackgroundColor = Color.FromArgb(loaddata(126))
             If loaddata(127) = "" Then powerPanelBackgroundColor = Color.Gray Else powerPanelBackgroundColor = Color.FromArgb(loaddata(127))
@@ -474,24 +464,24 @@ Module Skins
     ' SAVE TO SKN FILE
     Public Sub saveskin(ByVal path As String)
         If Not File.Exists(path) Then
-            Dim sw As StreamWriter = New StreamWriter(savepath + "Shiftum42\Skins\Loaded\SKN-version") 'tells skin loader which system to use when openning the file
+            Dim sw As StreamWriter = New StreamWriter(Paths.loadedskin & "SKN-version") 'tells skin loader which system to use when openning the file
             sw.WriteLine("Name of skinning system used to create this skn file:")
             sw.WriteLine("2.0 disposal-free skinning")
             sw.WriteLine("Skinning system created by william.1008 on December 2014, based on 1.0 system by DevX")
             sw.Close()
             saveskinfiles(False)
-            Compression.ZipFile.CreateFromDirectory(savepath + "Shiftum42\Skins\Loaded", path)
-            File.Delete(savepath + "Shiftum42\Skins\Loaded\SKN-version")
+            Compression.ZipFile.CreateFromDirectory(Paths.loadedskin, path)
+            File.Delete(Paths.loadedskin & "SKN-version")
         Else
             infobox.showinfo("File Exists", "That file location is already taken, please choose another.")
         End If
     End Sub
     ' SAVE TO SAVE FOLDER
     Public Sub saveskinfiles(ByVal apply As Boolean)
-        If File.Exists(savepath + "Shiftum42\Skins\Loaded\") Then
-            Directory.Delete(savepath + "Shiftum42\Skins\Loaded\")
+        If File.Exists(Paths.loadedskin) Then
+            Directory.Delete(Paths.loadedskin)
         End If
-        Directory.CreateDirectory(savepath + "Shiftum42\Skins\Loaded\")
+        Directory.CreateDirectory(Paths.loadedskin)
         saveimage(titlebar, "titlebar")
         saveimage(borderleft, "borderleft")
         saveimage(borderright, "borderright")
@@ -653,7 +643,7 @@ Module Skins
 
         ' End of skin data text was at line 110, if adding future items, check for "End of skin data" on line 110
         savedata(200) = "End of skin data"
-        File.WriteAllLines(savepath + "Shiftum42\Skins\Loaded\data.dat", savedata)
+        File.WriteAllLines(Paths.loadedskin & "data.dat", savedata)
         If apply = True Then
             applyskin()
         End If
@@ -784,14 +774,14 @@ Module Skins
     End Sub
     Private Sub saveimage(ByVal img As Image, ByVal name As String)
         If Not IsNothing(img) Then
-            If File.Exists(savepath + "Shiftum42\Skins\Loaded\" & name) Then File.Delete(savepath + "Shiftum42\Skins\Loaded\" & name)
+            If File.Exists(loadedskin & name) Then File.Delete(loadedskin & name)
             Try
-                img.Save(savepath + "Shiftum42\Skins\Loaded\" & name, System.Drawing.Imaging.ImageFormat.Png)
+                img.Save(loadedskin & name, System.Drawing.Imaging.ImageFormat.Png)
             Catch ex As Exception
-                infobox.showinfo("Saving Error", "Opps, an error occured when saving the file " & savepath + "Shiftum42\Skins\Loaded\" & name & ". Please contact DevX to report the problem.")
+                infobox.showinfo("Saving Error", "Oops, an error occured when saving the file " & loadedskin & name & ". Please contact the devs to report the problem.")
             End Try
         Else
-            If File.Exists(savepath + "Shiftum42\Skins\Loaded\" & name) Then File.Delete(savepath + "Shiftum42\Skins\Loaded\" & name)
+            If File.Exists(loadedskin & name) Then File.Delete(loadedskin & name)
         End If
     End Sub
 End Module

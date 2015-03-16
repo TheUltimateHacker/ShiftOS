@@ -1,4 +1,4 @@
-﻿Public Class Helper
+﻿Module Helper
     Dim path As String = ShiftOSDesktop.ShiftOSPath
     Public Sub addCP(points As Integer) 'Add some CP
         ShiftOSDesktop.codepoints = ShiftOSDesktop.codepoints + points
@@ -13,4 +13,4 @@
     Public Sub playSound(path As String, playMode As AudioPlayMode)
         My.Computer.Audio.Play(path, playMode)
     End Sub
-End Class
+End Module

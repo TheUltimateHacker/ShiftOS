@@ -1,4 +1,6 @@
-﻿Public Class infobox
+﻿Imports ShiftOS.Helper
+Imports ShiftOS.Paths
+Public Class infobox
     Public rolldownsize As Integer
     Public oldbordersize As Integer
     Public oldtitlebarheight As Integer
@@ -32,6 +34,11 @@
         ShiftOSDesktop.setuppanelbuttons()
         ShiftOSDesktop.setpanelbuttonappearnce(ShiftOSDesktop.pnlpanelbuttoninfobox, ShiftOSDesktop.tbinfoboxicon, ShiftOSDesktop.tbinfoboxtext, True) 'modify to proper name
         ShiftOSDesktop.programsopen = ShiftOSDesktop.programsopen + 1
+        Try
+            playSound(sounddir & "infobox.wav", AudioPlayMode.Background)
+        Catch
+
+        End Try
     End Sub
 
     Public Sub setupall()
