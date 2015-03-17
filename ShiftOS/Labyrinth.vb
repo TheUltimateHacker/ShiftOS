@@ -463,7 +463,7 @@
                 pnllvl3.Dock = DockStyle.Fill
                 pnllvl3.BringToFront()
                 pnlplayer.Parent = pnllvl3
-                lbllevel.Text = "Follown' the Path"
+                lbllevel.Text = "Followin' the Path"
             Case 4
                 If firstlvl = False Then cpearnt = cpearnt + 2
                 level = 4
