@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<grammar version="1.0" xml:lang="en-US"
+         xmlns="http://www.w3.org/2001/06/grammar"
+         tag-format="semantics/1.0" root="Main">
+  
+  <!-- Catalyst Grammar File
+       
+       This file gives Catalyst the ability to recognize
+       audio input and give a proper response.
+		
+  -->
+  
+  <rule id="Main">
+    <item>
+      How much Code Points do I have?
+    </item>
+    <item>Can you run <ruleref uri="#programs"/>?</item>
+    <item>Can you minimize <ruleref uri="#programs"/>?</item>
+    <item>Can you close <ruleref uri="#programs"/>?</item>
+  </rule>
+
+  <rule id="programs" scope="public">
+    <one-of>
+      <item> Terminal</item>
+      <item> Knowledge Input</item>
+      <item> Pong</item>
+      <item> Shiftorium</item>
+      <item> Shifter</item>
+      <item> Labyrinth</item>
+      <item> Web Browser</item>
+      <item> Shiftnet</item>
+      <item> Skin Loader</item>
+      <item> Skin Shifter</item>
+      <item> Artpad</item>
+      <item> TextPad</item>
+      <item> OrcWrite</item>
+      <item> File Skimmer</item>
+      <item> Name Changer</item>
+      <item> Icon Manager</item>
+    </one-of>
+  </rule>
+</grammar>

@@ -42,7 +42,7 @@
     Public loadedskin As String = skindir & "Loaded\"
     Public currentskin As String = skindir & "Current\"
 
-    Public sounddir As String = loadedskin & "Sound Files\"
+    Public sounddir As String = loadedskin & "Sounds\"
 
     Public home As String = root & "Home\"
 

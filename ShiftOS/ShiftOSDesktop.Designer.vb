@@ -106,6 +106,9 @@ Partial Class ShiftOSDesktop
         Me.pnlpanelbuttondownloadmanager = New System.Windows.Forms.Panel()
         Me.tbdownloadmanagericon = New System.Windows.Forms.PictureBox()
         Me.tbdownloadmanagertext = New System.Windows.Forms.Label()
+        Me.pnlcatalystpanelbutton = New System.Windows.Forms.Panel()
+        Me.tbcatalysticon = New System.Windows.Forms.PictureBox()
+        Me.lbcatalystname = New System.Windows.Forms.Label()
         Me.pnlpanelbuttoninstaller = New System.Windows.Forms.Panel()
         Me.tbinstallericon = New System.Windows.Forms.PictureBox()
         Me.tbinstallertext = New System.Windows.Forms.Label()
@@ -219,6 +222,7 @@ Partial Class ShiftOSDesktop
         Me.BitnoteWalletToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.FloodGateManagerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VirusScannerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CatalystToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GamesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DodgeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SnakeyToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -240,6 +244,7 @@ Partial Class ShiftOSDesktop
         Me.btnadvshutdown = New System.Windows.Forms.Button()
         Me.pnladvtopbar = New System.Windows.Forms.Panel()
         Me.lbuser = New System.Windows.Forms.Label()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.desktoppanel.SuspendLayout()
         Me.pnlpanelbuttonholder.SuspendLayout()
         Me.pnlpanelbuttonclock.SuspendLayout()
@@ -296,6 +301,8 @@ Partial Class ShiftOSDesktop
         CType(Me.tbdodgeicon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlpanelbuttondownloadmanager.SuspendLayout()
         CType(Me.tbdownloadmanagericon, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlcatalystpanelbutton.SuspendLayout()
+        CType(Me.tbcatalysticon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlpanelbuttoninstaller.SuspendLayout()
         CType(Me.tbinstallericon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnl_panelbuttonsnakey.SuspendLayout()
@@ -372,6 +379,7 @@ Partial Class ShiftOSDesktop
         Me.pnlpanelbuttonholder.Controls.Add(Me.pnlpanelbuttonshiftnet)
         Me.pnlpanelbuttonholder.Controls.Add(Me.pnlpanelbuttondodge)
         Me.pnlpanelbuttonholder.Controls.Add(Me.pnlpanelbuttondownloadmanager)
+        Me.pnlpanelbuttonholder.Controls.Add(Me.pnlcatalystpanelbutton)
         Me.pnlpanelbuttonholder.Controls.Add(Me.pnlpanelbuttoninstaller)
         Me.pnlpanelbuttonholder.Controls.Add(Me.pnl_panelbuttonsnakey)
         Me.pnlpanelbuttonholder.Controls.Add(Me.pnlpanelbuttonorcwrite)
@@ -1333,12 +1341,47 @@ Partial Class ShiftOSDesktop
         Me.tbdownloadmanagertext.TabIndex = 0
         Me.tbdownloadmanagertext.Text = "Download Manager"
         '
+        'pnlcatalystpanelbutton
+        '
+        Me.pnlcatalystpanelbutton.BackColor = System.Drawing.Color.Black
+        Me.pnlcatalystpanelbutton.Controls.Add(Me.tbcatalysticon)
+        Me.pnlcatalystpanelbutton.Controls.Add(Me.lbcatalystname)
+        Me.pnlcatalystpanelbutton.Location = New System.Drawing.Point(543, 3)
+        Me.pnlcatalystpanelbutton.Name = "pnlcatalystpanelbutton"
+        Me.pnlcatalystpanelbutton.Size = New System.Drawing.Size(27, 20)
+        Me.pnlcatalystpanelbutton.TabIndex = 23
+        Me.pnlcatalystpanelbutton.Visible = False
+        '
+        'tbcatalysticon
+        '
+        Me.tbcatalysticon.BackColor = System.Drawing.Color.Transparent
+        Me.tbcatalysticon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.tbcatalysticon.Image = Global.ShiftOS.My.Resources.Resources.icondownloadmanager
+        Me.tbcatalysticon.Location = New System.Drawing.Point(4, 2)
+        Me.tbcatalysticon.Name = "tbcatalysticon"
+        Me.tbcatalysticon.Size = New System.Drawing.Size(16, 16)
+        Me.tbcatalysticon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.tbcatalysticon.TabIndex = 1
+        Me.tbcatalysticon.TabStop = False
+        '
+        'lbcatalystname
+        '
+        Me.lbcatalystname.AutoSize = True
+        Me.lbcatalystname.BackColor = System.Drawing.Color.Transparent
+        Me.lbcatalystname.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbcatalystname.ForeColor = System.Drawing.Color.White
+        Me.lbcatalystname.Location = New System.Drawing.Point(22, 2)
+        Me.lbcatalystname.Name = "lbcatalystname"
+        Me.lbcatalystname.Size = New System.Drawing.Size(56, 16)
+        Me.lbcatalystname.TabIndex = 0
+        Me.lbcatalystname.Text = "Catalyst"
+        '
         'pnlpanelbuttoninstaller
         '
         Me.pnlpanelbuttoninstaller.BackColor = System.Drawing.Color.Black
         Me.pnlpanelbuttoninstaller.Controls.Add(Me.tbinstallericon)
         Me.pnlpanelbuttoninstaller.Controls.Add(Me.tbinstallertext)
-        Me.pnlpanelbuttoninstaller.Location = New System.Drawing.Point(543, 3)
+        Me.pnlpanelbuttoninstaller.Location = New System.Drawing.Point(576, 3)
         Me.pnlpanelbuttoninstaller.Name = "pnlpanelbuttoninstaller"
         Me.pnlpanelbuttoninstaller.Size = New System.Drawing.Size(32, 20)
         Me.pnlpanelbuttoninstaller.TabIndex = 23
@@ -1373,7 +1416,7 @@ Partial Class ShiftOSDesktop
         Me.pnl_panelbuttonsnakey.BackColor = System.Drawing.Color.Black
         Me.pnl_panelbuttonsnakey.Controls.Add(Me.tbsnakeyicon)
         Me.pnl_panelbuttonsnakey.Controls.Add(Me.tbsnakeytext)
-        Me.pnl_panelbuttonsnakey.Location = New System.Drawing.Point(581, 3)
+        Me.pnl_panelbuttonsnakey.Location = New System.Drawing.Point(614, 3)
         Me.pnl_panelbuttonsnakey.Name = "pnl_panelbuttonsnakey"
         Me.pnl_panelbuttonsnakey.Size = New System.Drawing.Size(32, 20)
         Me.pnl_panelbuttonsnakey.TabIndex = 25
@@ -1408,7 +1451,7 @@ Partial Class ShiftOSDesktop
         Me.pnlpanelbuttonorcwrite.BackColor = System.Drawing.Color.Black
         Me.pnlpanelbuttonorcwrite.Controls.Add(Me.tborcwriteicon)
         Me.pnlpanelbuttonorcwrite.Controls.Add(Me.tborcwritetext)
-        Me.pnlpanelbuttonorcwrite.Location = New System.Drawing.Point(619, 3)
+        Me.pnlpanelbuttonorcwrite.Location = New System.Drawing.Point(652, 3)
         Me.pnlpanelbuttonorcwrite.Name = "pnlpanelbuttonorcwrite"
         Me.pnlpanelbuttonorcwrite.Size = New System.Drawing.Size(32, 20)
         Me.pnlpanelbuttonorcwrite.TabIndex = 26
@@ -1444,7 +1487,7 @@ Partial Class ShiftOSDesktop
         Me.pnlpanelbuttonsnakey.BackColor = System.Drawing.Color.Transparent
         Me.pnlpanelbuttonsnakey.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.pnlpanelbuttonsnakey.ForeColor = System.Drawing.Color.White
-        Me.pnlpanelbuttonsnakey.Location = New System.Drawing.Point(657, 0)
+        Me.pnlpanelbuttonsnakey.Location = New System.Drawing.Point(690, 0)
         Me.pnlpanelbuttonsnakey.Name = "pnlpanelbuttonsnakey"
         Me.pnlpanelbuttonsnakey.Size = New System.Drawing.Size(0, 16)
         Me.pnlpanelbuttonsnakey.TabIndex = 24
@@ -1454,7 +1497,7 @@ Partial Class ShiftOSDesktop
         Me.pnlpanelbuttonfloodgate.BackColor = System.Drawing.Color.Black
         Me.pnlpanelbuttonfloodgate.Controls.Add(Me.tbfloodgateicon)
         Me.pnlpanelbuttonfloodgate.Controls.Add(Me.tbfloodgatetext)
-        Me.pnlpanelbuttonfloodgate.Location = New System.Drawing.Point(663, 3)
+        Me.pnlpanelbuttonfloodgate.Location = New System.Drawing.Point(696, 3)
         Me.pnlpanelbuttonfloodgate.Name = "pnlpanelbuttonfloodgate"
         Me.pnlpanelbuttonfloodgate.Size = New System.Drawing.Size(32, 20)
         Me.pnlpanelbuttonfloodgate.TabIndex = 27
@@ -1489,7 +1532,7 @@ Partial Class ShiftOSDesktop
         Me.pnlpanelbuttonmaze.BackColor = System.Drawing.Color.Black
         Me.pnlpanelbuttonmaze.Controls.Add(Me.tbmazeicon)
         Me.pnlpanelbuttonmaze.Controls.Add(Me.tbmazetext)
-        Me.pnlpanelbuttonmaze.Location = New System.Drawing.Point(701, 3)
+        Me.pnlpanelbuttonmaze.Location = New System.Drawing.Point(734, 3)
         Me.pnlpanelbuttonmaze.Name = "pnlpanelbuttonmaze"
         Me.pnlpanelbuttonmaze.Size = New System.Drawing.Size(32, 20)
         Me.pnlpanelbuttonmaze.TabIndex = 28
@@ -1524,7 +1567,7 @@ Partial Class ShiftOSDesktop
         Me.pnlpanelbuttonvirusscanner.BackColor = System.Drawing.Color.Black
         Me.pnlpanelbuttonvirusscanner.Controls.Add(Me.tbvirusscannericon)
         Me.pnlpanelbuttonvirusscanner.Controls.Add(Me.tbvirusscannertext)
-        Me.pnlpanelbuttonvirusscanner.Location = New System.Drawing.Point(739, 3)
+        Me.pnlpanelbuttonvirusscanner.Location = New System.Drawing.Point(772, 3)
         Me.pnlpanelbuttonvirusscanner.Name = "pnlpanelbuttonvirusscanner"
         Me.pnlpanelbuttonvirusscanner.Size = New System.Drawing.Size(32, 20)
         Me.pnlpanelbuttonvirusscanner.TabIndex = 28
@@ -1559,7 +1602,7 @@ Partial Class ShiftOSDesktop
         Me.pnlpanelbuttonfilesaver.BackColor = System.Drawing.Color.Black
         Me.pnlpanelbuttonfilesaver.Controls.Add(Me.tbfilesavericon)
         Me.pnlpanelbuttonfilesaver.Controls.Add(Me.tbfilesavertext)
-        Me.pnlpanelbuttonfilesaver.Location = New System.Drawing.Point(777, 3)
+        Me.pnlpanelbuttonfilesaver.Location = New System.Drawing.Point(810, 3)
         Me.pnlpanelbuttonfilesaver.Name = "pnlpanelbuttonfilesaver"
         Me.pnlpanelbuttonfilesaver.Size = New System.Drawing.Size(52, 20)
         Me.pnlpanelbuttonfilesaver.TabIndex = 29
@@ -1594,7 +1637,7 @@ Partial Class ShiftOSDesktop
         Me.pnlpanelbuttonshifter.BackColor = System.Drawing.Color.Black
         Me.pnlpanelbuttonshifter.Controls.Add(Me.tbshiftericon)
         Me.pnlpanelbuttonshifter.Controls.Add(Me.tbshiftertext)
-        Me.pnlpanelbuttonshifter.Location = New System.Drawing.Point(835, 3)
+        Me.pnlpanelbuttonshifter.Location = New System.Drawing.Point(868, 3)
         Me.pnlpanelbuttonshifter.Name = "pnlpanelbuttonshifter"
         Me.pnlpanelbuttonshifter.Size = New System.Drawing.Size(52, 20)
         Me.pnlpanelbuttonshifter.TabIndex = 30
@@ -1654,7 +1697,7 @@ Partial Class ShiftOSDesktop
         Me.ApplicationsToolStripMenuItem.AutoSize = False
         Me.ApplicationsToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
         Me.ApplicationsToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ApplicationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArtpadToolStripMenuItem, Me.AudioplayerToolStripMenuItem, Me.BitnoteDiggerToolStripMenuItem, Me.BitnoteWalletToolStripMenuItem, Me.CalculatorToolStripMenuItem, Me.ClockToolStripMenuItem, Me.DodgeToolStripMenuItem, Me.downloadmanagerToolStripMenuItem, Me.FileSkimmerToolStripMenuItem, Me.FloodGateToolStripMenuItem, Me.IconManagerToolStripMenuItem, Me.InstallerToolStripMenuItem, Me.KnowledgeInputToolStripMenuItem, Me.MazeToolStripMenuItem, Me.NameChangerToolStripMenuItem, Me.orcwriteToolStripMenuItem, Me.PongToolStripMenuItem, Me.ShifterToolStripMenuItem, Me.ShiftnetToolStripMenuItem, Me.ShiftoriumToolStripMenuItem, Me.SkinLoaderToolStripMenuItem, Me.SkinShifterToolStripMenuItem, Me.SnakeyToolStripMenuItem, Me.sysinfoToolStripMenuItem, Me.TerminalToolStripMenuItem, Me.TextPadToolStripMenuItem, Me.WebBrowserToolStripMenuItem, Me.VideoplayerToolStripMenuItem, Me.VirusScannerToolStripMenuItem, Me.unitySeperator, Me.UnityToolStripMenuItem, Me.ShutdownToolStripMenuItem})
+        Me.ApplicationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArtpadToolStripMenuItem, Me.AudioplayerToolStripMenuItem, Me.BitnoteDiggerToolStripMenuItem, Me.BitnoteWalletToolStripMenuItem, Me.CalculatorToolStripMenuItem, Me.ClockToolStripMenuItem, Me.DodgeToolStripMenuItem, Me.downloadmanagerToolStripMenuItem, Me.FileSkimmerToolStripMenuItem, Me.FloodGateToolStripMenuItem, Me.IconManagerToolStripMenuItem, Me.InstallerToolStripMenuItem, Me.KnowledgeInputToolStripMenuItem, Me.MazeToolStripMenuItem, Me.NameChangerToolStripMenuItem, Me.orcwriteToolStripMenuItem, Me.PongToolStripMenuItem, Me.ShifterToolStripMenuItem, Me.ToolStripMenuItem1, Me.ShiftnetToolStripMenuItem, Me.ShiftoriumToolStripMenuItem, Me.SkinLoaderToolStripMenuItem, Me.SkinShifterToolStripMenuItem, Me.SnakeyToolStripMenuItem, Me.sysinfoToolStripMenuItem, Me.TerminalToolStripMenuItem, Me.TextPadToolStripMenuItem, Me.WebBrowserToolStripMenuItem, Me.VideoplayerToolStripMenuItem, Me.VirusScannerToolStripMenuItem, Me.unitySeperator, Me.UnityToolStripMenuItem, Me.ShutdownToolStripMenuItem})
         Me.ApplicationsToolStripMenuItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ApplicationsToolStripMenuItem.Name = "ApplicationsToolStripMenuItem"
         Me.ApplicationsToolStripMenuItem.Padding = New System.Windows.Forms.Padding(2, 0, 2, 0)
@@ -2182,9 +2225,9 @@ Partial Class ShiftOSDesktop
         '
         'InternetToolStripMenuItem
         '
-        Me.InternetToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShiftnetToolStripMenuItem1, Me.ShiftoriumToolStripMenuItem1, Me.WebBrowserToolStripMenuItem1, Me.DownloadManagerToolStripMenuItem1, Me.InstallerToolStripMenuItem1, Me.BitnoteDiggerToolStripMenuItem1, Me.BitnoteWalletToolStripMenuItem1, Me.FloodGateManagerToolStripMenuItem, Me.VirusScannerToolStripMenuItem1})
+        Me.InternetToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShiftnetToolStripMenuItem1, Me.ShiftoriumToolStripMenuItem1, Me.WebBrowserToolStripMenuItem1, Me.DownloadManagerToolStripMenuItem1, Me.InstallerToolStripMenuItem1, Me.BitnoteDiggerToolStripMenuItem1, Me.BitnoteWalletToolStripMenuItem1, Me.FloodGateManagerToolStripMenuItem, Me.VirusScannerToolStripMenuItem1, Me.CatalystToolStripMenuItem})
         Me.InternetToolStripMenuItem.Name = "InternetToolStripMenuItem"
-        Me.InternetToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.InternetToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.InternetToolStripMenuItem.Text = "Internet"
         '
         'ShiftnetToolStripMenuItem1
@@ -2240,6 +2283,12 @@ Partial Class ShiftOSDesktop
         Me.VirusScannerToolStripMenuItem1.Name = "VirusScannerToolStripMenuItem1"
         Me.VirusScannerToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
         Me.VirusScannerToolStripMenuItem1.Text = "Virus Scanner"
+        '
+        'CatalystToolStripMenuItem
+        '
+        Me.CatalystToolStripMenuItem.Name = "CatalystToolStripMenuItem"
+        Me.CatalystToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.CatalystToolStripMenuItem.Text = "Catalyst"
         '
         'GamesToolStripMenuItem
         '
@@ -2404,6 +2453,12 @@ Partial Class ShiftOSDesktop
         Me.lbuser.Text = "Username"
         Me.lbuser.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(214, 22)
+        Me.ToolStripMenuItem1.Text = "Catalyst"
+        '
         'ShiftOSDesktop
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2501,6 +2556,9 @@ Partial Class ShiftOSDesktop
         Me.pnlpanelbuttondownloadmanager.ResumeLayout(False)
         Me.pnlpanelbuttondownloadmanager.PerformLayout()
         CType(Me.tbdownloadmanagericon, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlcatalystpanelbutton.ResumeLayout(False)
+        Me.pnlcatalystpanelbutton.PerformLayout()
+        CType(Me.tbcatalysticon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlpanelbuttoninstaller.ResumeLayout(False)
         Me.pnlpanelbuttoninstaller.PerformLayout()
         CType(Me.tbinstallericon, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2766,4 +2824,9 @@ Partial Class ShiftOSDesktop
     Friend WithEvents lvadvplaces As System.Windows.Forms.ListView
     Friend WithEvents lvadvfiles As System.Windows.Forms.ListView
     Friend WithEvents lbuser As System.Windows.Forms.Label
+    Friend WithEvents pnlcatalystpanelbutton As System.Windows.Forms.Panel
+    Friend WithEvents tbcatalysticon As System.Windows.Forms.PictureBox
+    Friend WithEvents lbcatalystname As System.Windows.Forms.Label
+    Friend WithEvents CatalystToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
 End Class

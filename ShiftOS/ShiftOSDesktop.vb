@@ -409,6 +409,7 @@
     Public downloadspeedcap As Integer = 32
 
     'Main ShiftOS settings
+    Public catalystname As String = "Catalyst"
     Public username As String = "user"
     Public osname As String = "shiftos"
     Public artpadname As String = "Artpad"
@@ -1614,6 +1615,11 @@
         Skins.loadimages()
         desktopicons.AllowDrop = True
         desktopicons.AutoArrange = False
+        Try
+            Helper.playSound(Paths.sounddir & "startup.wav", AudioPlayMode.WaitToComplete)
+        Catch ex As Exception
+            'Do nothing -- Haven't found a good startup sound
+        End Try
     End Sub
 
     Public Sub loadcurrentskin()
@@ -1987,11 +1993,6 @@
             ApplicationsToolStripMenuItem.Visible = False
         End If
 
-        'Adv. App Launcher Bug Fix Code
-
-
-
-
         'DevX's Advanced App Launcher Skin Code
         For Each item In allPrograms.DropDownItems 'Clever way of adding proper font to All Programs, where each subitem of each item is skinned. This uses the default App Launcher skinning system, so you could
             'indeed rip an entire XP skin, as this engine is also used by the Desktop++ Right-click menu.
@@ -2003,7 +2004,7 @@
             Next
         Next
 
-
+        btnadvshutdown.Text = Skins.shutdownstring
         lbuser.Font = New Font(Skins.usernamefont, Skins.usernamefontsize, Skins.usernamefontstyle)
         lbuser.ForeColor = Skins.usernametextcolor
         lbuser.BackColor = Skins.userNamePanelBackgroundColor
@@ -2394,6 +2395,7 @@
 
     Public Sub setuppanelbuttons()
         If boughtpanelbuttons Then
+            If Catalyst_Main.Visible Then pnlcatalystpanelbutton.Visible = True Else pnlcatalystpanelbutton.Visible = False
             If Knowledge_Input.Visible Then pnlpanelbuttonknowledgeinput.Show() Else pnlpanelbuttonknowledgeinput.Hide()
             If Shiftorium.Visible Then pnlpanelbuttonshiftorium.Show() Else pnlpanelbuttonshiftorium.Hide()
             If Clock.Visible Then pnlpanelbuttonclock.Show() Else pnlpanelbuttonclock.Hide()
@@ -2431,7 +2433,7 @@
             If Terminal.Visible Then pnlpanelbuttonterminal.Show() Else pnlpanelbuttonterminal.Hide()
 
             tbknowledgeinputicon.Image = knowledgeinputiconpanelbutton.Clone
-
+            lbcatalystname.Text = catalystname
             tbknowledgeinputtext.Text = knowledgeinputname
             tbshiftoriumtext.Text = shiftoriumname
             tbclocktext.Text = clockname
@@ -2640,6 +2642,11 @@
         log = log & My.Computer.Clock.LocalTime & " ShutDown ShiftOS with " & codepoints & " Code Points!" & Environment.NewLine
         savegame()
         Terminal.tmrshutdown.Start()
+        Try
+            playSound(sounddir & "shutdown.wav", AudioPlayMode.WaitToComplete)
+        Catch ex As Exception
+            'Do nothing -- I haven't found a good shutdown sound...
+        End Try
     End Sub
 
     Public Sub addtitlebars()
@@ -5236,5 +5243,15 @@
 
     Private Sub StartFixer(sender As Object, e As MouseEventArgs) Handles desktopicons.MouseDown, pnlpanelbuttonholder.MouseDown
         If pnladvapplauncher.Visible = True Then pnladvapplauncher.Visible = False
+    End Sub
+
+    Private Sub CatalystToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CatalystToolStripMenuItem.Click
+        Catalyst_Main.Show()
+        Catalyst_Main.TopMost = True
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        Catalyst_Main.Show()
+        Catalyst_Main.TopMost = True
     End Sub
 End Class
