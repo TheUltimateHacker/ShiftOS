@@ -1911,6 +1911,9 @@
             TextPadToolStripMenuItem.Text = textpadname
             SkinLoaderToolStripMenuItem.Text = skinloadername
             ArtpadToolStripMenuItem.Text = artpadname
+            CatalystToolStripMenuItem1.Text = catalystname
+            CatalystToolStripMenuItem1.ForeColor = Skins.launcheritemcolour
+            CatalystToolStripMenuItem1.Font = New Font(Skins.launcheritemfont, Skins.launcheritemsize, Skins.launcheritemstyle)
             CalculatorToolStripMenuItem.Text = calculatorname
             AudioplayerToolStripMenuItem.Text = audioplayername
             WebBrowserToolStripMenuItem.Text = webbrowsername
@@ -2384,9 +2387,13 @@
         ApplicationsToolStripMenuItem.BackColor = Skins.applauncherbuttoncolour
         'Fixes an AL bug with ADVAL
 
-        If Skins.useClassicAppLauncher = False Then
+        If boughtadvapplauncher = True Then
             For Each item In ApplicationsToolStripMenuItem.DropDownItems
                 item.Visible = False
+            Next
+        Else
+            For Each item In ApplicationsToolStripMenuItem.DropDownItems
+                item.Visible = True
             Next
         End If
     End Sub
@@ -5221,24 +5228,22 @@
     End Sub
 
     Private Sub ApplicationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ApplicationsToolStripMenuItem.Click
-        'boughtadvapplauncher = True
-        'Skins.useClassicAppLauncher = True
-        'If boughtadvapplauncher = False And Skins.useClassicAppLauncher = False Then 'Change false to true when the ability to buy the Advanced App Launcher from the Shiftnet is finished.
-        ApplicationsToolStripMenuItem.HideDropDown()
-        If pnladvapplauncher.Visible = False Then
-            pnladvapplauncher.Show()
-        Else
-            pnladvapplauncher.Hide()
+        If boughtadvapplauncher = True Then
+            ApplicationsToolStripMenuItem.HideDropDown()
+            If pnladvapplauncher.Visible = False Then
+                pnladvapplauncher.Show()
+            Else
+                pnladvapplauncher.Hide()
+            End If
+            lbuser.Text = username
+            Select Case Skins.desktoppanelposition
+                Case "Top"
+                    pnladvapplauncher.Location = New Point(0, desktoppanel.Height)
+                Case "Bottom"
+                    pnladvapplauncher.Location = New Point(0, Me.Height - desktoppanel.Height - pnladvapplauncher.Height)
+            End Select
+            refreshIcons()
         End If
-        lbuser.Text = username
-        Select Case Skins.desktoppanelposition
-            Case "Top"
-                pnladvapplauncher.Location = New Point(0, desktoppanel.Height)
-            Case "Bottom"
-                pnladvapplauncher.Location = New Point(0, Me.Height - desktoppanel.Height - pnladvapplauncher.Height)
-        End Select
-        refreshIcons()
-        'End If
     End Sub
 
     Private Sub StartFixer(sender As Object, e As MouseEventArgs) Handles desktopicons.MouseDown, pnlpanelbuttonholder.MouseDown
@@ -5250,7 +5255,7 @@
         Catalyst_Main.TopMost = True
     End Sub
 
-    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CatalystToolStripMenuItem1.Click
         Catalyst_Main.Show()
         Catalyst_Main.TopMost = True
     End Sub

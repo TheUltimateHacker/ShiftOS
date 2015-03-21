@@ -155,6 +155,7 @@ Partial Class ShiftOSDesktop
         Me.orcwriteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PongToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShifterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CatalystToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShiftnetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShiftoriumToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SkinLoaderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -244,7 +245,6 @@ Partial Class ShiftOSDesktop
         Me.btnadvshutdown = New System.Windows.Forms.Button()
         Me.pnladvtopbar = New System.Windows.Forms.Panel()
         Me.lbuser = New System.Windows.Forms.Label()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.desktoppanel.SuspendLayout()
         Me.pnlpanelbuttonholder.SuspendLayout()
         Me.pnlpanelbuttonclock.SuspendLayout()
@@ -1697,7 +1697,7 @@ Partial Class ShiftOSDesktop
         Me.ApplicationsToolStripMenuItem.AutoSize = False
         Me.ApplicationsToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
         Me.ApplicationsToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ApplicationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArtpadToolStripMenuItem, Me.AudioplayerToolStripMenuItem, Me.BitnoteDiggerToolStripMenuItem, Me.BitnoteWalletToolStripMenuItem, Me.CalculatorToolStripMenuItem, Me.ClockToolStripMenuItem, Me.DodgeToolStripMenuItem, Me.downloadmanagerToolStripMenuItem, Me.FileSkimmerToolStripMenuItem, Me.FloodGateToolStripMenuItem, Me.IconManagerToolStripMenuItem, Me.InstallerToolStripMenuItem, Me.KnowledgeInputToolStripMenuItem, Me.MazeToolStripMenuItem, Me.NameChangerToolStripMenuItem, Me.orcwriteToolStripMenuItem, Me.PongToolStripMenuItem, Me.ShifterToolStripMenuItem, Me.ToolStripMenuItem1, Me.ShiftnetToolStripMenuItem, Me.ShiftoriumToolStripMenuItem, Me.SkinLoaderToolStripMenuItem, Me.SkinShifterToolStripMenuItem, Me.SnakeyToolStripMenuItem, Me.sysinfoToolStripMenuItem, Me.TerminalToolStripMenuItem, Me.TextPadToolStripMenuItem, Me.WebBrowserToolStripMenuItem, Me.VideoplayerToolStripMenuItem, Me.VirusScannerToolStripMenuItem, Me.unitySeperator, Me.UnityToolStripMenuItem, Me.ShutdownToolStripMenuItem})
+        Me.ApplicationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArtpadToolStripMenuItem, Me.AudioplayerToolStripMenuItem, Me.BitnoteDiggerToolStripMenuItem, Me.BitnoteWalletToolStripMenuItem, Me.CalculatorToolStripMenuItem, Me.CatalystToolStripMenuItem1, Me.ClockToolStripMenuItem, Me.DodgeToolStripMenuItem, Me.downloadmanagerToolStripMenuItem, Me.FileSkimmerToolStripMenuItem, Me.FloodGateToolStripMenuItem, Me.IconManagerToolStripMenuItem, Me.InstallerToolStripMenuItem, Me.KnowledgeInputToolStripMenuItem, Me.MazeToolStripMenuItem, Me.NameChangerToolStripMenuItem, Me.orcwriteToolStripMenuItem, Me.PongToolStripMenuItem, Me.ShifterToolStripMenuItem, Me.ShiftnetToolStripMenuItem, Me.ShiftoriumToolStripMenuItem, Me.SkinLoaderToolStripMenuItem, Me.SkinShifterToolStripMenuItem, Me.SnakeyToolStripMenuItem, Me.sysinfoToolStripMenuItem, Me.TerminalToolStripMenuItem, Me.TextPadToolStripMenuItem, Me.WebBrowserToolStripMenuItem, Me.VideoplayerToolStripMenuItem, Me.VirusScannerToolStripMenuItem, Me.unitySeperator, Me.UnityToolStripMenuItem, Me.ShutdownToolStripMenuItem})
         Me.ApplicationsToolStripMenuItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ApplicationsToolStripMenuItem.Name = "ApplicationsToolStripMenuItem"
         Me.ApplicationsToolStripMenuItem.Padding = New System.Windows.Forms.Padding(2, 0, 2, 0)
@@ -1819,6 +1819,12 @@ Partial Class ShiftOSDesktop
         Me.ShifterToolStripMenuItem.Name = "ShifterToolStripMenuItem"
         Me.ShifterToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.ShifterToolStripMenuItem.Text = "Shifter"
+        '
+        'CatalystToolStripMenuItem1
+        '
+        Me.CatalystToolStripMenuItem1.Name = "CatalystToolStripMenuItem1"
+        Me.CatalystToolStripMenuItem1.Size = New System.Drawing.Size(214, 22)
+        Me.CatalystToolStripMenuItem1.Text = "Catalyst"
         '
         'ShiftnetToolStripMenuItem
         '
@@ -2227,7 +2233,7 @@ Partial Class ShiftOSDesktop
         '
         Me.InternetToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShiftnetToolStripMenuItem1, Me.ShiftoriumToolStripMenuItem1, Me.WebBrowserToolStripMenuItem1, Me.DownloadManagerToolStripMenuItem1, Me.InstallerToolStripMenuItem1, Me.BitnoteDiggerToolStripMenuItem1, Me.BitnoteWalletToolStripMenuItem1, Me.FloodGateManagerToolStripMenuItem, Me.VirusScannerToolStripMenuItem1, Me.CatalystToolStripMenuItem})
         Me.InternetToolStripMenuItem.Name = "InternetToolStripMenuItem"
-        Me.InternetToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.InternetToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.InternetToolStripMenuItem.Text = "Internet"
         '
         'ShiftnetToolStripMenuItem1
@@ -2452,12 +2458,6 @@ Partial Class ShiftOSDesktop
         Me.lbuser.TabIndex = 0
         Me.lbuser.Text = "Username"
         Me.lbuser.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(214, 22)
-        Me.ToolStripMenuItem1.Text = "Catalyst"
         '
         'ShiftOSDesktop
         '
@@ -2828,5 +2828,5 @@ Partial Class ShiftOSDesktop
     Friend WithEvents tbcatalysticon As System.Windows.Forms.PictureBox
     Friend WithEvents lbcatalystname As System.Windows.Forms.Label
     Friend WithEvents CatalystToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CatalystToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
 End Class

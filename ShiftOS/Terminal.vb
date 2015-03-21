@@ -584,6 +584,7 @@ Public Class Terminal
         If command Like "speak_infobox ""*"" ""*""" Then
             Dim findwords() As String = command.Split("""")
             Helper.speakInfoBox(findwords(1), findwords(3))
+            further = False
         End If
         If command Like "speak ""*""" Then
             Dim findwords() As String = command.Split("""")
@@ -955,6 +956,17 @@ Public Class Terminal
 
         If further = True Then
             Select Case command
+                Case "adv app launcher on"
+                    ShiftOSDesktop.boughtadvapplauncher = True
+                    ShiftOSDesktop.savegame()
+                    ShiftOSDesktop.setupdesktop()
+                    WriteLine("Advanced App Launcher has been turned on successfully. Use ""adv app launcher off"" to turn it off again.")
+                Case "adv app launcher off"
+                    ShiftOSDesktop.boughtadvapplauncher = False
+                    ShiftOSDesktop.savegame()
+                    ShiftOSDesktop.setupdesktop()
+                    WriteLine("Advanced App Launcher has been turned off. Use ""adv app launcher on"" to turn it on again.")
+
                 Case "clear"
                     txtterm.Text = ""
                 Case "time"
@@ -1777,5 +1789,9 @@ Public Class Terminal
             End Select
             shiftnetstorylinetiming = shiftnetstorylinetiming + 1
         End If
+    End Sub
+
+    Public Sub WriteLine(text As String)
+        txtterm.Text = txtterm.Text + vbNewLine + text
     End Sub
 End Class
