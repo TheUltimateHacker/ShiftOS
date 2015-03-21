@@ -18,6 +18,7 @@
     Public ShiftOSPath As String = "C:\ShiftOS"
     Private actualshiftversion As String = "0.0.8"
     Public ingameversion As String = "0.0.1.0"
+    Public password As String
 
     'Corruptions
     Public FileSkimmerCorrupted As Boolean = False
@@ -1063,6 +1064,7 @@
         SortOutBooleans(WebBrowserCorrupted, 613, False)
         If boughtdesktopicons = True Then savelines(614) = 11 Else savelines(614) = 10
         If boughtadvapplauncher = True Then savelines(615) = 11 Else savelines(615) = 10
+        savelines(616) = password
         IO.File.WriteAllLines(Paths.savedata & "Drivers\HDD.dri", savelines)
         File_Crypt.EncryptFile(Paths.savedata & "Drivers\HDD.dri", Paths.savedata & "SKernal.sft", sSecretKey)
         Try
@@ -1588,6 +1590,7 @@
         Catch
             boughtadvapplauncher = False
         End Try
+        If loadlines(616) = "" Then loginform.throwRegister = True Else password = loadlines(616)
         Viruses.startactiveviruses()
         If IO.File.Exists(Paths.loadedskin & "skindata.dat") Then loadcurrentskin() ' FIXME (ShiftOSPath + "Shiftum42\Skins\Current\skindata.dat")
         If My.Computer.FileSystem.DirectoryExists(Paths.savedata & "Icons") Then setupicons()
@@ -1602,7 +1605,6 @@
             loadgame()
             Terminal.runterminalfile(ShiftOSPath + "\Shiftum42\autorun.trm")
         End If
-
         If Not My.Computer.FileSystem.DirectoryExists(ShiftOSPath + "\SoftwareData\AdvStart\Recent") Then
             IO.Directory.CreateDirectory(ShiftOSPath + "\SoftwareData\AdvStart\Recent")
         End If
@@ -1615,11 +1617,21 @@
         Skins.loadimages()
         desktopicons.AllowDrop = True
         desktopicons.AutoArrange = False
+        For Each Control In MyBase.Controls
+            Control.visible = False
+        Next
+        loginform.ShowDialog()
+
+        For Each Control In MyBase.Controls
+            Control.visible = True
+            hideStart()
+        Next
         Try
             Helper.playSound(Paths.sounddir & "startup.wav", AudioPlayMode.WaitToComplete)
         Catch ex As Exception
             'Do nothing -- Haven't found a good startup sound
         End Try
+
     End Sub
 
     Public Sub loadcurrentskin()
@@ -1831,6 +1843,9 @@
             desktopicons.BackColor = Skins.desktopbackgroundcolour
             If Skins.desktopbackground Is Nothing Then desktopicons.BackgroundImage = Nothing Else desktopicons.BackgroundImage = Skins.desktopbackground
             desktopicons.BackgroundImageLayout = Skins.desktopbackgroundlayout
+            Me.BackColor = Skins.desktopbackgroundcolour
+            If Skins.desktopbackground Is Nothing Then Me.BackgroundImage = Nothing Else Me.BackgroundImage = Skins.desktopbackground
+            Me.BackgroundImageLayout = Skins.desktopbackgroundlayout
         Else
             Me.BackColor = globaltransparencycolour
             Me.BackgroundImage = Nothing

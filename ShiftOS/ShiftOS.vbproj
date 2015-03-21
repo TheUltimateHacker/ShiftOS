@@ -151,6 +151,12 @@
     <Compile Include="Catalyst_Main.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="loginform.Designer.vb">
+      <DependentUpon>loginform.vb</DependentUpon>
+    </Compile>
+    <Compile Include="loginform.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modform.Designer.vb">
       <DependentUpon>modform.vb</DependentUpon>
     </Compile>
@@ -467,6 +473,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="coherencemodeform.resx">
       <DependentUpon>coherencemodeform.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loginform.resx">
+      <DependentUpon>loginform.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modform.resx">
       <DependentUpon>modform.vb</DependentUpon>
