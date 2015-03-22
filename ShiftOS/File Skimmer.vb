@@ -626,224 +626,229 @@ Public Class File_Skimmer
 
     'Used for Desktop.
     Public Sub OpenFile(path As String)
-        'Check if selected item is a file or folder. It it's a folder check its extension
+        'Check if file exists
+        If My.Computer.FileSystem.FileExists(path) Or My.Computer.FileSystem.DirectoryExists(path) Then
 
-        If path Like "*.owd" Then
-            If ShiftOSDesktop.installedorcwrite = True Then
-                Dim sr As New IO.StreamReader(path)
-                OrcWrite.RichTextBox1.Rtf = sr.ReadToEnd()
-                sr.Close()
-                OrcWrite.Show()
-                OrcWrite.TopMost = True
-            Else
-                infobox.showinfo("Application Not Found", "ShiftOS could not find an application able to open .owd files.")
-            End If
-        ElseIf path Like "*.txt" Then
-            If TextPad.needtosave = False Then
-                TextPad.Show()
-                TextPad.txtuserinput.Text = My.Computer.FileSystem.ReadAllText(path)
-                TextPad.needtosave = False
-            Else
-                infobox.title = "Textpad - Save?"
-                infobox.textinfo = "It appears that your text document currently contains unsaved changes." & Environment.NewLine & Environment.NewLine & "Are you sure you want to load a file without saving the changes?"
-                infobox.Show()
-                infobox.showyesno()
-                infobox.sendyesno = "fileskimmertextpad"
-            End If
+            'Check if selected item is a file or folder. It it's a file check its extention
 
-        ElseIf path Like "*.pic" Then
-            If ArtPad.needtosave = False Then
-                ArtPad.Show()
-                ArtPad.savelocation = (path)
-                ArtPad.openpic()
-                ArtPad.needtosave = False
-            Else
-                infobox.title = "Artpad - Save?"
-                infobox.textinfo = "It appears that your canvas currently contains unsaved changes." & Environment.NewLine & Environment.NewLine & "Are you sure you want to open a different canvas without saving the changes?"
-                infobox.Show()
-                infobox.showyesno()
-                infobox.sendyesno = "fileskimmerartpad"
-            End If
-
-        ElseIf path Like "*.sft" Then
-            infobox.title = "File Skimmer - Warning!"
-            infobox.textinfo = "This file appears to be encrypted or may be critical for stable system operation." & Environment.NewLine & Environment.NewLine & "Access to this file has been blocked to protect the system from potential damage."
-            infobox.Show()
-
-        ElseIf path Like "*.lst" Then
-            infobox.title = "File Skimmer - Warning!"
-            infobox.textinfo = "This file appears to be encrypted or may be critical for stable system operation." & Environment.NewLine & Environment.NewLine & "Access to this file has been blocked to protect the system from potential damage."
-            infobox.Show()
-        ElseIf path Like "*.dri" Then
-            infobox.title = "File Skimmer - Warning!"
-            infobox.textinfo = "This file appears to be encrypted or may be critical for stable system operation." & Environment.NewLine & Environment.NewLine & "Access to this file has been blocked to protect the system from potential damage."
-            infobox.Show()
-
-        ElseIf path Like "*.lang" Then
-            infobox.title = "File Skimmer - Warning!"
-            infobox.textinfo = "This file appears to be encrypted or may be critical for stable system operation." & Environment.NewLine & Environment.NewLine & "Access to this file has been blocked to protect the system from potential damage."
-            infobox.Show()
-
-        ElseIf path Like "*.skn" Then
-            If ShiftOSDesktop.boughtskinning Then
-                Skin_Loader.Show()
-                Skin_Loader.loadingsknversion = ""
-                If My.Computer.FileSystem.DirectoryExists(ShiftOSPath + "Shiftum42\Skins\Preview\") Then My.Computer.FileSystem.DeleteDirectory(ShiftOSPath + "Shiftum42\Skins\Preview\", FileIO.DeleteDirectoryOption.DeleteAllContents)
-                System.IO.Compression.ZipFile.ExtractToDirectory(path, ShiftOSPath + "Shiftum42\Skins\Preview\")
-                If File.Exists(ShiftOSPath + "Shiftum42\Skins\Preview\SKN-version") Then
-                    Dim sr As StreamReader = New StreamReader(ShiftOSPath + "Shiftum42\Skins\Preview\SKN-version")
-                    Dim i As String = sr.ReadLine
-                    Skin_Loader.loadingsknversion = sr.ReadLine
+            If path Like "*.owd" Then
+                If ShiftOSDesktop.installedorcwrite = True Then
+                    Dim sr As New IO.StreamReader(path)
+                    OrcWrite.RichTextBox1.Rtf = sr.ReadToEnd()
                     sr.Close()
-                End If
-                If Skin_Loader.loadingsknversion = "2.0 disposal-free skinning" Then
-                    Skin_Loader.setuppreview2_0()
-                    Skin_Loader.skinloaded = True
+                    OrcWrite.Show()
+                    OrcWrite.TopMost = True
                 Else
-                    My.Computer.FileSystem.WriteAllText(ShiftOSPath + "Shiftum42\Skins\Preview\skindata.dat", My.Computer.FileSystem.ReadAllText(ShiftOSPath + "Shiftum42\Skins\Preview\skindata.dat").Replace("\Current", "\Preview"), False)
-                    Skin_Loader.loadlines = IO.File.ReadAllLines(ShiftOSPath + "Shiftum42\Skins\Preview\skindata.dat")
-                    Skin_Loader.loadskintopreview()
-                    Skin_Loader.skinloaded = True
+                    infobox.showinfo("Application Not Found", "ShiftOS could not find an application able to open .owd files.")
                 End If
-            Else
-                infobox.showinfo("Application Not Found", "ShiftOS could not find an application able the open skin files.")
-            End If
-
-        ElseIf path Like "*.mp3" Then
-            If ShiftOSDesktop.installedaudioplayer Then
-                Audio_Player.lbmusiclist.Items.Add(path)
-                Audio_Player.lblintro.Hide()
-                Audio_Player.Show()
-            Else
-                infobox.showinfo("Application Not Found", "ShiftOS could not find an application able the open audio files.")
-            End If
-
-        ElseIf path Like "*.saa" Then
-            File_Crypt.DecryptFile(path & "\" & path, ShiftOSDesktop.ShiftOSPath + "Shiftum42\Drivers\HDD.dri", ShiftOSDesktop.sSecretKey)
-            Dim sr As StreamReader = New StreamReader(ShiftOSDesktop.ShiftOSPath + "Shiftum42\Drivers\HDD.dri")
-            Dim apptoopen As String = sr.ReadLine()
-            sr.Close()
-            Select Case apptoopen.ToLower
-                'Case "program name"
-                '   Check requirements and open program
-                Case "dodge"
-                    Dodge.Show()
-                Case "web browser"
-                    If ShiftOSDesktop.boughtanycolour4 = True Then Web_Browser.Show() Else infobox.showinfo("Error", "The requirements for " & path & " are not meet. Please buy limitless colours.")
-                Case "b1n0t3 h4ck"
-                    Randomize()
-                    Dim VirusChoice As Integer = CInt(Math.Ceiling(Rnd() * 4))
-                    If VirusChoice = 1 Then
-                        Viruses.zerogravity = True
-                        Viruses.zerogravitythreatlevel = CInt(Math.Floor((4) * Rnd())) + 1
-                        Viruses.setupzerovirus()
-                    ElseIf VirusChoice = 2 Then
-                        Viruses.beeper = True
-                        Viruses.beeperthreatlevel = CInt(Math.Floor((4) * Rnd())) + 1
-                        Viruses.setupbeepervirus()
-                    ElseIf VirusChoice = 3 Then
-                        Viruses.mousetrap = True
-                        Viruses.mousetrapthreatlevel = CInt(Math.Floor((4) * Rnd())) + 1
-                        Viruses.setupmousetrapvirus()
-                    ElseIf VirusChoice = 4 Then
-                        Viruses.ThePlague = True
-                        Viruses.theplaguethreatlevel = CInt(Math.Floor((4) * Rnd())) + 1
-                        Viruses.setuptheplague()
-                    End If
-                    infobox.title = "B1N0T3 H4CK3R - Error"
-                    infobox.textinfo = "L0L Y0U JUST G0T R3KT #D341W1TH1T" & Environment.NewLine & Environment.NewLine & "(Enjoy your new virus)"
-                    infobox.Show()
-                Case "virus scanner"
-                    If ShiftOSDesktop.boughtgray Then VirusScanner.Show() Else infobox.showinfo("Error", "The requirements for " & path & " are not meet. Please buy Gray.")
-                Case "labyrinth"
-                    If ShiftOSDesktop.boughtgray Then Labyrinth.Show() Else infobox.showinfo("Error", "The requirements for " & path & " are not meet. Please buy Gray.")
-                Case "calculator"
-                    Calculator.Show()
-                Case "audio player"
-                    Audio_Player.Show()
-                Case "video player"
-                    If ShiftOSDesktop.boughtanycolour4 Then Video_Player.Show() Else infobox.showinfo("Error", "The requirements for " & path & " are not meet. Please buy limitless colours.")
-                    Video_Player.Show()
-                Case "dock"
-                    ShiftDock.Show()
-                Case "virus grade 1 removal unlocker"
-                    If ShiftOSDesktop.installedvirusscanner Then
-                        If Math.Ceiling(Rnd() * 2) = 1 Then
-                            infobox.showinfo("Virus Removal Unlocked", "Removal of grade 1 viruses has been unlocked in the Virus Scanner.")
-                            If ShiftOSDesktop.virusscannergrade < 1 Then ShiftOSDesktop.virusscannergrade = 1
-                        Else
-                            infobox.showinfo("Lolz", "Haha, I just don't feel like doing anything today. Try me again some time and I MIGHT Lock it. For now, I'm hang out for the lolz!")
-                        End If
-                    End If
-                Case "virus grade 2 removal unlocker"
-                    If ShiftOSDesktop.installedvirusscanner Then
-                        If Math.Ceiling(Rnd() * 2) = 1 Then
-                            infobox.showinfo("Virus Removal Unlocked", "Removal of grade 2 viruses has been unlocked in the Virus Scanner.")
-                            If ShiftOSDesktop.virusscannergrade < 2 Then ShiftOSDesktop.virusscannergrade = 2
-                        Else
-                            infobox.showinfo("Lolz", "Haha, I just don't feel like doing anything today. Try me again some time and I MIGHT Lock it. For now, I'm hang out for the lolz!")
-                        End If
-                    End If
-                Case "virus grade 3 removal unlocker"
-                    If ShiftOSDesktop.installedvirusscanner Then
-                        If Math.Ceiling(Rnd() * 2) = 1 Then
-                            infobox.showinfo("Virus Removal Unlocked", "Removal of grade 3 viruses has been unlocked in the Virus Scanner.")
-                            If ShiftOSDesktop.virusscannergrade < 3 Then ShiftOSDesktop.virusscannergrade = 3
-                        Else
-                            infobox.showinfo("Lolz", "Haha, I just don't feel like doing anything today. Try me again some time and I MIGHT Lock it. For now, I'm hang out for the lolz!")
-                        End If
-                    End If
-                Case "virus grade 4 removal unlocker"
-                    If ShiftOSDesktop.installedvirusscanner Then
-                        If Math.Ceiling(Rnd() * 2) = 1 Then
-                            infobox.showinfo("Virus Removal Unlocked", "Removal of grade 4 viruses has been unlocked in the Virus Scanner.")
-                            If ShiftOSDesktop.virusscannergrade < 4 Then ShiftOSDesktop.virusscannergrade = 4
-                        Else
-                            infobox.showinfo("Lolz", "Haha, I just don't feel like doing anything today. Try me again some time and I MIGHT Lock it. For now, I'm hang out for the lolz!")
-                        End If
-                    End If
-                Case Else
-                    infobox.title = "Corrupt file"
-                    infobox.textinfo = "The stand alone application '" & path & "' seems to be corrupt and is unable to run properly."
-                    infobox.Show()
-            End Select
-        ElseIf path Like "*.stp" Then
-            Installer.Show()
-            Installer.txtfilepath.Text = (path)
-        ElseIf path Like "*.smf" Then
-            NewAPI.UseCode(path)
-        ElseIf path Like "*.trm" Then
-            Terminal.Show()
-            Terminal.runterminalfile(path)
-        ElseIf path Like "*.sct" Then
-            Dim sr As New IO.StreamReader(path)
-            Dim relayPath As String = sr.ReadToEnd()
-            sr.Close()
-            OpenFile(relayPath)
-        ElseIf path Like "*.bat" Then
-            If (ShiftOSDesktop.unitymode) Then
-                Shell(path)
-            Else
-                If (ShiftOSDesktop.boughtunitymode) Then
-                    infobox.title = "File Skimmer - Unity Mode:"
-                    infobox.textinfo = "You do not have unity mode enabled. Enable unity mode to run shell scripts"
-                    infobox.Show()
+            ElseIf path Like "*.txt" Then
+                If TextPad.needtosave = False Then
+                    TextPad.Show()
+                    TextPad.txtuserinput.Text = My.Computer.FileSystem.ReadAllText(path)
+                    TextPad.needtosave = False
                 Else
-                    infobox.title = "File Skimmer - Unity Mode:"
-                    infobox.textinfo = "You do not have unity mode"
+                    infobox.title = "Textpad - Save?"
+                    infobox.textinfo = "It appears that your text document currently contains unsaved changes." & Environment.NewLine & Environment.NewLine & "Are you sure you want to load a file without saving the changes?"
                     infobox.Show()
+                    infobox.showyesno()
+                    infobox.sendyesno = "fileskimmertextpad"
                 End If
-            End If
-        Else
-            If My.Computer.FileSystem.DirectoryExists(path) Then
-                lbllocation.Text = path
-                showcontents()
-            Else
-                infobox.title = "Could not run file"
-                infobox.textinfo = "Error running file"
+
+            ElseIf path Like "*.pic" Then
+                If ArtPad.needtosave = False Then
+                    ArtPad.Show()
+                    ArtPad.savelocation = (path)
+                    ArtPad.openpic()
+                    ArtPad.needtosave = False
+                Else
+                    infobox.title = "Artpad - Save?"
+                    infobox.textinfo = "It appears that your canvas currently contains unsaved changes." & Environment.NewLine & Environment.NewLine & "Are you sure you want to open a different canvas without saving the changes?"
+                    infobox.Show()
+                    infobox.showyesno()
+                    infobox.sendyesno = "fileskimmerartpad"
+                End If
+
+            ElseIf path Like "*.sft" Then
+                infobox.title = "File Skimmer - Warning!"
+                infobox.textinfo = "This file appears to be encrypted or may be critical for stable system operation." & Environment.NewLine & Environment.NewLine & "Access to this file has been blocked to protect the system from potential damage."
                 infobox.Show()
-            End If
 
+            ElseIf path Like "*.lst" Then
+                infobox.title = "File Skimmer - Warning!"
+                infobox.textinfo = "This file appears to be encrypted or may be critical for stable system operation." & Environment.NewLine & Environment.NewLine & "Access to this file has been blocked to protect the system from potential damage."
+                infobox.Show()
+            ElseIf path Like "*.dri" Then
+                infobox.title = "File Skimmer - Warning!"
+                infobox.textinfo = "This file appears to be encrypted or may be critical for stable system operation." & Environment.NewLine & Environment.NewLine & "Access to this file has been blocked to protect the system from potential damage."
+                infobox.Show()
+
+            ElseIf path Like "*.lang" Then
+                infobox.title = "File Skimmer - Warning!"
+                infobox.textinfo = "This file appears to be encrypted or may be critical for stable system operation." & Environment.NewLine & Environment.NewLine & "Access to this file has been blocked to protect the system from potential damage."
+                infobox.Show()
+
+            ElseIf path Like "*.skn" Then
+                If ShiftOSDesktop.boughtskinning Then
+                    Skin_Loader.Show()
+                    Skin_Loader.loadingsknversion = ""
+                    If My.Computer.FileSystem.DirectoryExists(ShiftOSPath + "Shiftum42\Skins\Preview\") Then My.Computer.FileSystem.DeleteDirectory(ShiftOSPath + "Shiftum42\Skins\Preview\", FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    System.IO.Compression.ZipFile.ExtractToDirectory(path, ShiftOSPath + "Shiftum42\Skins\Preview\")
+                    If File.Exists(ShiftOSPath + "Shiftum42\Skins\Preview\SKN-version") Then
+                        Dim sr As StreamReader = New StreamReader(ShiftOSPath + "Shiftum42\Skins\Preview\SKN-version")
+                        Dim i As String = sr.ReadLine
+                        Skin_Loader.loadingsknversion = sr.ReadLine
+                        sr.Close()
+                    End If
+                    If Skin_Loader.loadingsknversion = "2.0 disposal-free skinning" Then
+                        Skin_Loader.setuppreview2_0()
+                        Skin_Loader.skinloaded = True
+                    Else
+                        My.Computer.FileSystem.WriteAllText(ShiftOSPath + "Shiftum42\Skins\Preview\skindata.dat", My.Computer.FileSystem.ReadAllText(ShiftOSPath + "Shiftum42\Skins\Preview\skindata.dat").Replace("\Current", "\Preview"), False)
+                        Skin_Loader.loadlines = IO.File.ReadAllLines(ShiftOSPath + "Shiftum42\Skins\Preview\skindata.dat")
+                        Skin_Loader.loadskintopreview()
+                        Skin_Loader.skinloaded = True
+                    End If
+                Else
+                    infobox.showinfo("Application Not Found", "ShiftOS could not find an application able the open skin files.")
+                End If
+
+            ElseIf path Like "*.mp3" Then
+                If ShiftOSDesktop.installedaudioplayer Then
+                    Audio_Player.lbmusiclist.Items.Add(path)
+                    Audio_Player.lblintro.Hide()
+                    Audio_Player.Show()
+                Else
+                    infobox.showinfo("Application Not Found", "ShiftOS could not find an application able the open audio files.")
+                End If
+
+            ElseIf path Like "*.saa" Then
+                File_Crypt.DecryptFile(path & "\" & path, ShiftOSDesktop.ShiftOSPath + "Shiftum42\Drivers\HDD.dri", ShiftOSDesktop.sSecretKey)
+                Dim sr As StreamReader = New StreamReader(ShiftOSDesktop.ShiftOSPath + "Shiftum42\Drivers\HDD.dri")
+                Dim apptoopen As String = sr.ReadLine()
+                sr.Close()
+                Select Case apptoopen.ToLower
+                    'Case "program name"
+                    '   Check requirements and open program
+                    Case "dodge"
+                        Dodge.Show()
+                    Case "web browser"
+                        If ShiftOSDesktop.boughtanycolour4 = True Then Web_Browser.Show() Else infobox.showinfo("Error", "The requirements for " & path & " are not meet. Please buy limitless colours.")
+                    Case "b1n0t3 h4ck"
+                        Randomize()
+                        Dim VirusChoice As Integer = CInt(Math.Ceiling(Rnd() * 4))
+                        If VirusChoice = 1 Then
+                            Viruses.zerogravity = True
+                            Viruses.zerogravitythreatlevel = CInt(Math.Floor((4) * Rnd())) + 1
+                            Viruses.setupzerovirus()
+                        ElseIf VirusChoice = 2 Then
+                            Viruses.beeper = True
+                            Viruses.beeperthreatlevel = CInt(Math.Floor((4) * Rnd())) + 1
+                            Viruses.setupbeepervirus()
+                        ElseIf VirusChoice = 3 Then
+                            Viruses.mousetrap = True
+                            Viruses.mousetrapthreatlevel = CInt(Math.Floor((4) * Rnd())) + 1
+                            Viruses.setupmousetrapvirus()
+                        ElseIf VirusChoice = 4 Then
+                            Viruses.ThePlague = True
+                            Viruses.theplaguethreatlevel = CInt(Math.Floor((4) * Rnd())) + 1
+                            Viruses.setuptheplague()
+                        End If
+                        infobox.title = "B1N0T3 H4CK3R - Error"
+                        infobox.textinfo = "L0L Y0U JUST G0T R3KT #D341W1TH1T" & Environment.NewLine & Environment.NewLine & "(Enjoy your new virus)"
+                        infobox.Show()
+                    Case "virus scanner"
+                        If ShiftOSDesktop.boughtgray Then VirusScanner.Show() Else infobox.showinfo("Error", "The requirements for " & path & " are not meet. Please buy Gray.")
+                    Case "labyrinth"
+                        If ShiftOSDesktop.boughtgray Then Labyrinth.Show() Else infobox.showinfo("Error", "The requirements for " & path & " are not meet. Please buy Gray.")
+                    Case "calculator"
+                        Calculator.Show()
+                    Case "audio player"
+                        Audio_Player.Show()
+                    Case "video player"
+                        If ShiftOSDesktop.boughtanycolour4 Then Video_Player.Show() Else infobox.showinfo("Error", "The requirements for " & path & " are not meet. Please buy limitless colours.")
+                        Video_Player.Show()
+                    Case "dock"
+                        ShiftDock.Show()
+                    Case "virus grade 1 removal unlocker"
+                        If ShiftOSDesktop.installedvirusscanner Then
+                            If Math.Ceiling(Rnd() * 2) = 1 Then
+                                infobox.showinfo("Virus Removal Unlocked", "Removal of grade 1 viruses has been unlocked in the Virus Scanner.")
+                                If ShiftOSDesktop.virusscannergrade < 1 Then ShiftOSDesktop.virusscannergrade = 1
+                            Else
+                                infobox.showinfo("Lolz", "Haha, I just don't feel like doing anything today. Try me again some time and I MIGHT Lock it. For now, I'm hang out for the lolz!")
+                            End If
+                        End If
+                    Case "virus grade 2 removal unlocker"
+                        If ShiftOSDesktop.installedvirusscanner Then
+                            If Math.Ceiling(Rnd() * 2) = 1 Then
+                                infobox.showinfo("Virus Removal Unlocked", "Removal of grade 2 viruses has been unlocked in the Virus Scanner.")
+                                If ShiftOSDesktop.virusscannergrade < 2 Then ShiftOSDesktop.virusscannergrade = 2
+                            Else
+                                infobox.showinfo("Lolz", "Haha, I just don't feel like doing anything today. Try me again some time and I MIGHT Lock it. For now, I'm hang out for the lolz!")
+                            End If
+                        End If
+                    Case "virus grade 3 removal unlocker"
+                        If ShiftOSDesktop.installedvirusscanner Then
+                            If Math.Ceiling(Rnd() * 2) = 1 Then
+                                infobox.showinfo("Virus Removal Unlocked", "Removal of grade 3 viruses has been unlocked in the Virus Scanner.")
+                                If ShiftOSDesktop.virusscannergrade < 3 Then ShiftOSDesktop.virusscannergrade = 3
+                            Else
+                                infobox.showinfo("Lolz", "Haha, I just don't feel like doing anything today. Try me again some time and I MIGHT Lock it. For now, I'm hang out for the lolz!")
+                            End If
+                        End If
+                    Case "virus grade 4 removal unlocker"
+                        If ShiftOSDesktop.installedvirusscanner Then
+                            If Math.Ceiling(Rnd() * 2) = 1 Then
+                                infobox.showinfo("Virus Removal Unlocked", "Removal of grade 4 viruses has been unlocked in the Virus Scanner.")
+                                If ShiftOSDesktop.virusscannergrade < 4 Then ShiftOSDesktop.virusscannergrade = 4
+                            Else
+                                infobox.showinfo("Lolz", "Haha, I just don't feel like doing anything today. Try me again some time and I MIGHT Lock it. For now, I'm hang out for the lolz!")
+                            End If
+                        End If
+                    Case Else
+                        infobox.title = "Corrupt file"
+                        infobox.textinfo = "The stand alone application '" & path & "' seems to be corrupt and is unable to run properly."
+                        infobox.Show()
+                End Select
+            ElseIf path Like "*.stp" Then
+                Installer.Show()
+                Installer.txtfilepath.Text = (path)
+            ElseIf path Like "*.smf" Then
+                NewAPI.UseCode(path)
+            ElseIf path Like "*.trm" Then
+                Terminal.Show()
+                Terminal.runterminalfile(path)
+            ElseIf path Like "*.sct" Then
+                Dim sr As New IO.StreamReader(path)
+                Dim relayPath As String = sr.ReadToEnd()
+                sr.Close()
+                OpenFile(relayPath)
+            ElseIf path Like "*.bat" Then
+                If (ShiftOSDesktop.unitymode) Then
+                    Shell(path)
+                Else
+                    If (ShiftOSDesktop.boughtunitymode) Then
+                        infobox.title = "File Skimmer - Unity Mode:"
+                        infobox.textinfo = "You do not have unity mode enabled. Enable unity mode to run shell scripts"
+                        infobox.Show()
+                    Else
+                        infobox.title = "File Skimmer - Unity Mode:"
+                        infobox.textinfo = "You do not have unity mode"
+                        infobox.Show()
+                    End If
+                End If
+            Else
+
+                If My.Computer.FileSystem.DirectoryExists(path) Then
+                    lbllocation.Text = path
+                    showcontents()
+                Else
+                    infobox.title = "Could not run file"
+                    infobox.textinfo = "Error running file"
+                    infobox.Show()
+                End If
+
+            End If
         End If
 
     End Sub

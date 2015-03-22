@@ -1620,17 +1620,24 @@
         For Each Control In MyBase.Controls
             Control.visible = False
         Next
-        loginform.ShowDialog()
+        If Skins.autologin = False Then
+            If Skins.fullScreen = False Then
+                loginform.ShowDialog()
+            Else
+                FullScreenLogin.ShowDialog()
+            End If
+        End If
 
-        For Each Control In MyBase.Controls
-            Control.visible = True
-            hideStart()
-        Next
-        Try
-            Helper.playSound(Paths.sounddir & "startup.wav", AudioPlayMode.WaitToComplete)
-        Catch ex As Exception
-            'Do nothing -- Haven't found a good startup sound
-        End Try
+
+            For Each Control In MyBase.Controls
+                Control.visible = True
+                hideStart()
+            Next
+            Try
+                Helper.playSound(Paths.sounddir & "startup.wav", AudioPlayMode.WaitToComplete)
+            Catch ex As Exception
+                'Do nothing -- Haven't found a good startup sound
+            End Try
 
     End Sub
 

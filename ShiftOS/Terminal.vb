@@ -956,6 +956,10 @@ Public Class Terminal
 
         If further = True Then
             Select Case command
+                Case "test fullscreen login customizer"
+                    FullScreenLoginCustomizer.Show()
+                Case "test fullscreen login"
+                    FullScreenLogin.Show()
                 Case "adv app launcher on"
                     ShiftOSDesktop.boughtadvapplauncher = True
                     ShiftOSDesktop.savegame()
