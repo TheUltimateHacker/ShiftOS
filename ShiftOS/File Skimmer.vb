@@ -718,6 +718,9 @@ Public Class File_Skimmer
                 infobox.showinfo("Application Not Found", "ShiftOS could not find an application able the open audio files.")
             End If
 
+        ElseIf path Like "*.smf" Then
+            NewAPI.OpenModFile(path)
+
         ElseIf path Like "*.saa" Then
             File_Crypt.DecryptFile(path & "\" & path, ShiftOSDesktop.ShiftOSPath + "Shiftum42\Drivers\HDD.dri", ShiftOSDesktop.sSecretKey)
             Dim sr As StreamReader = New StreamReader(ShiftOSDesktop.ShiftOSPath + "Shiftum42\Drivers\HDD.dri")
@@ -810,8 +813,6 @@ Public Class File_Skimmer
         ElseIf path Like "*.stp" Then
             Installer.Show()
             Installer.txtfilepath.Text = (path)
-        ElseIf path Like "*.smf" Then
-            NewAPI.UseCode(path)
         ElseIf path Like "*.trm" Then
             Terminal.Show()
             Terminal.runterminalfile(path)

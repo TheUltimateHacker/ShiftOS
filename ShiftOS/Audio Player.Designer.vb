@@ -288,10 +288,10 @@ Partial Class Audio_Player
         '
         Me.lbtitletext.AutoSize = True
         Me.lbtitletext.BackColor = System.Drawing.Color.Transparent
-        Me.lbtitletext.Font = New System.Drawing.Font("Felix Titling", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbtitletext.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbtitletext.Location = New System.Drawing.Point(26, 7)
         Me.lbtitletext.Name = "lbtitletext"
-        Me.lbtitletext.Size = New System.Drawing.Size(129, 18)
+        Me.lbtitletext.Size = New System.Drawing.Size(102, 18)
         Me.lbtitletext.TabIndex = 19
         Me.lbtitletext.Text = "Audio Player"
         '

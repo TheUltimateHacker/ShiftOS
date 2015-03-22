@@ -572,4 +572,8 @@
     Private Sub picsongtrack_MouseUp(sender As Object, e As MouseEventArgs) Handles picsongtrack.MouseUp
         tmrsongtrack.Interval = 200
     End Sub
+
+    Private Sub lblintro_Click(sender As Object, e As EventArgs) Handles lblintro.Click
+
+    End Sub
 End Class
