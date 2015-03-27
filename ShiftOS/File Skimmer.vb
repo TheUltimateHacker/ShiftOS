@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Public Class File_Skimmer
     Public rolldownsize As Integer
     Public oldbordersize As Integer
@@ -698,6 +698,41 @@ Public Class File_Skimmer
                         Dim i As String = sr.ReadLine
                         Skin_Loader.loadingsknversion = sr.ReadLine
                         sr.Close()
+
+        ElseIf path Like "*.smf" Then
+            NewAPI.OpenModFile(path)
+
+        ElseIf path Like "*.saa" Then
+            File_Crypt.DecryptFile(path & "\" & path, ShiftOSDesktop.ShiftOSPath + "Shiftum42\Drivers\HDD.dri", ShiftOSDesktop.sSecretKey)
+            Dim sr As StreamReader = New StreamReader(ShiftOSDesktop.ShiftOSPath + "Shiftum42\Drivers\HDD.dri")
+            Dim apptoopen As String = sr.ReadLine()
+            sr.Close()
+            Select Case apptoopen.ToLower
+                'Case "program name"
+                '   Check requirements and open program
+                Case "dodge"
+                    Dodge.Show()
+                Case "web browser"
+                    If ShiftOSDesktop.boughtanycolour4 = True Then Web_Browser.Show() Else infobox.showinfo("Error", "The requirements for " & path & " are not meet. Please buy limitless colours.")
+                Case "b1n0t3 h4ck"
+                    Randomize()
+                    Dim VirusChoice As Integer = CInt(Math.Ceiling(Rnd() * 4))
+                    If VirusChoice = 1 Then
+                        Viruses.zerogravity = True
+                        Viruses.zerogravitythreatlevel = CInt(Math.Floor((4) * Rnd())) + 1
+                        Viruses.setupzerovirus()
+                    ElseIf VirusChoice = 2 Then
+                        Viruses.beeper = True
+                        Viruses.beeperthreatlevel = CInt(Math.Floor((4) * Rnd())) + 1
+                        Viruses.setupbeepervirus()
+                    ElseIf VirusChoice = 3 Then
+                        Viruses.mousetrap = True
+                        Viruses.mousetrapthreatlevel = CInt(Math.Floor((4) * Rnd())) + 1
+                        Viruses.setupmousetrapvirus()
+                    ElseIf VirusChoice = 4 Then
+                        Viruses.ThePlague = True
+                        Viruses.theplaguethreatlevel = CInt(Math.Floor((4) * Rnd())) + 1
+                        Viruses.setuptheplague()
                     End If
                     If Skin_Loader.loadingsknversion = "2.0 disposal-free skinning" Then
                         Skin_Loader.setuppreview2_0()
@@ -836,7 +871,25 @@ Public Class File_Skimmer
                         infobox.textinfo = "You do not have unity mode"
                         infobox.Show()
                     End If
-                End If
+                Case Else
+                    infobox.title = "Corrupt file"
+                    infobox.textinfo = "The stand alone application '" & path & "' seems to be corrupt and is unable to run properly."
+                    infobox.Show()
+            End Select
+        ElseIf path Like "*.stp" Then
+            Installer.Show()
+            Installer.txtfilepath.Text = (path)
+        ElseIf path Like "*.trm" Then
+            Terminal.Show()
+            Terminal.runterminalfile(path)
+        ElseIf path Like "*.sct" Then
+            Dim sr As New IO.StreamReader(path)
+            Dim relayPath As String = sr.ReadToEnd()
+            sr.Close()
+            OpenFile(relayPath)
+        ElseIf path Like "*.bat" Then
+            If (ShiftOSDesktop.unitymode) Then
+                Shell(path)
             Else
 
                 If My.Computer.FileSystem.DirectoryExists(path) Then

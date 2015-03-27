@@ -21,6 +21,8 @@
     Public redlevel As Integer
     Public pinklevel As Integer
 
+    Public sendToMod = False ' If true will output the rgb value for use of mod
+
 #Region "Template Code"
 
     Private Sub Template_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -1648,6 +1650,12 @@
     End Sub
 
     Private Sub pnlnewcolour_Click(sender As Object, e As EventArgs) Handles pnlnewcolour.Click
+        If sendToMod = True Then
+            If Not My.Computer.FileSystem.DirectoryExists(NewAPI.modOutputPath) Then My.Computer.FileSystem.CreateDirectory(NewAPI.modOutputPath)
+            Dim sw As System.IO.StreamWriter = New IO.StreamWriter(NewAPI.modOutputPath & "\givecolour.srip") ' ShiftOS Request/Receive* Information Protocol (SRIP) *Depends on the direction
+            sw.WriteLine(pnlnewcolour.BackColor.ToArgb())
+            sw.Close()
+        End If
         Select Case colourtochange
             Case "Username Text Color"
                 Shifter.usernametextcolor = pnlnewcolour.BackColor
@@ -1906,10 +1914,6 @@
             Case "OrcWrite highlight text colour dono"
                 OrcWrite.Button7.BackColor = pnlnewcolour.BackColor
                 OrcWrite.RichTextBox1.SelectionBackColor = pnlnewcolour.BackColor
-            Case "mod dono"
-                'Dim sw As New System.IO.StreamWriter(NewAPI.varpath & "\colourpickeroutput")
-                'sw.WriteLine(pnlnewcolour.BackColor.ToArgb)
-                'sw.Close()
             Case "artpallet1" : ArtPad.colourpallet1.BackColor = pnlnewcolour.BackColor
             Case "artpallet2" : ArtPad.colourpallet2.BackColor = pnlnewcolour.BackColor
             Case "artpallet3" : ArtPad.colourpallet3.BackColor = pnlnewcolour.BackColor
