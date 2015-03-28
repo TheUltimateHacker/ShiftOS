@@ -56,14 +56,11 @@
         userpic.BackColor = Color.Transparent
         userpic.BackgroundImageLayout = Skins.userimagelayout
         If Not IsNothing(Skins.userimagelocation) Then userpic.Location = Skins.userimagelocation
-        txtusername.ForeColor = Skins.inputforecolor
-        txtpassword.ForeColor = Skins.inputforecolor
-        txtusername.BackColor = Skins.inputbackcolor
-        txtpassword.BackColor = Skins.inputbackcolor
-        txtusername.Font = New Font(Skins.inputfont, Skins.inputfontsize, Skins.inputfontstyle)
-        txtpassword.Font = New Font(Skins.inputfont, Skins.inputfontsize, Skins.inputfontstyle)
-        loginbtn.Font = New Font(Skins.buttonfont, Skins.buttonfontsize, Skins.buttonfontstyle)
-        shutdown.Font = New Font(Skins.buttonfont, Skins.buttonfontsize, Skins.buttonfontstyle)
+        'buggy
+        'txtusername.ForeColor = Skins.inputforecolor
+        'txtpassword.ForeColor = Skins.inputforecolor
+        'txtusername.BackColor = Skins.inputbackcolor
+        'txtpassword.BackColor = Skins.inputbackcolor
         txtusername.Location = New Point(Skins.userTextboxX, Skins.userTextBoxY)
         txtpassword.Location = New Point(Skins.passTextBoxX, Skins.passTextBoxY)
         loginbtn.Location = New Point(Skins.loginbtnX, Skins.loginbtnY)
@@ -117,6 +114,9 @@
         Skins.inputfont = inputfont
         Skins.inputfontsize = inputfontsize
         Skins.inputfontstyle = inputfontstyle
+        Skins.buttonfont = buttonfont
+        Skins.buttonfontsize = buttonfontsize
+        Skins.buttonfontstyle = buttonfontstyle
         Skins.loginbg = loginbg
         Skins.loginbglayout = loginbglayout
         Skins.loginbgcolor = loginbgcolor
@@ -143,6 +143,9 @@
         inputfont = Skins.inputfont
         inputfontsize = Skins.inputfontsize
         inputfontstyle = Skins.inputfontstyle
+        buttonfont = Skins.buttonfont
+        buttonfontsize = Skins.buttonfontsize
+        buttonfontstyle = Skins.buttonfontstyle
         loginbg = Skins.loginbg
         loginbgcolor = Skins.loginbgcolor
         loginbglayout = Skins.loginbglayout
@@ -169,10 +172,6 @@
         txtpassword.ForeColor = inputforecolor
         txtusername.BackColor = inputbackcolor
         txtpassword.BackColor = inputbackcolor
-        txtusername.Font = New Font(inputfont, inputfontsize, inputfontstyle)
-        txtpassword.Font = New Font(inputfont, inputfontsize, inputfontstyle)
-        loginbtn.Font = New Font(buttonfont, buttonfontsize, buttonfontstyle)
-        shutdown.Font = New Font(buttonfont, buttonfontsize, buttonfontstyle)
         addRandomCP()
         
     End Sub
@@ -218,5 +217,10 @@
         loginbtnX = loginbtn.Location.X
         loginbtnY = loginbtn.Location.Y
         setNewSkin()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        applySettings()
+        Me.Close()
     End Sub
 End Class

@@ -35,7 +35,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>..\..\ShiftOS 0.0.8 RCs\</OutputPath>
+    <OutputPath>bin\debug\</OutputPath>
     <DocumentationFile>
     </DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
@@ -87,6 +87,9 @@
   <ItemGroup>
     <Reference Include="MichaelsMovableControlSuite">
       <HintPath>..\..\..\MovableControls\MichaelsMovableControlSuite\MichaelsMovableControlSuite\bin\Debug\MichaelsMovableControlSuite.dll</HintPath>
+    </Reference>
+    <Reference Include="Skybound.Gecko">
+      <HintPath>..\..\..\OrcWeb\OrcWeb\OrcWeb\Skybound.Gecko.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

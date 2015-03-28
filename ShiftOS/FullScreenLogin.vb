@@ -7,7 +7,7 @@
     End Sub
 
     Public Sub setskin()
-        Me.BackColor = Skins.loginbgcolor
+        Me.BackColor = Color.Black
         Me.BackgroundImage = Skins.loginbg
         Me.BackgroundImageLayout = Skins.loginbglayout
         userpic.Size = New Size(Skins.userimagesize, Skins.userimagesize)
@@ -15,14 +15,6 @@
         userpic.BackColor = Color.Transparent
         userpic.BackgroundImageLayout = Skins.userimagelayout
         If Not IsNothing(Skins.userimagelocation) Then userpic.Location = Skins.userimagelocation
-        txtusername.ForeColor = Skins.inputforecolor
-        txtpassword.ForeColor = Skins.inputforecolor
-        txtusername.BackColor = Skins.inputbackcolor
-        txtpassword.BackColor = Skins.inputbackcolor
-        txtusername.Font = New Font(Skins.inputfont, Skins.inputfontsize, Skins.inputfontstyle)
-        txtpassword.Font = New Font(Skins.inputfont, Skins.inputfontsize, Skins.inputfontstyle)
-        loginbtn.Font = New Font(Skins.buttonfont, Skins.buttonfontsize, Skins.buttonfontstyle)
-        shutdown.Font = New Font(Skins.buttonfont, Skins.buttonfontsize, Skins.buttonfontstyle)
         txtusername.Location = New Point(Skins.userTextboxX, Skins.userTextBoxY)
         txtpassword.Location = New Point(Skins.passTextBoxX, Skins.passTextBoxY)
         loginbtn.Location = New Point(Skins.loginbtnX, Skins.loginbtnY)

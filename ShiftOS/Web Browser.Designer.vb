@@ -38,10 +38,6 @@ Partial Class Web_Browser
         Me.pgbottomlcorner = New System.Windows.Forms.Panel()
         Me.pgcontents = New System.Windows.Forms.Panel()
         Me.pnlwebtabholder = New System.Windows.Forms.Panel()
-        Me.webwindowt4 = New System.Windows.Forms.WebBrowser()
-        Me.webwindowt1 = New System.Windows.Forms.WebBrowser()
-        Me.webwindowt2 = New System.Windows.Forms.WebBrowser()
-        Me.webwindowt3 = New System.Windows.Forms.WebBrowser()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnhome = New System.Windows.Forms.Button()
         Me.txtlocation = New System.Windows.Forms.TextBox()
@@ -49,6 +45,7 @@ Partial Class Web_Browser
         Me.btnback = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.pnloptions = New System.Windows.Forms.Panel()
+        Me.siteloadprogress = New ShiftOS.ProgressBarEX()
         Me.pnltab4 = New System.Windows.Forms.Panel()
         Me.lbltab4 = New System.Windows.Forms.Label()
         Me.pnltab3 = New System.Windows.Forms.Panel()
@@ -60,7 +57,10 @@ Partial Class Web_Browser
         Me.pgleft = New System.Windows.Forms.Panel()
         Me.titlebar = New System.Windows.Forms.Panel()
         Me.pnlicon = New System.Windows.Forms.PictureBox()
-        Me.siteloadprogress = New ShiftOS.ProgressBarEX()
+        Me.webwindowt1 = New Skybound.Gecko.GeckoWebBrowser()
+        Me.webwindowt2 = New Skybound.Gecko.GeckoWebBrowser()
+        Me.webwindowt3 = New Skybound.Gecko.GeckoWebBrowser()
+        Me.webwindowt4 = New Skybound.Gecko.GeckoWebBrowser()
         Me.pgright.SuspendLayout()
         Me.pgcontents.SuspendLayout()
         Me.pnlwebtabholder.SuspendLayout()
@@ -192,50 +192,14 @@ Partial Class Web_Browser
         'pnlwebtabholder
         '
         Me.pnlwebtabholder.Controls.Add(Me.webwindowt4)
-        Me.pnlwebtabholder.Controls.Add(Me.webwindowt1)
-        Me.pnlwebtabholder.Controls.Add(Me.webwindowt2)
         Me.pnlwebtabholder.Controls.Add(Me.webwindowt3)
+        Me.pnlwebtabholder.Controls.Add(Me.webwindowt2)
+        Me.pnlwebtabholder.Controls.Add(Me.webwindowt1)
         Me.pnlwebtabholder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlwebtabholder.Location = New System.Drawing.Point(0, 36)
         Me.pnlwebtabholder.Name = "pnlwebtabholder"
         Me.pnlwebtabholder.Size = New System.Drawing.Size(1054, 487)
         Me.pnlwebtabholder.TabIndex = 6
-        '
-        'webwindowt4
-        '
-        Me.webwindowt4.Location = New System.Drawing.Point(88, 69)
-        Me.webwindowt4.MinimumSize = New System.Drawing.Size(20, 20)
-        Me.webwindowt4.Name = "webwindowt4"
-        Me.webwindowt4.ScriptErrorsSuppressed = True
-        Me.webwindowt4.Size = New System.Drawing.Size(62, 48)
-        Me.webwindowt4.TabIndex = 4
-        '
-        'webwindowt1
-        '
-        Me.webwindowt1.Location = New System.Drawing.Point(261, 69)
-        Me.webwindowt1.MinimumSize = New System.Drawing.Size(20, 20)
-        Me.webwindowt1.Name = "webwindowt1"
-        Me.webwindowt1.ScriptErrorsSuppressed = True
-        Me.webwindowt1.Size = New System.Drawing.Size(60, 66)
-        Me.webwindowt1.TabIndex = 1
-        '
-        'webwindowt2
-        '
-        Me.webwindowt2.Location = New System.Drawing.Point(287, 203)
-        Me.webwindowt2.MinimumSize = New System.Drawing.Size(20, 20)
-        Me.webwindowt2.Name = "webwindowt2"
-        Me.webwindowt2.ScriptErrorsSuppressed = True
-        Me.webwindowt2.Size = New System.Drawing.Size(102, 50)
-        Me.webwindowt2.TabIndex = 2
-        '
-        'webwindowt3
-        '
-        Me.webwindowt3.Location = New System.Drawing.Point(364, 59)
-        Me.webwindowt3.MinimumSize = New System.Drawing.Size(20, 20)
-        Me.webwindowt3.Name = "webwindowt3"
-        Me.webwindowt3.ScriptErrorsSuppressed = True
-        Me.webwindowt3.Size = New System.Drawing.Size(111, 58)
-        Me.webwindowt3.TabIndex = 3
         '
         'Panel1
         '
@@ -322,6 +286,26 @@ Partial Class Web_Browser
         Me.pnloptions.Name = "pnloptions"
         Me.pnloptions.Size = New System.Drawing.Size(1054, 45)
         Me.pnloptions.TabIndex = 5
+        '
+        'siteloadprogress
+        '
+        Me.siteloadprogress.BackColor = System.Drawing.Color.White
+        Me.siteloadprogress.BlockSeparation = 3
+        Me.siteloadprogress.BlockWidth = 5
+        Me.siteloadprogress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.siteloadprogress.Color = System.Drawing.Color.Gray
+        Me.siteloadprogress.Dock = System.Windows.Forms.DockStyle.Top
+        Me.siteloadprogress.Location = New System.Drawing.Point(0, 0)
+        Me.siteloadprogress.MaxValue = 100
+        Me.siteloadprogress.MinValue = 0
+        Me.siteloadprogress.Name = "siteloadprogress"
+        Me.siteloadprogress.Orientation = ShiftOS.ProgressBarEX.ProgressBarOrientation.Horizontal
+        Me.siteloadprogress.ShowValue = False
+        Me.siteloadprogress.Size = New System.Drawing.Size(1054, 10)
+        Me.siteloadprogress.Step = 10
+        Me.siteloadprogress.Style = ShiftOS.ProgressBarEX.ProgressBarExStyle.Continuous
+        Me.siteloadprogress.TabIndex = 20
+        Me.siteloadprogress.Value = 0
         '
         'pnltab4
         '
@@ -443,25 +427,33 @@ Partial Class Web_Browser
         Me.pnlicon.TabStop = False
         Me.pnlicon.Visible = False
         '
-        'siteloadprogress
+        'webwindowt1
         '
-        Me.siteloadprogress.BackColor = System.Drawing.Color.White
-        Me.siteloadprogress.BlockSeparation = 3
-        Me.siteloadprogress.BlockWidth = 5
-        Me.siteloadprogress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.siteloadprogress.Color = System.Drawing.Color.Gray
-        Me.siteloadprogress.Dock = System.Windows.Forms.DockStyle.Top
-        Me.siteloadprogress.Location = New System.Drawing.Point(0, 0)
-        Me.siteloadprogress.MaxValue = 100
-        Me.siteloadprogress.MinValue = 0
-        Me.siteloadprogress.Name = "siteloadprogress"
-        Me.siteloadprogress.Orientation = ShiftOS.ProgressBarEX.ProgressBarOrientation.Horizontal
-        Me.siteloadprogress.ShowValue = False
-        Me.siteloadprogress.Size = New System.Drawing.Size(1054, 10)
-        Me.siteloadprogress.Step = 10
-        Me.siteloadprogress.Style = ShiftOS.ProgressBarEX.ProgressBarExStyle.Continuous
-        Me.siteloadprogress.TabIndex = 20
-        Me.siteloadprogress.Value = 0
+        Me.webwindowt1.Location = New System.Drawing.Point(100, 62)
+        Me.webwindowt1.Name = "webwindowt1"
+        Me.webwindowt1.Size = New System.Drawing.Size(135, 84)
+        Me.webwindowt1.TabIndex = 0
+        '
+        'webwindowt2
+        '
+        Me.webwindowt2.Location = New System.Drawing.Point(352, 122)
+        Me.webwindowt2.Name = "webwindowt2"
+        Me.webwindowt2.Size = New System.Drawing.Size(75, 23)
+        Me.webwindowt2.TabIndex = 1
+        '
+        'webwindowt3
+        '
+        Me.webwindowt3.Location = New System.Drawing.Point(476, 122)
+        Me.webwindowt3.Name = "webwindowt3"
+        Me.webwindowt3.Size = New System.Drawing.Size(75, 23)
+        Me.webwindowt3.TabIndex = 2
+        '
+        'webwindowt4
+        '
+        Me.webwindowt4.Location = New System.Drawing.Point(218, 175)
+        Me.webwindowt4.Name = "webwindowt4"
+        Me.webwindowt4.Size = New System.Drawing.Size(75, 23)
+        Me.webwindowt4.TabIndex = 3
         '
         'Web_Browser
         '
@@ -517,15 +509,11 @@ Partial Class Web_Browser
     Friend WithEvents pgleft As System.Windows.Forms.Panel
     Friend WithEvents titlebar As System.Windows.Forms.Panel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents webwindowt1 As System.Windows.Forms.WebBrowser
     Friend WithEvents btnhome As System.Windows.Forms.Button
     Friend WithEvents txtlocation As System.Windows.Forms.TextBox
     Friend WithEvents btnforward As System.Windows.Forms.Button
     Friend WithEvents btnback As System.Windows.Forms.Button
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents webwindowt2 As System.Windows.Forms.WebBrowser
-    Friend WithEvents webwindowt4 As System.Windows.Forms.WebBrowser
-    Friend WithEvents webwindowt3 As System.Windows.Forms.WebBrowser
     Friend WithEvents pnloptions As System.Windows.Forms.Panel
     Friend WithEvents pnltab4 As System.Windows.Forms.Panel
     Friend WithEvents lbltab4 As System.Windows.Forms.Label
@@ -537,4 +525,8 @@ Partial Class Web_Browser
     Friend WithEvents lbltab1 As System.Windows.Forms.Label
     Friend WithEvents pnlwebtabholder As System.Windows.Forms.Panel
     Friend WithEvents siteloadprogress As ShiftOS.ProgressBarEX
+    Friend WithEvents webwindowt4 As Skybound.Gecko.GeckoWebBrowser
+    Friend WithEvents webwindowt3 As Skybound.Gecko.GeckoWebBrowser
+    Friend WithEvents webwindowt2 As Skybound.Gecko.GeckoWebBrowser
+    Friend WithEvents webwindowt1 As Skybound.Gecko.GeckoWebBrowser
 End Class

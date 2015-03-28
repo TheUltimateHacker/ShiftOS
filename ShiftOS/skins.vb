@@ -350,6 +350,8 @@ Module Skins
             Next
 
             ' settings
+
+
             closebtnsize = New Size(loaddata(1), loaddata(2))
             rollbtnsize = New Size(loaddata(3), loaddata(4))
             minbtnsize = New Size(loaddata(5), loaddata(6))

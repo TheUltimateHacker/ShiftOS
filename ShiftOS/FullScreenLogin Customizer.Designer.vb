@@ -41,6 +41,7 @@ Partial Class FullScreenLoginCustomizer
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.userpic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.preview.SuspendLayout()
         Me.pnldefault.SuspendLayout()
@@ -177,6 +178,7 @@ Partial Class FullScreenLoginCustomizer
         'Titlebar
         '
         Me.Titlebar.BackColor = System.Drawing.Color.Gray
+        Me.Titlebar.Controls.Add(Me.Button2)
         Me.Titlebar.Controls.Add(Me.lbtitletext)
         Me.Titlebar.Dock = System.Windows.Forms.DockStyle.Top
         Me.Titlebar.ForeColor = System.Drawing.Color.White
@@ -246,6 +248,16 @@ Partial Class FullScreenLoginCustomizer
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "User Account Picture"
         '
+        'Button2
+        '
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Location = New System.Drawing.Point(1826, 5)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 1
+        Me.Button2.Text = "Apply"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'FullScreenLoginCustomizer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -287,4 +299,5 @@ Partial Class FullScreenLoginCustomizer
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 End Class

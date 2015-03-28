@@ -448,19 +448,19 @@
         End If
     End Sub
 
-    Private Sub webwindowt1_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs) Handles webwindowt1.Navigated
+    Private Sub webwindowt1_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs)
         updatetitles()
         txtlocation.Text = webwindowt1.Url.ToString
     End Sub
-    Private Sub webwindowt2_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs) Handles webwindowt2.Navigated
+    Private Sub webwindowt2_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs)
         updatetitles()
         txtlocation.Text = webwindowt1.Url.ToString
     End Sub
-    Private Sub webwindowt3_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs) Handles webwindowt3.Navigated
+    Private Sub webwindowt3_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs)
         updatetitles()
         txtlocation.Text = webwindowt1.Url.ToString
     End Sub
-    Private Sub webwindowt4_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs) Handles webwindowt4.Navigated
+    Private Sub webwindowt4_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs)
         updatetitles()
         txtlocation.Text = webwindowt1.Url.ToString
     End Sub
@@ -632,7 +632,7 @@
         If webwindowt4.DocumentTitle = "" Then lbtitletext.Text = "Web Browser" Else lbtitletext.Text = "Web Browser - " & webwindowt4.DocumentTitle
     End Sub
 
-    Private Sub webloading(ByVal sender As Object, ByVal e As System.Windows.Forms.WebBrowserProgressChangedEventArgs) Handles webwindowt1.ProgressChanged, webwindowt2.ProgressChanged, webwindowt3.ProgressChanged, webwindowt4.ProgressChanged
+    Private Sub webloading(ByVal sender As Object, ByVal e As System.Windows.Forms.WebBrowserProgressChangedEventArgs)
         Try
             If e.MaximumProgress > 0L AndAlso e.CurrentProgress > 0L Then
                 siteloadprogress.Value = CInt(Math.Round((100 * e.CurrentProgress / e.MaximumProgress)))
