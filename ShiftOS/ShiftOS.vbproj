@@ -86,10 +86,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MichaelsMovableControlSuite">
-      <HintPath>..\..\..\MovableControls\MichaelsMovableControlSuite\MichaelsMovableControlSuite\bin\Debug\MichaelsMovableControlSuite.dll</HintPath>
+      <HintPath>bin\debug\MichaelsMovableControlSuite.dll</HintPath>
     </Reference>
     <Reference Include="Skybound.Gecko">
-      <HintPath>..\..\..\OrcWeb\OrcWeb\OrcWeb\Skybound.Gecko.dll</HintPath>
+      <HintPath>bin\debug\Skybound.Gecko.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
