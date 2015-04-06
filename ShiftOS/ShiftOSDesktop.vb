@@ -1638,7 +1638,7 @@
             Catch ex As Exception
                 'Do nothing -- Haven't found a good startup sound
             End Try
-
+        DockWindow.Show()
     End Sub
 
     Public Sub loadcurrentskin()

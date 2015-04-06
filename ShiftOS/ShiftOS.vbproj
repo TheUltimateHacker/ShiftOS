@@ -88,7 +88,8 @@
     <Reference Include="MichaelsMovableControlSuite">
       <HintPath>bin\debug\MichaelsMovableControlSuite.dll</HintPath>
     </Reference>
-    <Reference Include="Skybound.Gecko">
+    <Reference Include="Skybound.Gecko, Version=1.9.1.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\debug\Skybound.Gecko.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -157,6 +158,13 @@
     <Compile Include="Catalyst_Main.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DockWindow.Designer.vb">
+      <DependentUpon>DockWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockEngine.vb" />
     <Compile Include="FullScreenLogin Customizer.Designer.vb">
       <DependentUpon>FullScreenLogin Customizer.vb</DependentUpon>
     </Compile>
@@ -323,6 +331,12 @@
       <DependentUpon>SystemInfo.vb</DependentUpon>
     </Compile>
     <Compile Include="SystemInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockSettingsMenu.Designer.vb">
+      <DependentUpon>DockSettingsMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockSettingsMenu.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Video Player.Designer.vb">
@@ -492,6 +506,9 @@
     <EmbeddedResource Include="coherencemodeform.resx">
       <DependentUpon>coherencemodeform.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockWindow.resx">
+      <DependentUpon>DockWindow.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FullScreenLogin Customizer.resx">
       <DependentUpon>FullScreenLogin Customizer.vb</DependentUpon>
     </EmbeddedResource>
@@ -561,6 +578,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SystemInfo.resx">
       <DependentUpon>SystemInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockSettingsMenu.resx">
+      <DependentUpon>DockSettingsMenu.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Video Player.resx">
       <DependentUpon>Video Player.vb</DependentUpon>
