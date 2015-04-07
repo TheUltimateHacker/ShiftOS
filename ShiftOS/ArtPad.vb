@@ -2346,4 +2346,8 @@
     Private Sub txtdrawstringtext_TextChanged(sender As Object, e As EventArgs) Handles txtdrawstringtext.TextChanged
         setuppreview()
     End Sub
+
+    Private Sub titlebar_Paint(sender As Object, e As PaintEventArgs) Handles titlebar.Paint
+
+    End Sub
 End Class

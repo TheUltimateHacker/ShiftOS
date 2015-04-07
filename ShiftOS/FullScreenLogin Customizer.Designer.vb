@@ -23,11 +23,11 @@ Partial Class FullScreenLoginCustomizer
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FullScreenLoginCustomizer))
-        Me.txtusername = New MichaelsMovableControlSuite.MovableTextBox()
-        Me.txtpassword = New MichaelsMovableControlSuite.MovableTextBox()
-        Me.userpic = New MichaelsMovableControlSuite.MovablePictureBox()
-        Me.loginbtn = New MichaelsMovableControlSuite.MovableButton()
-        Me.shutdown = New MichaelsMovableControlSuite.MovableButton()
+        Me.txtusername = New TextBox 'MichaelsMovableControlSuite.MovableTextBox()
+        Me.txtpassword = New TextBox 'MichaelsMovableControlSuite.MovableTextBox()
+        Me.userpic = New PictureBox ' MichaelsMovableControlSuite.MovablePictureBox()
+        Me.loginbtn = New Button ' MichaelsMovableControlSuite.MovableButton()
+        Me.shutdown = New Button 'MichaelsMovableControlSuite.MovableButton()
         Me.preview = New System.Windows.Forms.Panel()
         Me.pnldefault = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -281,11 +281,11 @@ Partial Class FullScreenLoginCustomizer
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents txtusername As MichaelsMovableControlSuite.MovableTextBox
-    Friend WithEvents txtpassword As MichaelsMovableControlSuite.MovableTextBox
-    Friend WithEvents userpic As MichaelsMovableControlSuite.MovablePictureBox
-    Friend WithEvents loginbtn As MichaelsMovableControlSuite.MovableButton
-    Friend WithEvents shutdown As MichaelsMovableControlSuite.MovableButton
+    Friend WithEvents txtusername As TextBox 'MichaelsMovableControlSuite.MovableTextBox
+    Friend WithEvents txtpassword As TextBox 'MichaelsMovableControlSuite.MovableTextBox
+    Friend WithEvents userpic As PictureBox 'MichaelsMovableControlSuite.MovablePictureBox
+    Friend WithEvents loginbtn As Button 'MichaelsMovableControlSuite.MovableButton
+    Friend WithEvents shutdown As Button ' MichaelsMovableControlSuite.MovableButton
     Friend WithEvents preview As System.Windows.Forms.Panel
     Friend WithEvents pnldefault As System.Windows.Forms.Panel
     Friend WithEvents Titlebar As System.Windows.Forms.Panel
