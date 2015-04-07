@@ -1,5 +1,4 @@
-﻿Imports Skybound.Gecko
-Imports System.IO
+﻿Imports System.IO
 
 Namespace My
     ' The following events are available for MyApplication:
@@ -12,18 +11,6 @@ Namespace My
     Partial Friend Class MyApplication
 
         Protected Overrides Function OnStartup(ByVal eventArgs As Microsoft.VisualBasic.ApplicationServices.StartupEventArgs) As Boolean
-
-            Dim ProfileDirectory As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) & "\ShiftOS\xulrunner\DefaultProfile"
-
-            If Not Directory.Exists(ProfileDirectory) Then
-                Directory.CreateDirectory(ProfileDirectory)
-            End If
-            Xpcom.ProfileDirectory = ProfileDirectory
-
-            Dim xrPath As String = System.Reflection.Assembly.GetExecutingAssembly.Location
-            xrPath = xrPath.Substring(0, xrPath.LastIndexOf("\") + 1) & "\xulrunner"
-            Xpcom.Initialize(xrPath)
-
             Return True
         End Function
     End Class

@@ -563,6 +563,7 @@
     End Sub
 
     Private Sub lblShiftNet_Click(sender As Object, e As EventArgs) Handles lblShiftNet.Click
+        pnlPrograms.Hide()
         totile = lblShiftNet.Text
     End Sub
 
