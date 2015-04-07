@@ -38,7 +38,7 @@ Partial Class Web_Browser
         Me.pgbottomlcorner = New System.Windows.Forms.Panel()
         Me.pgcontents = New System.Windows.Forms.Panel()
         Me.pnlwebtabholder = New System.Windows.Forms.Panel()
-        Me.tabs = New ShiftOS.ShiftOSTabs()
+        Me.tabs = New TabControl 'ShiftOS.ShiftOSTabs()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnhome = New System.Windows.Forms.Button()
         Me.txtlocation = New System.Windows.Forms.TextBox()
@@ -449,7 +449,7 @@ Partial Class Web_Browser
     Friend WithEvents pnloptions As System.Windows.Forms.Panel
     Friend WithEvents pnlwebtabholder As System.Windows.Forms.Panel
     Friend WithEvents siteloadprogress As ShiftOS.ProgressBarEX
-    Friend WithEvents tabs As ShiftOS.ShiftOSTabs
+    Friend WithEvents tabs As TabControl 'ShiftOS.ShiftOSTabs
     Friend WithEvents btnAddTab As System.Windows.Forms.Button
     Friend WithEvents btnRemTab As System.Windows.Forms.Button
     Friend WithEvents TabText As System.Windows.Forms.Timer
