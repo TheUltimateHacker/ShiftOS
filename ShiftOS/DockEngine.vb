@@ -33,6 +33,7 @@
                     My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "\SoftwareData\ShiftDock")
                 End If
                 System.IO.File.Create(filepath).Dispose()
+                DockWindow.firststart = True
             End If
         End If
 

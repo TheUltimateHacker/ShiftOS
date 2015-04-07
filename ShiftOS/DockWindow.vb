@@ -7,6 +7,7 @@
     Dim currenttile As String = 0
     Public loadevents As New DockEngine
     Public docktopbot As String = "Bottom"
+    Public firststart As Boolean
 
     Public Sub colours()
         'Dim img As New Bitmap(picBackColor.Width, picBackColor.Height)
@@ -46,6 +47,10 @@
         loadevents.writeConfFile(Me.Top, docktopbot)
         Me.Top = loadevents.docktop
         docktopbot = loadevents.topbottom
+        If firststart = True Then
+            docktopbot = "Bottom"
+            Me.Top = screenHeight - Me.Height + 25
+        End If
         If docktopbot = "Bottom" Then
             'Me.Top = screenHeight - Me.Height - 42
             Me.picBoarder.Top = 96

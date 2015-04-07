@@ -1,4 +1,6 @@
-﻿Public Class Web_Browser
+﻿Imports Skybound.Gecko
+
+Public Class Web_Browser
     Public rolldownsize As Integer
     Public oldbordersize As Integer
     Public oldtitlebarheight As Integer
@@ -10,6 +12,7 @@
 #Region "Template Code"
 
     Private Sub Template_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         justopened = True
         Me.Left = (Screen.PrimaryScreen.Bounds.Width - Me.Width) / 2
         Me.Top = (Screen.PrimaryScreen.Bounds.Height - Me.Height) / 2
@@ -21,10 +24,11 @@
         ShiftOSDesktop.setpanelbuttonappearnce(ShiftOSDesktop.pnlpanelbuttonwebbrowser, ShiftOSDesktop.tbwebbrowsericon, ShiftOSDesktop.tbwebbrowsertext, True) 'modify to proper name
         ShiftOSDesktop.programsopen = ShiftOSDesktop.programsopen + 1
 
-        gohome()
-        webwindowt1.BringToFront()
-        webwindowt1.Dock = DockStyle.Fill
-        updatetabsizes()
+        addtab()
+
+        'webwindowt1.BringToFront()
+        'webwindowt1.Dock = DockStyle.Fill
+
     End Sub
 
     Public Sub setupall()
@@ -296,20 +300,20 @@
     Private Sub pullside_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pullside.Tick
         Me.Width = Cursor.Position.X - Me.Location.X
         resettitlebar()
-        updatetabsizes()
+
     End Sub
 
     Private Sub pullbottom_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pullbottom.Tick
         Me.Height = Cursor.Position.Y - Me.Location.Y
         resettitlebar()
-        updatetabsizes()
+
     End Sub
 
     Private Sub pullbs_Tick(ByVal sender As Object, ByVal e As System.EventArgs) Handles pullbs.Tick
         Me.Width = Cursor.Position.X - Me.Location.X
         Me.Height = Cursor.Position.Y - Me.Location.Y
         resettitlebar()
-        updatetabsizes()
+
     End Sub
 
     'delete this for non-resizable windows
@@ -430,228 +434,102 @@
     'end of general setup
 #End Region
 
-    Dim currenttab As Integer = 1
-    Dim oldlocationtxt As String
+    'To re add gecko, replace all refrences to WebBrowser with Skybound.Gecko.GeckoWebBrowser. I would do it but i dont have the files! 
 
-    Private Sub txtlocation_KeyDown(sender As Object, e As KeyEventArgs) Handles txtlocation.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            Select Case currenttab
-                Case 1
-                    If txtlocation.Text.Contains(".") Then webwindowt1.Navigate(txtlocation.Text) Else webwindowt1.Navigate("http://www.google.com/search?q=" & txtlocation.Text)
-                Case 2
-                    If txtlocation.Text.Contains(".") Then webwindowt2.Navigate(txtlocation.Text) Else webwindowt2.Navigate("http://www.google.com/search?q=" & txtlocation.Text)
-                Case 3
-                    If txtlocation.Text.Contains(".") Then webwindowt3.Navigate(txtlocation.Text) Else webwindowt3.Navigate("http://www.google.com/search?q=" & txtlocation.Text)
-                Case 4
-                    If txtlocation.Text.Contains(".") Then webwindowt4.Navigate(txtlocation.Text) Else webwindowt4.Navigate("http://www.google.com/search?q=" & txtlocation.Text)
-            End Select
-        End If
+    Public Sub addtab()
+        Dim tab As New TabPage
+        Dim brwsr As New WebBrowser 'NEEDS TO CHANGE TO GECKO OR WEBKIT
+        tabs.TabPages.Add(tab)
+        tab.Controls.Add(brwsr)
+        brwsr.Dock = DockStyle.Fill
+        tabs.SelectedTab = tab
+        brwsr.Navigate("http://www.google.com")
     End Sub
 
-    Private Sub webwindowt1_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs)
-        updatetitles()
-        txtlocation.Text = webwindowt1.Url.ToString
-    End Sub
-    Private Sub webwindowt2_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs)
-        updatetitles()
-        txtlocation.Text = webwindowt1.Url.ToString
-    End Sub
-    Private Sub webwindowt3_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs)
-        updatetitles()
-        txtlocation.Text = webwindowt1.Url.ToString
-    End Sub
-    Private Sub webwindowt4_Navigated(sender As Object, e As WebBrowserNavigatedEventArgs)
-        updatetitles()
-        txtlocation.Text = webwindowt1.Url.ToString
+    Private Sub btnAddTab_Click(sender As Object, e As EventArgs) Handles btnAddTab.Click
+        addtab()
     End Sub
 
-    Private Sub updatetitles()
-        Select Case currenttab
-            Case 1
-                If Not webwindowt1.DocumentTitle = "" Then lbltab1.Text = webwindowt1.DocumentTitle
-                If webwindowt1.DocumentTitle = "" Then lbtitletext.Text = ShiftOSDesktop.webbrowsername Else lbtitletext.Text = ShiftOSDesktop.webbrowsername & " - " & webwindowt1.DocumentTitle
-                centretitletext()
-                pnltab1.BackColor = Color.FromName("ControlLight")
-                pnltab2.BackColor = Color.White
-                pnltab3.BackColor = Color.White
-                pnltab4.BackColor = Color.White
-            Case 2
-                If Not webwindowt2.DocumentTitle = "" Then lbltab2.Text = webwindowt2.DocumentTitle
-                If webwindowt2.DocumentTitle = "" Then lbtitletext.Text = ShiftOSDesktop.webbrowsername Else lbtitletext.Text = ShiftOSDesktop.webbrowsername & " - " & webwindowt2.DocumentTitle
-                centretitletext()
-                pnltab2.BackColor = Color.FromName("ControlLight")
-                pnltab1.BackColor = Color.White
-                pnltab3.BackColor = Color.White
-                pnltab4.BackColor = Color.White
-            Case 3
-                If Not webwindowt3.DocumentTitle = "" Then lbltab3.Text = webwindowt3.DocumentTitle
-                If webwindowt3.DocumentTitle = "" Then lbtitletext.Text = ShiftOSDesktop.webbrowsername Else lbtitletext.Text = ShiftOSDesktop.webbrowsername & " - " & webwindowt3.DocumentTitle
-                centretitletext()
-                pnltab3.BackColor = Color.FromName("ControlLight")
-                pnltab2.BackColor = Color.White
-                pnltab1.BackColor = Color.White
-                pnltab4.BackColor = Color.White
-            Case 4
-                If Not webwindowt4.DocumentTitle = "" Then lbltab4.Text = webwindowt4.DocumentTitle
-                If webwindowt4.DocumentTitle = "" Then lbtitletext.Text = ShiftOSDesktop.webbrowsername Else lbtitletext.Text = ShiftOSDesktop.webbrowsername & " - " & webwindowt4.DocumentTitle
-                centretitletext()
-                pnltab4.BackColor = Color.FromName("ControlLight")
-                pnltab2.BackColor = Color.White
-                pnltab3.BackColor = Color.White
-                pnltab1.BackColor = Color.White
-        End Select
-    End Sub
-
-    Private Sub centretitletext()
-        If ShiftOSDesktop.boughttitletext = False Then
-            lbtitletext.Hide()
-        Else
-            lbtitletext.Font = New Font(ShiftOSDesktop.titletextfont, ShiftOSDesktop.titletextsize, ShiftOSDesktop.titletextstyle)
-            lbtitletext.Show()
-        End If
-
-        If ShiftOSDesktop.boughtwindowborders = True Then
-            closebutton.Location = New Point(titlebar.Size.Width - ShiftOSDesktop.closebuttonside - closebutton.Size.Width, ShiftOSDesktop.closebuttontop)
-            rollupbutton.Location = New Point(titlebar.Size.Width - ShiftOSDesktop.rollupbuttonside - rollupbutton.Size.Width, ShiftOSDesktop.rollupbuttontop)
-            minimizebutton.Location = New Point(titlebar.Size.Width - ShiftOSDesktop.minimizebuttonside - minimizebutton.Size.Width, ShiftOSDesktop.minimizebuttontop)
-            Select Case ShiftOSDesktop.titletextposition
-                Case "Left"
-                    lbtitletext.Location = New Point(ShiftOSDesktop.titletextside, ShiftOSDesktop.titletexttop)
-                Case "Centre"
-                    lbtitletext.Location = New Point((titlebar.Width / 2) - lbtitletext.Width / 2, ShiftOSDesktop.titletexttop)
-            End Select
-            lbtitletext.ForeColor = ShiftOSDesktop.titletextcolour
-        Else
-            closebutton.Location = New Point(titlebar.Size.Width - ShiftOSDesktop.closebuttonside - pgtoplcorner.Width - pgtoprcorner.Width - closebutton.Size.Width, ShiftOSDesktop.closebuttontop)
-            rollupbutton.Location = New Point(titlebar.Size.Width - ShiftOSDesktop.rollupbuttonside - pgtoplcorner.Width - pgtoprcorner.Width - rollupbutton.Size.Width, ShiftOSDesktop.rollupbuttontop)
-            minimizebutton.Location = New Point(titlebar.Size.Width - ShiftOSDesktop.minimizebuttonside - pgtoplcorner.Width - pgtoprcorner.Width - minimizebutton.Size.Width, ShiftOSDesktop.minimizebuttontop)
-            Select Case ShiftOSDesktop.titletextposition
-                Case "Left"
-                    lbtitletext.Location = New Point(ShiftOSDesktop.titletextside + pgtoplcorner.Width, ShiftOSDesktop.titletexttop)
-                Case "Centre"
-                    lbtitletext.Location = New Point((titlebar.Width / 2) - lbtitletext.Width / 2, ShiftOSDesktop.titletexttop)
-            End Select
-            lbtitletext.ForeColor = ShiftOSDesktop.titletextcolour
-        End If
+    Private Sub TabText_Tick(sender As Object, e As EventArgs) Handles TabText.Tick
+        For Each opentab As TabPage In tabs.TabPages
+            For Each browser As WebBrowser In opentab.Controls
+                opentab.Text = browser.DocumentTitle
+            Next
+        Next
     End Sub
 
     Private Sub btnback_Click(sender As Object, e As EventArgs) Handles btnback.Click
-        Select Case currenttab
-            Case 1
-                If webwindowt1.CanGoBack = True Then webwindowt1.GoBack()
-            Case 2
-                If webwindowt2.CanGoBack = True Then webwindowt2.GoBack()
-            Case 3
-                If webwindowt3.CanGoBack = True Then webwindowt3.GoBack()
-            Case 4
-                If webwindowt4.CanGoBack = True Then webwindowt4.GoBack()
-        End Select
-    End Sub
-
-    Private Sub btnforward_Click(sender As Object, e As EventArgs) Handles btnforward.Click
-        Select Case currenttab
-            Case 1
-                If webwindowt1.CanGoForward = True Then webwindowt1.GoForward()
-            Case 2
-                If webwindowt2.CanGoForward = True Then webwindowt2.GoForward()
-            Case 3
-                If webwindowt3.CanGoForward = True Then webwindowt3.GoForward()
-            Case 4
-                If webwindowt4.CanGoForward = True Then webwindowt4.GoForward()
-        End Select
-    End Sub
-
-    Private Sub gohome()
-        Select Case currenttab
-            Case 1
-                webwindowt1.Navigate(ShiftOSDesktop.webbrowserhomepage)
-                centretitletext()
-            Case 2
-                webwindowt2.Navigate(ShiftOSDesktop.webbrowserhomepage)
-                centretitletext()
-            Case 3
-                webwindowt3.Navigate(ShiftOSDesktop.webbrowserhomepage)
-                centretitletext()
-            Case 4
-                webwindowt4.Navigate(ShiftOSDesktop.webbrowserhomepage)
-                centretitletext()
-        End Select
-        
-    End Sub
-
-    Private Sub btnhome_Click(sender As Object, e As EventArgs) Handles btnhome.Click
-        gohome()
-    End Sub
-
-    Private Sub txtlocation_MouseClick(sender As Object, e As MouseEventArgs) Handles txtlocation.MouseClick
-        txtlocation.SelectAll()
-    End Sub
-
-    Private Sub txtlocation_mouseenter(sender As Object, e As EventArgs) Handles txtlocation.GotFocus
-        oldlocationtxt = txtlocation.Text
-        txtlocation.Text = ""
-    End Sub
-    Private Sub txtlocation_mouseleave(sender As Object, e As EventArgs) Handles txtlocation.LostFocus
-        If txtlocation.Text = "" Then txtlocation.Text = oldlocationtxt
-    End Sub
-
-    'switching tabs
-    Private Sub pnltab1_Click(sender As Object, e As EventArgs) Handles pnltab1.Click
-        currenttab = 1
-        webwindowt1.Dock = DockStyle.Fill
-        webwindowt1.BringToFront()
-        updatetitles()
-        txtlocation.Text = "Search or Enter an address"
-        If webwindowt1.DocumentTitle = "" Then lbtitletext.Text = "Web Browser" Else lbtitletext.Text = "Web Browser - " & webwindowt1.DocumentTitle
-    End Sub
-
-    Private Sub pnltab2_Click(sender As Object, e As EventArgs) Handles pnltab2.Click
-        currenttab = 2
-        webwindowt2.Dock = DockStyle.Fill
-        webwindowt2.BringToFront()
-        updatetitles()
-        txtlocation.Text = "Search or Enter an address"
-        If webwindowt2.DocumentTitle = "" Then lbtitletext.Text = "Web Browser" Else lbtitletext.Text = "Web Browser - " & webwindowt2.DocumentTitle
-    End Sub
-
-    Private Sub pnltab3_Click(sender As Object, e As EventArgs) Handles pnltab3.Click
-        currenttab = 3
-        webwindowt3.Dock = DockStyle.Fill
-        webwindowt3.BringToFront()
-        updatetitles()
-        txtlocation.Text = "Search or Enter an address"
-        If webwindowt3.DocumentTitle = "" Then lbtitletext.Text = "Web Browser" Else lbtitletext.Text = "Web Browser - " & webwindowt3.DocumentTitle
-    End Sub
-
-    Private Sub pnltab4_Click(sender As Object, e As EventArgs) Handles pnltab4.Click
-        currenttab = 4
-        webwindowt4.Dock = DockStyle.Fill
-        webwindowt4.BringToFront()
-        updatetitles()
-        txtlocation.Text = "Search or Enter an address"
-        If webwindowt4.DocumentTitle = "" Then lbtitletext.Text = "Web Browser" Else lbtitletext.Text = "Web Browser - " & webwindowt4.DocumentTitle
-    End Sub
-
-    Private Sub webloading(ByVal sender As Object, ByVal e As System.Windows.Forms.WebBrowserProgressChangedEventArgs)
         Try
-            If e.MaximumProgress > 0L AndAlso e.CurrentProgress > 0L Then
-                siteloadprogress.Value = CInt(Math.Round((100 * e.CurrentProgress / e.MaximumProgress)))
-            ElseIf e.MaximumProgress = 0L AndAlso e.CurrentProgress = 0L Then
-                siteloadprogress.Value = 0
-            End If
-        Catch ex As Exception
-            siteloadprogress.Value = 0
+            CType(tabs.SelectedTab.Controls.Item(0), WebBrowser).GoBack()
+        Catch
         End Try
     End Sub
 
-    Private Sub updatetabsizes()
-        Dim totalsize As Integer = Me.Width - pgleft.Width - pgright.Width - 10
-        pnltab1.Size = New Size(totalsize / 4, pnltab1.Height)
-        pnltab2.Size = New Size(totalsize / 4, pnltab2.Height)
-        pnltab3.Size = New Size(totalsize / 4, pnltab3.Height)
-        pnltab4.Size = New Size(totalsize / 4, pnltab4.Height)
-        pnltab2.Location = New Point(pgleft.Width + 5 + pnltab1.Width, pnltab2.Location.Y)
-        pnltab3.Location = New Point(pgleft.Width + 5 + pnltab1.Width + pnltab2.Width, pnltab3.Location.Y)
-        pnltab4.Location = New Point(pgleft.Width + 5 + pnltab1.Width + pnltab2.Width + pnltab3.Width, pnltab4.Location.Y)
+    Private Sub UrlText_Tick(sender As Object, e As EventArgs) Handles UrlText.Tick
+        Try
+            txtlocation.Text = (CType(tabs.SelectedTab.Controls.Item(0), WebBrowser).Url.AbsoluteUri.ToString)
+        Catch
+        End Try
+    End Sub
+
+    Private Sub txtlocation_Click(sender As Object, e As EventArgs) Handles txtlocation.Click
+        txtlocation.Text = ""
+        UrlText.Stop()
+    End Sub
+
+    Private Sub txtlocation_LostFocus(sender As Object, e As EventArgs) Handles txtlocation.LostFocus
+        UrlText.Start()
+    End Sub
+
+    Private Sub btnforward_Click(sender As Object, e As EventArgs) Handles btnforward.Click
+        Try
+            CType(tabs.SelectedTab.Controls.Item(0), WebBrowser).GoForward()
+        Catch
+        End Try
+    End Sub
+
+    Private Sub btnhome_Click(sender As Object, e As EventArgs) Handles btnhome.Click
+        If tabs.TabCount > 1 Then
+            Try
+                CType(tabs.SelectedTab.Controls.Item(0), WebBrowser).Navigate("http://www.google.com")
+            Catch
+            End Try
+        Else
+            addtab()
+            Try
+                CType(tabs.SelectedTab.Controls.Item(0), WebBrowser).Navigate("http://www.google.com")
+            Catch
+            End Try
+        End If
+    End Sub
+
+    Private Sub Web_Browser_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles Me.PreviewKeyDown
+
+    End Sub
+
+    Private Sub txtlocation_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles txtlocation.PreviewKeyDown
+        If tabs.TabCount > 1 Then
+            If e.KeyCode = Keys.Enter Then
+                CType(tabs.SelectedTab.Controls.Item(0), WebBrowser).Navigate(txtlocation.Text)
+            End If
+        Else
+            If e.KeyCode = Keys.Enter Then
+                addtab()
+                CType(tabs.SelectedTab.Controls.Item(0), WebBrowser).Navigate(txtlocation.Text)
+            End If
+        End If
+    End Sub
+
+    Private Sub btnRemTab_Click(sender As Object, e As EventArgs) Handles btnRemTab.Click
+        If tabs.TabCount > 1 Then
+            tabs.Controls.Remove(tabs.SelectedTab)
+        Else
+            tabs.Controls.Remove(tabs.SelectedTab)
+            Me.Close()
+        End If
+    End Sub
+   
+    Private Sub Progress_Tick(sender As Object, e As EventArgs) Handles Progress.Tick
+        'BrowserProgress.MaxValue = (CType(tabs.SelectedTab.Controls.Item(0), WebBrowser)
     End Sub
 End Class
