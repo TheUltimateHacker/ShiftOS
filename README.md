@@ -12,3 +12,8 @@ ShiftOS is a free game. Currently, ShiftOS is still in it's early versions so th
 
 #Is ShiftOS an Indie Game?
 Currently ShiftOS is an open source indie game managed by a team of people. Anyone can contribute to shiftos, but your pull requests will be monitored and tested.
+
+#Official Forks
+[Project-Orion](https://github.com/ShiftOS/Project-Orion) by TheUltimateHacker
+#
+[shift-redux](https://github.com/ShiftOS/shift-redux) by phillips1012
