@@ -21,6 +21,8 @@
     Public password As String
 
     'Corruptions
+    Public NumberOn As Integer = 1
+    Public CrashGameReady As Boolean = False
     Public FileSkimmerCorrupted As Boolean = False
     Public ArtpadCorrupted As Boolean = False
     Public AudioPlayerCorrupted As Boolean = False
@@ -1062,6 +1064,8 @@
         SortOutBooleans(VideoPlayerCorrupted, 610, False)
         SortOutBooleans(VirusScannerCorrupted, 612, False)
         SortOutBooleans(WebBrowserCorrupted, 613, False)
+        SortOutBooleans(CrashGameReady, 614, False)
+        savelines(615) = NumberOn
         If boughtdesktopicons = True Then savelines(614) = 11 Else savelines(614) = 10
         If boughtadvapplauncher = True Then savelines(615) = 11 Else savelines(615) = 10
         savelines(616) = password
@@ -1580,6 +1584,8 @@
         SortOutBooleans(VideoPlayerCorrupted, 610, True)
         SortOutBooleans(VirusScannerCorrupted, 612, True)
         SortOutBooleans(WebBrowserCorrupted, 613, True)
+        SortOutBooleans(CrashGameReady, 614, True)
+        NumberOn = loadlines(615)
         Try
             If loadlines(614) = 11 Then boughtdesktopicons = True Else boughtdesktopicons = False
         Catch

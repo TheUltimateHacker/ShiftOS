@@ -382,76 +382,107 @@
     Public Sub theplaguedestroy(ByVal sender As Object, ByVal e As EventArgs) Handles theplaguetimer.Tick
         Randomize()
         Dim Chance As Integer = CInt(Math.Ceiling(Rnd() * 100))
-        If Chance = ChanceOfDestroyThePlague Or Chance < ChanceOfDestroyThePlague Then
+        If Chance = ChanceOfDestroyThePlague Or Chance > ChanceOfDestroyThePlague Then
             GetRandomApplication()
         End If
     End Sub
 
     Public Sub GetRandomApplication()
-        Dim chooser As Integer = CInt(Math.Ceiling(Rnd() * 32))
+        Dim Chooser As Integer = ShiftOSDesktop.NumberOn
         Select Case chooser
             Case 1
                 InfectApplication(ArtPad, ShiftOSDesktop.ArtpadCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 2
                 InfectApplication(File_Skimmer, ShiftOSDesktop.FileSkimmerCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 3
                 InfectApplication(Audio_Player, ShiftOSDesktop.AudioPlayerCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 4
                 InfectApplication(Bitnote_Digger, ShiftOSDesktop.BitNoteDiggerCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 5
                 InfectApplication(Bitnote_Wallet, ShiftOSDesktop.BitNoteWalletCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 6
                 InfectApplication(Calculator, ShiftOSDesktop.CalculatorCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 7
                 InfectApplication(Clock, ShiftOSDesktop.ClockCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 8
                 InfectApplication(coherencemodeform, ShiftOSDesktop.CoherenceModeCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 9
                 InfectApplication(Colour_Picker, ShiftOSDesktop.ColourPickerCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 10
                 InfectApplication(Dodge, ShiftOSDesktop.DodgeCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 11
                 InfectApplication(Downloadmanager, ShiftOSDesktop.DownloadManagerCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 12
                 InfectApplication(FloodGate_Manager, ShiftOSDesktop.FloodGateManagerCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 13
                 InfectApplication(Graphic_Picker, ShiftOSDesktop.GraphicPickerCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 14
                 InfectApplication(Icon_Manager, ShiftOSDesktop.IconManagerCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 15
                 InfectApplication(Installer, ShiftOSDesktop.InstallerCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 16
                 InfectApplication(Knowledge_Input, ShiftOSDesktop.KnowledgeInputCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 17
                 InfectApplication(Labyrinth, ShiftOSDesktop.LabyrinthCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 18
                 InfectApplication(Name_Changer, ShiftOSDesktop.NameChangerCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 19
                 InfectApplication(OrcWrite, ShiftOSDesktop.OrcWriteCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 20
                 InfectApplication(Pong, ShiftOSDesktop.PongCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 21
                 InfectApplication(Shifter, ShiftOSDesktop.ShifterCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 22
                 InfectApplication(Shiftnet, ShiftOSDesktop.ShiftNetCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 23
                 InfectApplication(Shiftorium, ShiftOSDesktop.ShiftoriumCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 24
                 InfectApplication(Skin_Loader, ShiftOSDesktop.SkinLoaderCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 25
                 InfectApplication(Skinshifter, ShiftOSDesktop.SkinShifterCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 26
                 InfectApplication(systeminfo, ShiftOSDesktop.SystemInfoCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 27
                 InfectApplication(Terminal, ShiftOSDesktop.TerminalCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 28
                 InfectApplication(TextPad, ShiftOSDesktop.TextpadCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 29
                 InfectApplication(Video_Player, ShiftOSDesktop.VideoPlayerCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 30
                 InfectApplication(VirusScanner, ShiftOSDesktop.VirusScannerCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 31
                 InfectApplication(Web_Browser, ShiftOSDesktop.WebBrowserCorrupted)
+                ShiftOSDesktop.NumberOn = ShiftOSDesktop.NumberOn + 1
             Case 32
                 crash.ThePlagueBSOD()
         End Select
