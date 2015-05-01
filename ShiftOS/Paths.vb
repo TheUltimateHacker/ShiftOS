@@ -25,9 +25,8 @@
 
 
     'Declaration Hierarchy
-    Public appData As String = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\ShiftOSLauncher"
-    Public root As String = My.Computer.FileSystem.ReadAllText(appData + "\ExecFolder.dat") + "\"
-    'Do NOT use this unless it is for files that must go DIRECTLY in C:\ShiftOS\
+
+    Public root As String = "C:\ShiftOS\" 'Do NOT use this unless it is for files that must go DIRECTLY in C:\ShiftOS\
 
     Public progdata As String = root & "SoftwareData\"
 
