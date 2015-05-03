@@ -10,7 +10,7 @@ world operating systems.
 only and will be replaced by 
 [Project Orion](https://github.com/ShiftOS/Project-Orion) as soon as it 
 implements all of the functionality of the original ShiftOS, contained in this 
-repository.**
+repository.** Although this repository is used for archival and may be replaced by [Project Orion](http://www.github.com/ShiftOS/Project-Orion), it may still be worked on.
 
 ### Official links
 * [Official forums](http://shiftos.net)
