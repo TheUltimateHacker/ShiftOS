@@ -6,8 +6,6 @@ to a fully graphical operating system filled with advanced features and
 beautiful colours. The level of customization will exceed the levels of real
 world operating systems.
 
-Although this repository is used for archival and may be replaced by [Project Orion](http://www.github.com/ShiftOS/Project-Orion), it may still be worked on.
-
 ### Official links
 * [Official forums](http://shiftos.net)
 * [YouTube channel](https://youtube.com/shiftosdevs)
