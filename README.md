@@ -54,12 +54,6 @@ based on the original code. It has been lead by
 a central class for window borders. Its code is still available in the "cleanup" 
 branch.
 
-### [Project Orion](https://github.com/ShiftOS/Project-Orion)
-This is a rewrite of ShiftOS in scratch, yet still in Visual Basic. It has been 
-started in April 2015 and is lead by 
-[TheUltimateHacker](https://github.com/TheUltimateHacker). Many hopes are being 
-put in this rewrite.
-
 ### [shift-redux](https://github.com/ShiftOS/shift-redux)
 A ShiftOS clone based on TypeScript and NW.js. At this moment the repository is 
 in a skeleton state. The spooky skeletons are present and ready to provide a 
